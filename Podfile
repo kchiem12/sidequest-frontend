@@ -8,4 +8,5 @@ target 'sidequest1' do
   # Pods for sidequest1
   pod 'SnapKit', '~> 5.6'
   pod 'Alamofire'
+  pod 'MessageKit'
 end
