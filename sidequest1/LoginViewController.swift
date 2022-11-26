@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     let signupLabel: UILabel = UILabel()
     let gradient: CAGradientLayer = CAGradientLayer()
     let signText = "don't have an account? sign up here!"
-    let backBarButton: UIBarButtonItem = UIBarButtonItem(title: "Login", style: .bordered, target: nil, action: nil)
+    let backBarButton: UIBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
     
 
 
@@ -106,8 +106,8 @@ class LoginViewController: UIViewController {
 //                .connectedScenes
 //                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
 //                .first?.rootViewController = SignUpViewController()
-            navigationController?.pushViewController(SignUpViewController(), animated: true)
             
+            navigationController?.pushViewController(SignUpViewController(), animated: true)
         } else {
             print("none")
         }
