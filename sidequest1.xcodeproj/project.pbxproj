@@ -25,6 +25,8 @@
 		BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0E2931C14C00561E8F /* Posting.swift */; };
 		BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */; };
 		BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */; };
+		BE9F7D152932790B00561E8F /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D142932790B00561E8F /* MessageViewController.swift */; };
+		BE9F7D1729327D3900561E8F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D1629327D3900561E8F /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		BE9F7D0E2931C14C00561E8F /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
 		BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoPresentViewController.swift; sourceTree = "<group>"; };
+		BE9F7D142932790B00561E8F /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		BE9F7D1629327D3900561E8F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +74,6 @@
 				468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */,
 				55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,6 +113,8 @@
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
+				BE9F7D1629327D3900561E8F /* ChatViewController.swift */,
+				BE9F7D142932790B00561E8F /* MessageViewController.swift */,
 				BE9F7D0C2931C13600561E8F /* Job.swift */,
 				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
 				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
@@ -257,6 +262,8 @@
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
 				BE9F7D0D2931C13600561E8F /* Job.swift in Sources */,
+				BE9F7D152932790B00561E8F /* MessageViewController.swift in Sources */,
+				BE9F7D1729327D3900561E8F /* ChatViewController.swift in Sources */,
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
 				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
