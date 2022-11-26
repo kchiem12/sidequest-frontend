@@ -27,6 +27,8 @@
 		BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */; };
 		BE9F7D152932790B00561E8F /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D142932790B00561E8F /* MessageViewController.swift */; };
 		BE9F7D1729327D3900561E8F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D1629327D3900561E8F /* ChatViewController.swift */; };
+		BE9F7D192932A3EB00561E8F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D182932A3EB00561E8F /* NetworkManager.swift */; };
+		BE9F7D1B2932A46A00561E8F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D1A2932A46A00561E8F /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoPresentViewController.swift; sourceTree = "<group>"; };
 		BE9F7D142932790B00561E8F /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		BE9F7D1629327D3900561E8F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		BE9F7D182932A3EB00561E8F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BE9F7D1A2932A46A00561E8F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +114,11 @@
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
 				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+				BE9F7D182932A3EB00561E8F /* NetworkManager.swift */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
+				BE9F7D1A2932A46A00561E8F /* Profile.swift */,
 				BE9F7D1629327D3900561E8F /* ChatViewController.swift */,
 				BE9F7D142932790B00561E8F /* MessageViewController.swift */,
 				BE9F7D0C2931C13600561E8F /* Job.swift */,
@@ -252,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9F7D192932A3EB00561E8F /* NetworkManager.swift in Sources */,
 				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
 				BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */,
@@ -268,6 +275,7 @@
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
 				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
 				BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */,
+				BE9F7D1B2932A46A00561E8F /* Profile.swift in Sources */,
 				BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
