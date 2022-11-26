@@ -7,23 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
-		BE9F7CEF2931BEDC00561E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9F7CED2931BEDC00561E8F /* Main.storyboard */; };
 		BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9F7CF02931BEDE00561E8F /* Assets.xcassets */; };
 		BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9F7CF22931BEDE00561E8F /* LaunchScreen.storyboard */; };
+		BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */; };
+		BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */; };
+		BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D002931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift */; };
+		BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D022931C07E00561E8F /* UIViewController+AddGestureViewController.swift */; };
+		BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D042931C09800561E8F /* UITextField+TapGesture.swift */; };
+		BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */; };
+		BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */; };
+		BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0A2931C11D00561E8F /* HomePage.swift */; };
+		BE9F7D0D2931C13600561E8F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0C2931C13600561E8F /* Job.swift */; };
+		BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0E2931C14C00561E8F /* Posting.swift */; };
+		BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */; };
+		BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidequest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.debug.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.debug.xcconfig"; sourceTree = "<group>"; };
+		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CEB2931BEDC00561E8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BE9F7CEE2931BEDC00561E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE9F7CF02931BEDE00561E8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE9F7CF32931BEDE00561E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE9F7CF52931BEDE00561E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BE9F7D002931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+didTapAttributedText.swift"; sourceTree = "<group>"; };
+		BE9F7D022931C07E00561E8F /* UIViewController+AddGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddGestureViewController.swift"; sourceTree = "<group>"; };
+		BE9F7D042931C09800561E8F /* UITextField+TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+TapGesture.swift"; sourceTree = "<group>"; };
+		BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBHex.swift"; sourceTree = "<group>"; };
+		BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE9F7D0A2931C11D00561E8F /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		BE9F7D0C2931C13600561E8F /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		BE9F7D0E2931C14C00561E8F /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
+		BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoPresentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +57,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B29D49BA1F604722D4F4123 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */,
+				55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AF2F9D387C99546E47786BE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE9F7CDB2931BEDC00561E8F = {
 			isa = PBXGroup;
 			children = (
 				BE9F7CE62931BEDC00561E8F /* sidequest1 */,
 				BE9F7CE52931BEDC00561E8F /* Products */,
+				6B29D49BA1F604722D4F4123 /* Pods */,
+				AF2F9D387C99546E47786BE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +106,31 @@
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
-				BE9F7CED2931BEDC00561E8F /* Main.storyboard */,
+				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
+				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
+				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
+				BE9F7D0C2931C13600561E8F /* Job.swift */,
+				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
+				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
+				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
+				BE9F7CFF2931C01D00561E8F /* extensions */,
 				BE9F7CF02931BEDE00561E8F /* Assets.xcassets */,
 				BE9F7CF22931BEDE00561E8F /* LaunchScreen.storyboard */,
 				BE9F7CF52931BEDE00561E8F /* Info.plist */,
 			);
 			path = sidequest1;
+			sourceTree = "<group>";
+		};
+		BE9F7CFF2931C01D00561E8F /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE9F7D002931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift */,
+				BE9F7D022931C07E00561E8F /* UIViewController+AddGestureViewController.swift */,
+				BE9F7D042931C09800561E8F /* UITextField+TapGesture.swift */,
+				BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE9F7CF82931BEDE00561E8F /* Build configuration list for PBXNativeTarget "sidequest1" */;
 			buildPhases = (
+				BA7557615721DC5C0E5B95C3 /* [CP] Check Pods Manifest.lock */,
 				BE9F7CE02931BEDC00561E8F /* Sources */,
 				BE9F7CE12931BEDC00561E8F /* Frameworks */,
 				BE9F7CE22931BEDC00561E8F /* Resources */,
+				3C290E0A105919EC8B183B63 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +195,79 @@
 			files = (
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
-				BE9F7CEF2931BEDC00561E8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C290E0A105919EC8B183B63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sidequest1/Pods-sidequest1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sidequest1/Pods-sidequest1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sidequest1/Pods-sidequest1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA7557615721DC5C0E5B95C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-sidequest1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE9F7CE02931BEDC00561E8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
+				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
+				BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */,
+				BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
+				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
+				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
+				BE9F7D0D2931C13600561E8F /* Job.swift in Sources */,
+				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
+				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
+				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
+				BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */,
+				BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BE9F7CED2931BEDC00561E8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE9F7CEE2931BEDC00561E8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BE9F7CF22931BEDE00561E8F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +395,7 @@
 		};
 		BE9F7CF92931BEDE00561E8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,7 +406,6 @@
 				INFOPLIST_FILE = sidequest1/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,6 +423,7 @@
 		};
 		BE9F7CFA2931BEDE00561E8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,7 +434,6 @@
 				INFOPLIST_FILE = sidequest1/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
