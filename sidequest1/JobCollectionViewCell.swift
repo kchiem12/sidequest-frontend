@@ -35,7 +35,7 @@ class JobCollectionViewCell: UICollectionViewCell {
     
     }
     
-    func configure(job: Job) {
+    func configure(job: Joba) {
         jobFilterLabel.text = "\(job.jobCategoryName)"
     }
 

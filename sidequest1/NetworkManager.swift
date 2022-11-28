@@ -12,7 +12,9 @@ class NetworkManager {
 
     static let host = "http://34.85.181.121"
     
-    static func registerAccount(email: String, password: String, first: String, last: String, phone_number: String, completion: @escaping (Profile) -> Void) {
+    
+    // function to register an account
+    static func registerAccount(email: String, password: String, first: String, last: String, phone_number: String, completion: @escaping (User) -> Void) {
         let endpoint = "\(host)/api/register/"
         
         let params: Parameters = [
@@ -23,11 +25,11 @@ class NetworkManager {
             "phone_number": phone_number
         ]
         
-        AF.request(endpoint, method: .post, parameters: params).validate().responseData { response in
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                if let userResponse = try? jsonDecoder.decode(Profile.self, from: data) {
+                if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
                     completion(userResponse)
                 } else {
                     print("Failed to decode registerAccount")
@@ -38,5 +40,12 @@ class NetworkManager {
             }
         }
     }
+    
+    // function to login
+    static func loginAccount(email: String, password: String, completion: @escaping (User) -> Void) {
+        let
+    }
+    
+    
 
 }

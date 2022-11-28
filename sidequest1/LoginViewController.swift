@@ -55,6 +55,8 @@ class LoginViewController: UIViewController {
         userTextField.layer.cornerRadius = 8
         userTextField.backgroundColor = .white
         userTextField.textColor = .black
+        userTextField.autocorrectionType = .no
+        userTextField.autocapitalizationType = .none
         view.addSubview(userTextField)
         
         passwordLabel.text = "password"
@@ -66,6 +68,9 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.backgroundColor = .white
         passwordTextField.textColor = .black
+        passwordTextField.autocorrectionType = .no
+        passwordTextField.autocapitalizationType = .none
+        passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
         forgetPasswordLabel.text = "forgot your password?"

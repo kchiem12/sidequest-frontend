@@ -26,7 +26,6 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
     let profileImageView: UIImageView = UIImageView()
     let addProfileLabel: UILabel = UILabel()
     let imagePicker: UIImagePickerController = UIImagePickerController()
-    var profile: Profile = Profile(id: "", email: "", firstName: "", lastName: "", phoneNumber: "")
     
 
     override func viewDidLoad() {
@@ -86,7 +85,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         passwordTextField.textColor = .black
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
-        passwordTextField.isSecureTextEntry = true
+//        passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
         firstNameLabel.text = "first name"
@@ -138,8 +137,9 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
     }
     
     @objc func registerAccount() {
-        NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { profile in
-            self.profile = profile
+        
+        NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { user in
+            print("all's good bc we have \(user.first) on board!")
             
             UIApplication
                 .shared

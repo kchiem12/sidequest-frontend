@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import MessageKit
+import InputBarAccessoryView
 
 struct Sender: SenderType {
     var senderId: String
@@ -59,11 +60,36 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
         view.addSubview(messagesCollectionView)
         
         
     }
+    
+    // make it so keyboard appears before everything
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputBar.inputTextView.becomeFirstResponder()
+    }
 
+}
+
+extension ChatViewController: InputBarAccessoryViewDelegate {
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard !text.replacingOccurrences(of: " ", with: "").isEmpty else {
+            return
+        }
+        
+        print("Message \(text)")
+        
+        // send message
+        // if isNewConversation {
+        // create convo in database
+        // else
+        // append to existing conversation
+        
+        
+    }
 }
 
 extension ChatViewController: MessagesDataSource {

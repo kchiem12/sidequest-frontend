@@ -1,17 +1,26 @@
 //
 //  Job.swift
-//  SideQuest
+//  sidequest1
 //
-//  Created by Jesse Cheng on 11/21/22.
+//  Created by Ken Chiem on 11/27/22.
 //
 
 import Foundation
-import UIKit
 
-class Job{
-    var jobCategoryName : String
-    
-    init (jobCategoryName : String) {
-        self.jobCategoryName = jobCategoryName
-    }
+// Job Model
+struct Job: Codable {
+    let id: Int
+    var title: String
+    var description: String
+    var location: String
+    var date_created: String
+    var date_activity: String
+    var duration: Int
+    var reward: String
+    var done: Bool
+    var taken: Bool
+    var asset: [SimpleImage]
+    var poster: [SimpleUser]
+    var receiver: [SimpleUser]
+    var potential: [SimpleUser]
 }

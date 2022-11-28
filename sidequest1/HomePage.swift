@@ -34,12 +34,12 @@ class HomePage: UIViewController {
     let chatBubble = UIImage(named: "chatbubble")
 
     // Set Up Collection Objects for Filter
-    let researchStudies = Job(jobCategoryName: "Research")
-    let entertainment = Job(jobCategoryName: "Entertainment")
-    let labor = Job(jobCategoryName: "Labor")
-    let tutoring = Job(jobCategoryName: "Tutoring")
-    let petsitting = Job(jobCategoryName: "Pet Sitting")
-    var jobs: [Job] = []
+    let researchStudies = Joba(jobCategoryName: "Research")
+    let entertainment = Joba(jobCategoryName: "Entertainment")
+    let labor = Joba(jobCategoryName: "Labor")
+    let tutoring = Joba(jobCategoryName: "Tutoring")
+    let petsitting = Joba(jobCategoryName: "Pet Sitting")
+    var jobs: [Joba] = []
 
     // Set Up CollectionView Var
     var filterCollectionView: UICollectionView!
