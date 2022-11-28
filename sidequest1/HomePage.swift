@@ -41,7 +41,17 @@ class HomePage: UIViewController {
     let tutoring = Joba(jobCategoryName: "Tutoring", isSelected: false)
     let petsitting = Joba(jobCategoryName: "Pet Sitting", isSelected: false)
     var jobs: [Joba] = []
-
+    var user: User?
+    
+    init(user: User?) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // Set Up CollectionView Var
     var filterCollectionView: UICollectionView!
     let spacing1: CGFloat = 15
@@ -299,6 +309,8 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         collectionView.reloadData()
     }
 }
+
+
 
 
 

@@ -20,7 +20,7 @@ class tabBarViewController: UIViewController {
     
     func tab() {
         tabBar.tabBar.tintColor = UIColor.red
-        let firstVC = HomePage()
+//        let firstVC = HomePage()
         let secondVC = AddJobViewController()
         
 //        let item1 = UITabBarItem(tabBarSystemItem: .search, tag: 0)
@@ -29,7 +29,7 @@ class tabBarViewController: UIViewController {
 //        firstVC.tabBarItem = item1
 //        secondVC.tabBarItem = item2
         
-        tabBar.viewControllers = [firstVC, secondVC]
+//        tabBar.viewControllers = [firstVC, secondVC]
         
         view.addSubview(tabBar.view)
     }

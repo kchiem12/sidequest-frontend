@@ -136,16 +136,26 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
     }
     
+    func convertImageToBase64String (img: UIImage) -> String {
+        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
+    
     @objc func registerAccount() {
         
-        NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { user, success, errorMsg in 
-            
+        NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { user, success, errorMsg in
             if success {
+                
+                let base64Rep = self.convertImageToBase64String(img: self.profileImageView.image!)
+                NetworkManager.uploadAccImg(userID: user!.id, base64: base64Rep) { successs, error in
+                    if !successs {
+                        print("\(error!)")
+                    }
+                }
                 UIApplication
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = HomePage()
+                    .first?.rootViewController = HomePage(user: user)
             } else {
                 print("\(errorMsg!)")
             }

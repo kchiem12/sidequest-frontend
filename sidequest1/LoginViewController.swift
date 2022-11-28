@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
     let backBarButton: UIBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
     
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,21 +98,20 @@ class LoginViewController: UIViewController {
         setupConstraints()
     }
     
+    // Handles login
     @objc func loginTap() {
-        
         NetworkManager.loginAccount(email: userTextField.text!, password: passwordTextField.text!) { user, success, errorMsg in
             if success {
                 UIApplication
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = HomePage()
+                    .first?.rootViewController = HomePage(user: user)
             } else {
                 print("\(errorMsg!)")
+                // make this some error label!!
             }
         }
-        
-        
     }
     
     @objc func tapLabel(gesture: UITapGestureRecognizer) {
@@ -178,8 +176,4 @@ class LoginViewController: UIViewController {
         }
         
     }
-    
-    
-
-
 }
