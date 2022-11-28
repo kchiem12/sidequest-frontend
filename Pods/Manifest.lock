@@ -1,20 +1,30 @@
 PODS:
   - Alamofire (5.6.4)
+  - InputBarAccessoryView (5.5.0):
+    - InputBarAccessoryView/Core (= 5.5.0)
+  - InputBarAccessoryView/Core (5.5.0)
+  - MessageKit (3.8.0):
+    - InputBarAccessoryView (~> 5.5.0)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Alamofire
+  - MessageKit
   - SnapKit (~> 5.6)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - InputBarAccessoryView
+    - MessageKit
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
+  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 6f4680be97864c4b3930e0200f9a5772cae3d3a7
+PODFILE CHECKSUM: f4a8c8aa93728bb6cbda3b057274964d57799b81
 
 COCOAPODS: 1.11.3

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UITextFieldDelegate {
     
     let gradient: CAGradientLayer = CAGradientLayer()
     let whiteBackgroundView: UIView = UIView()
@@ -71,6 +71,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         emailTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         emailTextField.layer.cornerRadius = 8
         emailTextField.textColor = .black
+        emailTextField.autocorrectionType = .no
+        emailTextField.autocapitalizationType = .none
         view.addSubview(emailTextField)
         
         passwordLabel.text = "password"
@@ -81,6 +83,9 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         passwordTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.textColor = .black
+        passwordTextField.autocorrectionType = .no
+        passwordTextField.autocapitalizationType = .none
+//        passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
         firstNameLabel.text = "first name"
@@ -91,6 +96,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         firstNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         firstNameTextField.layer.cornerRadius = 8
         firstNameTextField.textColor = .black
+        firstNameTextField.autocapitalizationType = .none
+        firstNameTextField.autocorrectionType = .no
         view.addSubview(firstNameTextField)
         
         lastNameLabel.text = "last name"
@@ -101,6 +108,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         lastNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         lastNameTextField.layer.cornerRadius = 8
         lastNameTextField.textColor = .black
+        lastNameTextField.autocorrectionType = .no
+        lastNameTextField.autocapitalizationType = .none
         view.addSubview(lastNameTextField)
         
         phoneNumberLabel.text = "phone number"
@@ -111,16 +120,33 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         phoneNumberTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         phoneNumberTextField.layer.cornerRadius = 8
         phoneNumberTextField.textColor = .black
+        phoneNumberTextField.delegate = self
+        phoneNumberTextField.autocapitalizationType = .none
+        phoneNumberTextField.autocorrectionType = .no
         view.addSubview(phoneNumberTextField)
         
         createButton.setTitle("create account", for: .normal)
         createButton.titleLabel?.textColor = UIColor(rgb: 0xE1F8F8)
         createButton.backgroundColor = UIColor(rgb: 0x6EBABA)
+        createButton.addTarget(self, action: #selector(registerAccount), for: .touchUpInside)
         createButton.layer.cornerRadius = 8
         view.addSubview(createButton)
         
         setupConstraints()
         
+    }
+    
+    @objc func registerAccount() {
+        
+        NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { user in
+            print("all's good bc we have \(user.first) on board!")
+            
+            UIApplication
+                .shared
+                .connectedScenes
+                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                .first?.rootViewController = HomePage()
+        }
     }
     
     @objc func changeImage(gesture: UITapGestureRecognizer) {
@@ -228,6 +254,12 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
             make.width.equalTo(262)
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
 
 }
