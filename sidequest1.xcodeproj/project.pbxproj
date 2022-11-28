@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
+		A0DA06042932B4A200FD161F /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06032932B4A200FD161F /* tabBarViewController.swift */; };
+		A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06052932B52900FD161F /* AddJobViewController.swift */; };
+		A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 		2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidequest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.debug.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.debug.xcconfig"; sourceTree = "<group>"; };
 		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
+		A0DA06032932B4A200FD161F /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
+		A0DA06052932B52900FD161F /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
+		A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarViewController.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +76,6 @@
 				468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */,
 				55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,10 +108,13 @@
 		BE9F7CE62931BEDC00561E8F /* sidequest1 */ = {
 			isa = PBXGroup;
 			children = (
+				A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */,
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
 				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
+				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
@@ -247,15 +255,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DA06042932B4A200FD161F /* tabBarViewController.swift in Sources */,
 				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
 				BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */,
+				A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */,
 				BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
+				A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */,
 				BE9F7D0D2931C13600561E8F /* Job.swift in Sources */,
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
@@ -408,6 +419,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,6 +448,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
