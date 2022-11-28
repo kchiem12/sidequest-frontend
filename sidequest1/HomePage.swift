@@ -35,12 +35,12 @@ class HomePage: UIViewController {
     let resultNumberLabel = UILabel()
 
     // Set Up Collection Objects for Filter
-    let researchStudies = Job(jobCategoryName: "Research", isSelected: false)
-    let entertainment = Job(jobCategoryName: "Entertainment", isSelected: false)
-    let labor = Job(jobCategoryName: "Labor", isSelected: false)
-    let tutoring = Job(jobCategoryName: "Tutoring", isSelected: false)
-    let petsitting = Job(jobCategoryName: "Pet Sitting", isSelected: false)
-    var jobs: [Job] = []
+    let researchStudies = Joba(jobCategoryName: "Research", isSelected: false)
+    let entertainment = Joba(jobCategoryName: "Entertainment", isSelected: false)
+    let labor = Joba(jobCategoryName: "Labor", isSelected: false)
+    let tutoring = Joba(jobCategoryName: "Tutoring", isSelected: false)
+    let petsitting = Joba(jobCategoryName: "Pet Sitting", isSelected: false)
+    var jobs: [Joba] = []
 
     // Set Up CollectionView Var
     var filterCollectionView: UICollectionView!

@@ -24,18 +24,21 @@
 		BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */; };
 		BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */; };
 		BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0A2931C11D00561E8F /* HomePage.swift */; };
-		BE9F7D0D2931C13600561E8F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0C2931C13600561E8F /* Job.swift */; };
+		BE9F7D0D2931C13600561E8F /* Joba.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0C2931C13600561E8F /* Joba.swift */; };
 		BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0E2931C14C00561E8F /* Posting.swift */; };
 		BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */; };
 		BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */; };
-		BEB7F02E29347D3A003DF523 /* SimpleModels in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F02D29347D3A003DF523 /* SimpleModels */; };
 		BEB7F03029347D40003DF523 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F02F29347D40003DF523 /* User.swift */; };
 		BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03129347D60003DF523 /* NetworkManager.swift */; };
 		BEB7F03429347D64003DF523 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03329347D64003DF523 /* Rating.swift */; };
 		BEB7F03629347D6A003DF523 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03529347D6A003DF523 /* MessageViewController.swift */; };
 		BEB7F03829347D7C003DF523 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03729347D7C003DF523 /* Asset.swift */; };
 		BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03929347D84003DF523 /* ChatViewController.swift */; };
-		BEB7F03C29347D8D003DF523 /* Joba.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03B29347D8D003DF523 /* Joba.swift */; };
+		BEB7F03F29347F8C003DF523 /* SimpleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F03E29347F8C003DF523 /* SimpleImage.swift */; };
+		BEB7F04129347F9B003DF523 /* SimpleJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04029347F9B003DF523 /* SimpleJob.swift */; };
+		BEB7F04329347FAC003DF523 /* SimpleRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04229347FAC003DF523 /* SimpleRating.swift */; };
+		BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04429347FB9003DF523 /* SimpleUser.swift */; };
+		BEB7F0472934812A003DF523 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0462934812A003DF523 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,18 +63,21 @@
 		BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBHex.swift"; sourceTree = "<group>"; };
 		BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7D0A2931C11D00561E8F /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		BE9F7D0C2931C13600561E8F /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		BE9F7D0C2931C13600561E8F /* Joba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joba.swift; sourceTree = "<group>"; };
 		BE9F7D0E2931C14C00561E8F /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
 		BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoPresentViewController.swift; sourceTree = "<group>"; };
-		BEB7F02D29347D3A003DF523 /* SimpleModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SimpleModels; sourceTree = "<group>"; };
 		BEB7F02F29347D40003DF523 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BEB7F03129347D60003DF523 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BEB7F03329347D64003DF523 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		BEB7F03529347D6A003DF523 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		BEB7F03729347D7C003DF523 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		BEB7F03929347D84003DF523 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		BEB7F03B29347D8D003DF523 /* Joba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joba.swift; sourceTree = "<group>"; };
+		BEB7F03E29347F8C003DF523 /* SimpleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleImage.swift; sourceTree = "<group>"; };
+		BEB7F04029347F9B003DF523 /* SimpleJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleJob.swift; sourceTree = "<group>"; };
+		BEB7F04229347FAC003DF523 /* SimpleRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRating.swift; sourceTree = "<group>"; };
+		BEB7F04429347FB9003DF523 /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
+		BEB7F0462934812A003DF523 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,15 +140,15 @@
 				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
 				BEB7F03729347D7C003DF523 /* Asset.swift */,
-				BEB7F02D29347D3A003DF523 /* SimpleModels */,
+				BEB7F03D29347F77003DF523 /* SimpleModals */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 				BEB7F02F29347D40003DF523 /* User.swift */,
 				BEB7F03329347D64003DF523 /* Rating.swift */,
-				BEB7F03B29347D8D003DF523 /* Joba.swift */,
+				BEB7F0462934812A003DF523 /* Job.swift */,
 				BEB7F03529347D6A003DF523 /* MessageViewController.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
-				BE9F7D0C2931C13600561E8F /* Job.swift */,
+				BE9F7D0C2931C13600561E8F /* Joba.swift */,
 				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
 				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
 				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
@@ -163,6 +169,17 @@
 				BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		BEB7F03D29347F77003DF523 /* SimpleModals */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F03E29347F8C003DF523 /* SimpleImage.swift */,
+				BEB7F04029347F9B003DF523 /* SimpleJob.swift */,
+				BEB7F04229347FAC003DF523 /* SimpleRating.swift */,
+				BEB7F04429347FB9003DF523 /* SimpleUser.swift */,
+			);
+			path = SimpleModals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +242,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEB7F02E29347D3A003DF523 /* SimpleModels in Resources */,
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
 			);
@@ -281,8 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0DA06042932B4A200FD161F /* tabBarViewController.swift in Sources */,
+				BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */,
 				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
+				BEB7F04129347F9B003DF523 /* SimpleJob.swift in Sources */,
+				BEB7F04329347FAC003DF523 /* SimpleRating.swift in Sources */,
 				BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */,
 				A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */,
 				BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */,
@@ -292,15 +311,16 @@
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
 				BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
-				BEB7F03C29347D8D003DF523 /* Joba.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
 				A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */,
+				BEB7F03F29347F8C003DF523 /* SimpleImage.swift in Sources */,
 				BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */,
-				BE9F7D0D2931C13600561E8F /* Job.swift in Sources */,
+				BE9F7D0D2931C13600561E8F /* Joba.swift in Sources */,
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
 				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
 				BEB7F03629347D6A003DF523 /* MessageViewController.swift in Sources */,
+				BEB7F0472934812A003DF523 /* Job.swift in Sources */,
 				BEB7F03829347D7C003DF523 /* Asset.swift in Sources */,
 				BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */,
 				BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */,

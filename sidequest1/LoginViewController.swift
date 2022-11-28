@@ -83,6 +83,7 @@ class LoginViewController: UIViewController {
         loginButton.titleLabel?.font = .systemFont(ofSize: 16)
         loginButton.titleLabel?.textColor = UIColor(rgb: 0xD8DFF2)
         loginButton.backgroundColor = UIColor(rgb: 0x7D91C5)
+        loginButton.addTarget(self, action: #selector(loginTap), for: .touchUpInside)
         loginButton.layer.cornerRadius = 8
         view.addSubview(loginButton)
         
@@ -98,20 +99,28 @@ class LoginViewController: UIViewController {
         setupConstraints()
     }
     
+    @objc func loginTap() {
+        
+        NetworkManager.loginAccount(email: userTextField.text!, password: passwordTextField.text!) { user, success, errorMsg in
+            if success {
+                UIApplication
+                    .shared
+                    .connectedScenes
+                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                    .first?.rootViewController = HomePage()
+            } else {
+                print("\(errorMsg!)")
+            }
+        }
+        
+        
+    }
+    
     @objc func tapLabel(gesture: UITapGestureRecognizer) {
         // sets the range of clickable text
         let signupRange = (signText as NSString).range(of: "sign up here!")
                 
         if gesture.didTapAttributedTextInLabel(label: signupLabel, inRange: signupRange) {
-            print("it worked!")
-            // Changes the rootviewcontroller
-            
-//            UIApplication
-//                .shared
-//                .connectedScenes
-//                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-//                .first?.rootViewController = SignUpViewController()
-            
             navigationController?.pushViewController(SignUpViewController(), animated: true)
         } else {
             print("none")

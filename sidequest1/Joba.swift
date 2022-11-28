@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 
-struct Joba: Codable{
-    var jobCategoryName : String
+class Joba{
+    var jobCategoryName: String
+    var isSelected: Bool
     
-    init (jobCategoryName : String) {
+    init (jobCategoryName: String, isSelected: Bool) {
         self.jobCategoryName = jobCategoryName
+        self.isSelected = isSelected
     }
 }

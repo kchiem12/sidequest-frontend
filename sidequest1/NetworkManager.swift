@@ -9,13 +9,20 @@ import UIKit
 import Alamofire
 
 class NetworkManager {
+    
+    //TODO: error handling in signup
 
     static let host = "http://34.85.181.121"
     
     
     // function to register an account
-    static func registerAccount(email: String, password: String, first: String, last: String, phone_number: String, completion: @escaping (User) -> Void) {
+    static func registerAccount(email: String, password: String, first: String, last: String, phone_number: String, completion: @escaping (User?, Bool, _ errorMsg: String?) -> Void) {
         let endpoint = "\(host)/api/register/"
+        
+        // Handles bad input
+        if (email == "" || password == "" || first == "" || last == "" || phone_number == "") {
+            completion(nil, false, "One or more text fields are blank")
+        }
         
         let params: Parameters = [
             "email": email,
@@ -30,7 +37,7 @@ class NetworkManager {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
-                    completion(userResponse)
+                    completion(userResponse, true, nil)
                 } else {
                     print("Failed to decode registerAccount")
                 }
@@ -42,10 +49,35 @@ class NetworkManager {
     }
     
     // function to login
-    static func loginAccount(email: String, password: String, completion: @escaping (User) -> Void) {
-        let
+    static func loginAccount(email: String, password: String, completion: @escaping (User?, Bool, _ errorMsg: String?) -> Void) {
+        let endpoint = "\(host)/api/login/"
+        
+        // Handles bad input
+        if (email == "" || password == "") {
+            completion(nil, false, "One or more text fields are blank")
+        }
+        
+        let params: Parameters = [
+            "email": email,
+            "password": password
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
+                    completion(userResponse, true, nil)
+                } else {
+                    print("Failed to login")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil, false, error.localizedDescription)
+            }
+        }
     }
-    
+
     
 
 }
