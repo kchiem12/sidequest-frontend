@@ -42,6 +42,8 @@ class HomePage: UIViewController {
     let petsitting = Joba(jobCategoryName: "Pet Sitting", isSelected: false)
     var jobs: [Joba] = []
     var user: User?
+    var chatImage = UIImage(named: "Send-2")?.withRenderingMode(.alwaysOriginal)
+    
     
     init(user: User?) {
         self.user = user
@@ -101,6 +103,8 @@ class HomePage: UIViewController {
        
         postings = [posting1, posting2, posting3, posting4, posting5]
         allPostings = postings
+        
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: chatImage, style: .plain, target: self, action: #selector(presentMessages))]
         
 
 
@@ -188,6 +192,11 @@ class HomePage: UIViewController {
             make.top.equalTo(resultNumberLabel.snp.bottom).offset(6)
             make.bottom.equalTo(self.view)
         }
+    }
+    
+    // presents a message view
+    @objc func presentMessages() {
+        navigationController?.pushViewController(MessageViewController(), animated: true)
     }
 }
 

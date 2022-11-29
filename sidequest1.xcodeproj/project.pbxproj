@@ -48,6 +48,7 @@
 		BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0572935A5FE003DF523 /* Chat.swift */; };
 		BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0592935A711003DF523 /* ChatUser.swift */; };
 		BEB7F05C2935A76A003DF523 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05B2935A76A003DF523 /* Message.swift */; };
+		BEB7F05E2935CE3E003DF523 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		BEB7F0572935A5FE003DF523 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		BEB7F0592935A711003DF523 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		BEB7F05B2935A76A003DF523 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				BEB7F03329347D64003DF523 /* Rating.swift */,
 				BEB7F0462934812A003DF523 /* Job.swift */,
 				BEB7F03529347D6A003DF523 /* MessageViewController.swift */,
+				BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
 				BE9F7D0C2931C13600561E8F /* Joba.swift */,
@@ -379,6 +382,7 @@
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
 				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
+				BEB7F05E2935CE3E003DF523 /* MessageTableViewCell.swift in Sources */,
 				BEB7F03629347D6A003DF523 /* MessageViewController.swift in Sources */,
 				BEB7F0472934812A003DF523 /* Job.swift in Sources */,
 				BEB7F03829347D7C003DF523 /* Asset.swift in Sources */,
