@@ -88,7 +88,7 @@ class moreInfoPresentViewController: UIViewController {
         view.addSubview(contactButton)
         
         gigName.snp.makeConstraints{ (make) -> Void in
-            make.top.equalTo(self.view.snp.top).offset(207)
+            make.top.equalTo(self.view.snp.top).offset(177)
             make.left.equalTo(self.view.snp.left).offset(25)
             make.right.equalTo(self.view.snp.right).offset(-150)
         }
@@ -102,7 +102,7 @@ class moreInfoPresentViewController: UIViewController {
         profilePic.snp.makeConstraints { (make) -> Void in
             make.height.equalTo(30)
             make.width.equalTo(30)
-            make.top.equalTo(248)
+            make.top.equalTo(218)
             make.left.equalTo(gigName.snp.left)
         }
 
@@ -112,25 +112,25 @@ class moreInfoPresentViewController: UIViewController {
         }
         
         gigDescription.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(295)
+            make.top.equalTo(265)
             make.left.equalTo(gigName.snp.left)
             make.right.equalTo(self.view.snp.right).offset(-25)
         }
         
         category.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(360)
+            make.top.equalTo(330)
             make.left.equalTo(gigName.snp.left)
             make.right.equalTo(self.view.snp.right).offset(-25)
         }
         
         relevantSkills.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(410)
+            make.top.equalTo(380)
             make.left.equalTo(gigName.snp.left)
             make.right.equalTo(self.view.snp.right).offset(-25)
         }
         
         otherNotes.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(460)
+            make.top.equalTo(430)
             make.left.equalTo(gigName.snp.left)
             make.right.equalTo(self.view.snp.right).offset(-25)
         }
@@ -144,7 +144,7 @@ class moreInfoPresentViewController: UIViewController {
     }
     
     func createView() {
-        let newView = UIView(frame: CGRect(x: 0, y: 180, width: view.frame.width, height: 600))
+        let newView = UIView(frame: CGRect(x: 0, y: 150, width: view.frame.width, height: 630))
         newView.layer.cornerRadius = 16
         newView.backgroundColor = .white
         view.addSubview(newView)

@@ -35,22 +35,22 @@ class HomePage: UIViewController {
     let resultNumberLabel = UILabel()
 
     // Set Up Collection Objects for Filter
-    let researchStudies = Joba(jobCategoryName: "Research", isSelected: false)
-    let entertainment = Joba(jobCategoryName: "Entertainment", isSelected: false)
-    let labor = Joba(jobCategoryName: "Labor", isSelected: false)
-    let tutoring = Joba(jobCategoryName: "Tutoring", isSelected: false)
-    let petsitting = Joba(jobCategoryName: "Pet Sitting", isSelected: false)
-    var jobs: [Joba] = []
-    var user: User?
-    
-    init(user: User?) {
-        self.user = user
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    let researchStudies = Filter(jobCategoryName: "Research", isSelected: false)
+    let entertainment = Filter(jobCategoryName: "Entertainment", isSelected: false)
+    let labor = Filter(jobCategoryName: "Labor", isSelected: false)
+    let tutoring = Filter(jobCategoryName: "Tutoring", isSelected: false)
+    let petsitting = Filter(jobCategoryName: "Pet Sitting", isSelected: false)
+    var jobs: [Filter] = []
+//    var user: User?
+//    
+//    init(user: User?) {
+//        self.user = user
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     // Set Up CollectionView Var
     var filterCollectionView: UICollectionView!
