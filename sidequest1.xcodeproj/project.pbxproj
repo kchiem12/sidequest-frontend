@@ -45,6 +45,9 @@
 		BEB7F05129349AFC003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */; };
 		BEB7F05329349BF4003DF523 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */; };
 		BEB7F05529349C99003DF523 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */; };
+		BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0572935A5FE003DF523 /* Chat.swift */; };
+		BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0592935A711003DF523 /* ChatUser.swift */; };
+		BEB7F05C2935A76A003DF523 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05B2935A76A003DF523 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +93,9 @@
 		BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
 		BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		BEB7F0572935A5FE003DF523 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		BEB7F0592935A711003DF523 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		BEB7F05B2935A76A003DF523 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +152,8 @@
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
-				BEB7F03929347D84003DF523 /* ChatViewController.swift */,
 				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+				BEB7F0562935A5EC003DF523 /* Chatting */,
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
 				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
@@ -214,6 +220,17 @@
 				BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BEB7F0562935A5EC003DF523 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F03929347D84003DF523 /* ChatViewController.swift */,
+				BEB7F0572935A5FE003DF523 /* Chat.swift */,
+				BEB7F0592935A711003DF523 /* ChatUser.swift */,
+				BEB7F05B2935A76A003DF523 /* Message.swift */,
+			);
+			path = Chatting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +357,7 @@
 				BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */,
 				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
+				BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */,
 				BEB7F04129347F9B003DF523 /* SimpleJob.swift in Sources */,
 				BEB7F04329347FAC003DF523 /* SimpleRating.swift in Sources */,
 				BE9F7D032931C07E00561E8F /* UIViewController+AddGestureViewController.swift in Sources */,
@@ -348,7 +366,9 @@
 				BEB7F03429347D64003DF523 /* Rating.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
+				BEB7F05C2935A76A003DF523 /* Message.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
+				BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */,
 				BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,

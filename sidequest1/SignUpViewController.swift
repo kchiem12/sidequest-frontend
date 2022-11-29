@@ -137,8 +137,10 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
     }
     
+    // Converts the UIImage to Base64 String
     func convertImageToBase64String (img: UIImage) -> String {
-        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+        let extensionBase = img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+        return "data:image/jpeg;base64,\(extensionBase)"
     }
     
     @objc func registerAccount() {
@@ -149,7 +151,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
                 let base64Rep = self.convertImageToBase64String(img: self.profileImageView.image!)
                 NetworkManager.uploadAccImg(userID: user!.id, base64: base64Rep) { successs, error in
                     if !successs {
-                        print("\(error!)")
+                        print("Error in uploading image")
                     }
                 }
                 UIApplication

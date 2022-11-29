@@ -46,7 +46,7 @@ class MessageViewController: UIViewController, UITableViewDelegate {
     
     // To push the chat view controller over
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chatVC = ChatViewController()
+        let chatVC = LoginViewController()
         chatVC.title = "Messages"
         navigationController?.pushViewController(chatVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)

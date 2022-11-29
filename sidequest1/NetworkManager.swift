@@ -93,7 +93,7 @@ class NetworkManager {
             case .success(_):
                 completion(true, nil)
             case .failure(let error):
-                completion(false, error.failureReason)
+                completion(false, error.localizedDescription)
             }
         }
         
