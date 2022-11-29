@@ -35,7 +35,7 @@ class JobCollectionViewCell: UICollectionViewCell {
     
     }
     
-    func configure(job: Joba) {
+    func configure(job: Filter) {
         jobFilterLabel.text = "+ \(job.jobCategoryName)"
         
         if (job.isSelected == true) {

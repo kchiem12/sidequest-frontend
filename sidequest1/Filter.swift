@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Joba{
+class Filter{
     var jobCategoryName: String
     var isSelected: Bool
     
