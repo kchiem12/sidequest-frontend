@@ -33,7 +33,7 @@ class mainTabBarViewController: UITabBarController {
     }
     
     func tab() {
-        let firstVC = HomePage()
+        let firstVC = HomePage(user: nil)
         let secondVC = AddJobViewController()
         
         let item1 = UITabBarItem(tabBarSystemItem: .search, tag: 0)
