@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSans-Medium.ttf</string>
+		<string>Merriweather-Bold.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
+		<string>Merriweather-Light.ttf</string>
+		<string>IBMPlexSans-Thin.ttf</string>
+		<string>IBMPlexSans-Light.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

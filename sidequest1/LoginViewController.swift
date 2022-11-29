@@ -27,6 +27,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+        
+        
         // add gradient background
         gradient.frame = self.view.bounds
         gradient.colors = [
@@ -47,7 +53,7 @@ class LoginViewController: UIViewController {
         
         userLabel.text = "email"
         userLabel.textColor = UIColor(rgb: 0x7D91C5)
-        userLabel.font = .systemFont(ofSize: 16)
+        userLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         userLabel.backgroundColor = .clear
         view.addSubview(userLabel)
         
@@ -60,7 +66,7 @@ class LoginViewController: UIViewController {
         
         passwordLabel.text = "password"
         passwordLabel.textColor = UIColor(rgb: 0x7D91C5)
-        passwordLabel.font = .systemFont(ofSize: 16)
+        passwordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         passwordLabel.backgroundColor = .clear
         view.addSubview(passwordLabel)
         
@@ -73,13 +79,13 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         
         forgetPasswordLabel.text = "forgot your password?"
-        forgetPasswordLabel.font = .systemFont(ofSize: 12)
+        forgetPasswordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         forgetPasswordLabel.textColor = UIColor(rgb: 0x6EBABA)
         forgetPasswordLabel.backgroundColor = .clear
         view.addSubview(forgetPasswordLabel)
         
         loginButton.setTitle("login", for: .normal)
-        loginButton.titleLabel?.font = .systemFont(ofSize: 16)
+        loginButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         loginButton.titleLabel?.textColor = UIColor(rgb: 0xD8DFF2)
         loginButton.backgroundColor = UIColor(rgb: 0x7D91C5)
         loginButton.addTarget(self, action: #selector(loginTap), for: .touchUpInside)
@@ -87,7 +93,7 @@ class LoginViewController: UIViewController {
         view.addSubview(loginButton)
         
         signupLabel.text = signText
-        signupLabel.font = .systemFont(ofSize: 12)
+        signupLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         signupLabel.isUserInteractionEnabled = true
         let attributedSignText = NSMutableAttributedString(string: signText)
         signupLabel.attributedText = attributedSignText

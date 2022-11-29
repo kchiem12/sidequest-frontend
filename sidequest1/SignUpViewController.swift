@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         view.addSubview(profileImageView)
         
         addProfileLabel.text = "add profile picture"
-        addProfileLabel.font = .systemFont(ofSize: 12)
+        addProfileLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         addProfileLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeImage(gesture:))))
         addProfileLabel.textColor = UIColor(rgb: 0x7D91C5)
         addProfileLabel.isUserInteractionEnabled = true
@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         emailLabel.text = "email"
         emailLabel.textColor = UIColor(rgb: 0x6EBABA)
-        emailLabel.font = .systemFont(ofSize: 16)
+        emailLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(emailLabel)
         
         emailTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         passwordLabel.text = "password"
         passwordLabel.textColor = UIColor(rgb: 0x6EBABA)
-        passwordLabel.font = .systemFont(ofSize: 16)
+        passwordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(passwordLabel)
         
         passwordTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
@@ -90,7 +90,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         firstNameLabel.text = "first name"
         firstNameLabel.textColor = UIColor(rgb: 0x6EBABA)
-        firstNameLabel.font = .systemFont(ofSize: 16)
+        firstNameLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(firstNameLabel)
         
         firstNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
@@ -102,7 +102,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         lastNameLabel.text = "last name"
         lastNameLabel.textColor = UIColor(rgb: 0x6EBABA)
-        lastNameLabel.font = .systemFont(ofSize: 16)
+        lastNameLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(lastNameLabel)
         
         lastNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
@@ -114,7 +114,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         phoneNumberLabel.text = "phone number"
         phoneNumberLabel.textColor = UIColor(rgb: 0x6EBABA)
-        phoneNumberLabel.font = .systemFont(ofSize: 16)
+        phoneNumberLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(phoneNumberLabel)
         
         phoneNumberTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
@@ -126,6 +126,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         view.addSubview(phoneNumberTextField)
         
         createButton.setTitle("create account", for: .normal)
+        createButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         createButton.titleLabel?.textColor = UIColor(rgb: 0xE1F8F8)
         createButton.backgroundColor = UIColor(rgb: 0x6EBABA)
         createButton.addTarget(self, action: #selector(registerAccount), for: .touchUpInside)

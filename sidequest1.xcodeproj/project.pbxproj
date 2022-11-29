@@ -39,6 +39,12 @@
 		BEB7F04329347FAC003DF523 /* SimpleRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04229347FAC003DF523 /* SimpleRating.swift */; };
 		BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04429347FB9003DF523 /* SimpleUser.swift */; };
 		BEB7F0472934812A003DF523 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0462934812A003DF523 /* Job.swift */; };
+		BEB7F04B293499E3003DF523 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */; };
+		BEB7F04D29349AEF003DF523 /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */; };
+		BEB7F04F29349AF5003DF523 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */; };
+		BEB7F05129349AFC003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */; };
+		BEB7F05329349BF4003DF523 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */; };
+		BEB7F05529349C99003DF523 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +84,12 @@
 		BEB7F04229347FAC003DF523 /* SimpleRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRating.swift; sourceTree = "<group>"; };
 		BEB7F04429347FB9003DF523 /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
 		BEB7F0462934812A003DF523 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.ttf"; sourceTree = "<group>"; };
+		BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
+		BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
+		BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
+		BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +151,7 @@
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
 				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
+				BEB7F048293499B6003DF523 /* Assets */,
 				BEB7F03729347D7C003DF523 /* Asset.swift */,
 				BEB7F03D29347F77003DF523 /* SimpleModals */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
@@ -180,6 +193,27 @@
 				BEB7F04429347FB9003DF523 /* SimpleUser.swift */,
 			);
 			path = SimpleModals;
+			sourceTree = "<group>";
+		};
+		BEB7F048293499B6003DF523 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F049293499BE003DF523 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BEB7F049293499BE003DF523 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */,
+				BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */,
+				BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */,
+				BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */,
+				BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */,
+				BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +276,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB7F05129349AFC003DF523 /* Merriweather-Bold.ttf in Resources */,
+				BEB7F04B293499E3003DF523 /* IBMPlexSans-Medium.ttf in Resources */,
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
+				BEB7F04D29349AEF003DF523 /* Merriweather-Light.ttf in Resources */,
+				BEB7F05529349C99003DF523 /* IBMPlexSans-Light.ttf in Resources */,
+				BEB7F05329349BF4003DF523 /* IBMPlexSans-Thin.ttf in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
+				BEB7F04F29349AF5003DF523 /* Merriweather-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
