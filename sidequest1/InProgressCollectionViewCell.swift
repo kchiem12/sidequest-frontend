@@ -1,20 +1,20 @@
 //
-//  PostingCollectionViewCell.swift
-//  SideQuest
+//  InProgressCollectionViewCell.swift
+//  sidequest1
 //
-//  Created by Jesse Cheng on 11/24/22.
+//  Created by Ken Chiem on 11/30/22.
 //
 
 import UIKit
 
-class PostingCollectionViewCell: UICollectionViewCell {
-    
+class InProgressCollectionViewCell: UICollectionViewCell {
     // Set Up Variables
     var gigName = UILabel()
     var gigAmount = UILabel()
     var profilePic = UIImageView()
     var profileName = UILabel()
     var gigDescription = UILabel()
+    var completedButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,13 +42,14 @@ class PostingCollectionViewCell: UICollectionViewCell {
         gigDescription.lineBreakMode = .byWordWrapping
         contentView.addSubview(gigDescription)
         
-        let star = UILabel()
-        star.frame = CGRect(x: 0, y: 0, width: 33.44, height: 33.35)
-        star.backgroundColor = .white
-        star.layer.cornerRadius = 2
-        star.layer.borderWidth = 2
-        star.layer.borderColor = UIColor(red: 0.263, green: 0.357, blue: 0.6, alpha: 1).cgColor
-        contentView.addSubview(star)
+        completedButton.setTitle("Mark as Completed", for: .normal)
+        completedButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        completedButton.setTitleColor(UIColor(rgb: 0x8A9CCB), for: .normal)
+        completedButton.layer.borderWidth = 2
+        completedButton.layer.borderColor = UIColor(rgb: 0x8A9CCB).cgColor
+        completedButton.layer.cornerRadius = 16
+        completedButton.backgroundColor = .clear
+        contentView.addSubview(completedButton)
         
         // Set Up Constraints
         
@@ -80,14 +81,14 @@ class PostingCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(86)
             make.left.equalTo(gigName.snp.left)
             make.right.equalTo(self.contentView.snp.right).offset(-15)
-            make.bottom.equalTo(self.contentView.snp.bottom).offset(-5)
+//            make.bottom.equalTo(self.contentView.snp.bottom).offset(-5)
         }
         
-        star.snp.makeConstraints { make in
-            make.bottom.equalTo(gigDescription.snp.bottom)
+        completedButton.snp.makeConstraints { make in
+            make.top.equalTo(gigDescription.snp.bottom).offset(20)
             make.right.equalTo(self.contentView.snp.right).offset(-15)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
+            make.left.equalTo(self.contentView.snp.left).offset(15)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-8)
         }
     }
 //

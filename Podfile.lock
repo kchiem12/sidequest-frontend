@@ -14,7 +14,7 @@ DEPENDENCIES:
   - Alamofire
   - MessageKit
   - SnapKit (~> 5.6)
-  - Socket.IO-Client-Swift (~> 16.0.1)
+  - Socket.IO-Client-Swift
 
 SPEC REPOS:
   trunk:
@@ -33,6 +33,6 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: d69fa14a30a5a89261dc9eafed12b45afb313c40
+PODFILE CHECKSUM: 10e14ea95f4066eb0e1b630aae7b0a88da37a39c
 
 COCOAPODS: 1.11.3

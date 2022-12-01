@@ -17,8 +17,9 @@ class Posting{
     var categoryName: String
     var relevantSkills: String
     var otherNotes: String
+    var favorite: Bool
     
-    init(gigName: String, gigAmount: Double, profilePic: String, profileName: String, gigDescription: String, categoryName: String, relevantSkills: String, otherNotes: String) {
+    init(gigName: String, gigAmount: Double, profilePic: String, profileName: String, gigDescription: String, categoryName: String, relevantSkills: String, otherNotes: String, favorite: Bool) {
         self.gigName = gigName
         self.gigAmount = gigAmount
         self.profilePic = profilePic
@@ -27,5 +28,6 @@ class Posting{
         self.categoryName = categoryName
         self.relevantSkills = relevantSkills
         self.otherNotes = otherNotes
+        self.favorite = favorite
     }
 }

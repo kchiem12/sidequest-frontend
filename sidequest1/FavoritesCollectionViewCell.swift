@@ -1,13 +1,13 @@
 //
-//  PostingCollectionViewCell.swift
-//  SideQuest
+//  FavoritesCollectionViewCell.swift
+//  sidequest1
 //
-//  Created by Jesse Cheng on 11/24/22.
+//  Created by Ken Chiem on 12/1/22.
 //
 
 import UIKit
 
-class PostingCollectionViewCell: UICollectionViewCell {
+class FavoritesCollectionViewCell: UICollectionViewCell {
     
     // Set Up Variables
     var gigName = UILabel()
@@ -15,6 +15,8 @@ class PostingCollectionViewCell: UICollectionViewCell {
     var profilePic = UIImageView()
     var profileName = UILabel()
     var gigDescription = UILabel()
+    let star = UIImageView()
+    var favorite = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,12 +44,12 @@ class PostingCollectionViewCell: UICollectionViewCell {
         gigDescription.lineBreakMode = .byWordWrapping
         contentView.addSubview(gigDescription)
         
-        let star = UILabel()
-        star.frame = CGRect(x: 0, y: 0, width: 33.44, height: 33.35)
-        star.backgroundColor = .white
-        star.layer.cornerRadius = 2
-        star.layer.borderWidth = 2
-        star.layer.borderColor = UIColor(red: 0.263, green: 0.357, blue: 0.6, alpha: 1).cgColor
+        star.image = UIImage(named: "unfavoritedStar")
+        star.contentMode = .scaleAspectFill
+        star.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipStar(gesture:))))
+        star.isUserInteractionEnabled = true
+        star.clipsToBounds = true
+        
         contentView.addSubview(star)
         
         // Set Up Constraints
@@ -86,17 +88,31 @@ class PostingCollectionViewCell: UICollectionViewCell {
         star.snp.makeConstraints { make in
             make.bottom.equalTo(gigDescription.snp.bottom)
             make.right.equalTo(self.contentView.snp.right).offset(-15)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
+            make.height.equalTo(33)
+            make.width.equalTo(35)
         }
     }
-//
+    
+    @objc func flipStar(gesture: UITapGestureRecognizer) {
+        favorite = !favorite
+        print("clicked on")
+        if favorite {
+            star.image = UIImage(named: "favoritedStar")
+        } else {
+            star.image = UIImage(named: "unfavoritedStar")
+        }
+    }
+    
     func configure(posting: Posting){
         gigName.text = posting.gigName
         gigAmount.text = String(format: "$%.2f", posting.gigAmount)
         profilePic.image = UIImage(named: posting.profilePic)
         profileName.text = posting.profileName
         gigDescription.text = "Gig: \(posting.gigDescription)"
+        if posting.favorite {
+            star.image = UIImage(named: "favoritedStar")
+            favorite = true
+        }
     }
     
     required init?(coder: NSCoder) {

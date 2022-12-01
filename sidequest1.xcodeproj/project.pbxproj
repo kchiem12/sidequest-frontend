@@ -49,6 +49,10 @@
 		BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0592935A711003DF523 /* ChatUser.swift */; };
 		BEB7F05C2935A76A003DF523 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05B2935A76A003DF523 /* Message.swift */; };
 		BEB7F05E2935CE3E003DF523 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */; };
+		BEB7F07129373AFC003DF523 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F07029373AFC003DF523 /* ProfileViewController.swift */; };
+		BEB7F0732937CBEC003DF523 /* InProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0722937CBEC003DF523 /* InProgressCollectionViewCell.swift */; };
+		BEB7F077293807AF003DF523 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F076293807AF003DF523 /* TestViewController.swift */; };
+		BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F07829386E2B003DF523 /* FavoritesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +102,10 @@
 		BEB7F0592935A711003DF523 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		BEB7F05B2935A76A003DF523 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		BEB7F07029373AFC003DF523 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BEB7F0722937CBEC003DF523 /* InProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEB7F076293807AF003DF523 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		BEB7F07829386E2B003DF523 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,8 @@
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
 				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
+				BEB7F076293807AF003DF523 /* TestViewController.swift */,
+				BEB7F07029373AFC003DF523 /* ProfileViewController.swift */,
 				BEB7F048293499B6003DF523 /* Assets */,
 				BEB7F03729347D7C003DF523 /* Asset.swift */,
 				BEB7F03D29347F77003DF523 /* SimpleModals */,
@@ -172,6 +182,8 @@
 				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
 				BE9F7D0C2931C13600561E8F /* Joba.swift */,
 				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
+				BEB7F07829386E2B003DF523 /* FavoritesCollectionViewCell.swift */,
+				BEB7F0722937CBEC003DF523 /* InProgressCollectionViewCell.swift */,
 				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
 				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
 				BE9F7CFF2931C01D00561E8F /* extensions */,
@@ -367,8 +379,10 @@
 				A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */,
 				BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */,
 				BEB7F03429347D64003DF523 /* Rating.swift in Sources */,
+				BEB7F0732937CBEC003DF523 /* InProgressCollectionViewCell.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
+				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,
 				BEB7F05C2935A76A003DF523 /* Message.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
 				BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */,
@@ -380,6 +394,7 @@
 				BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */,
 				BE9F7D0D2931C13600561E8F /* Joba.swift in Sources */,
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
+				BEB7F07129373AFC003DF523 /* ProfileViewController.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
 				BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */,
 				BEB7F05E2935CE3E003DF523 /* MessageTableViewCell.swift in Sources */,
@@ -388,6 +403,7 @@
 				BEB7F03829347D7C003DF523 /* Asset.swift in Sources */,
 				BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */,
 				BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */,
+				BEB7F077293807AF003DF523 /* TestViewController.swift in Sources */,
 				BEB7F03029347D40003DF523 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

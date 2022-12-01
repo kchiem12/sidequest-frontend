@@ -9,6 +9,6 @@ target 'sidequest1' do
   pod 'SnapKit', '~> 5.6'
   pod 'Alamofire'
   pod 'MessageKit'
-  pod 'Socket.IO-Client-Swift', '~> 16.0.1'
+  pod 'Socket.IO-Client-Swift'
 
 end

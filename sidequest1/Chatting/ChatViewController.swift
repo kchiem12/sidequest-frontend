@@ -61,9 +61,17 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate, Messag
     }
     
     func addHandlers() {
-        socketConnection.socket.onAny { event in
-            print("\(event.description)")
+        socketConnection.socket.on(clientEvent: .connect) { data, ack in
+            print("--------------------------------------SOCKET IS CONNECTED!!!---------------------------------------------------------")
+            self.socketConnection.manager.defaultSocket.emit("connect", ["user1_id": 0, "user2_id": 1, "chat_id": 0])
+//            self.socketConnection.socket.disconnect()
         }
+        
+        socketConnection.socket.on("past_history") { data, ack in
+            print("recieved request----------------AHAHAHAAHAHAAHAHAHAHAHAHAHAHAHAHHAAHHAHAHAHAHAHAHAHAHAAHAHAHHAHA")
+        }
+        
+        
     }
     
     func loadChat() {
@@ -79,8 +87,8 @@ open class SocketConnection {
     var socket: SocketIOClient
 
     init() {
-        manager = SocketManager(socketURL: URL(string: "http://34.85.181.121")!, config: [.log(true), .compress])
-         socket = manager.socket(forNamespace: "/chat/")
+        manager = SocketManager(socketURL: URL(string: "ws://34.85.181.121")!, config: [.log(true), .compress])
+        socket = manager.socket(forNamespace: "/api/chat/")
     }
 }
     
