@@ -21,4 +21,6 @@ struct User: Codable {
     var job_as_potential: [SimpleJob]
     var rating_as_poster: [SimpleRating]
     var rating_as_postee: [SimpleRating]
+    var chats: [SimpleChat]
+    var messages: [MessageModal]
 }

@@ -28,10 +28,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family) Font names: \(names)")
+//        }
         
         
         // add gradient background
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
         
         // De-select textfield
         self.hideKeyboardWhenTappedAround()
-        logoImageView.image = UIImage(named: "placeholder")
+        logoImageView.image = UIImage(named: "Logo-png")
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
         view.addSubview(logoImageView)

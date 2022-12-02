@@ -59,6 +59,7 @@ class HomePage: UIViewController {
     let spacing1: CGFloat = 15
     let jobReuseIdentifier: String = "jobReuseIdentifier"
 
+    
     // Set Up Collection Objects for Job Postings
     let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false)
     let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false)

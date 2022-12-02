@@ -101,11 +101,20 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate, Messag
     func addHandlers() {
         socketConnection.socket.on(clientEvent: .connect) { data, ack in
             print("--------------------------------------SOCKET IS CONNECTED!!!---------------------------------------------------------")
-            self.socketConnection.socket.emit("join", ["user1_id": 0, "user2_id": 1, "chat_id": 0])
+            self.socketConnection.socket.emit("new_chat", ["sender_id": 100000000000, "receiver_id": 20000000000])
         }
         
-        socketConnection.socket.on("past_history") { data, ack in
-            print("recieved request----------------AHAHAHAAHAHAAHAHAHAHAHAHAHAHAHAHHAAHHAHAHAHAHAHAHAHAHAAHAHAHHAHA")
+        socketConnection.socket.on("connection succeeded") { data, ack in
+            print("------------------------------------------------------------recieved request------------------------------------------------------------------------------------------------")
+        }
+        
+        socketConnection.socket.on("private_message") { data, ack in
+            print("private message was received!!!!!!!!!")
+            
+        }
+        
+        socketConnection.socket.on("failure") { data, ack in
+            print("failed to send message")
         }
         
         
@@ -119,6 +128,8 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate, Messag
     func insertNewMessages(_ message: Message) {
         messages.append(message)
         messagesCollectionView.reloadData()
+        
+        socketConnection.socket.emit("private_message", ["sender_id": 100000000000, "receiver_id": 20000000000, "msg": "feiosfji"])
         
         DispatchQueue.main.async {
             self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
