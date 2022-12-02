@@ -82,15 +82,15 @@ class HomePage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        // Nav Bar Color
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = UIColor(red: 0.491, green: 0.57, blue: 0.771, alpha: 1)
-//        navigationItem.standardAppearance = appearance;
-//        navigationItem.scrollEdgeAppearance = navigationItem.standardAppearance
-//
-//        // Title
-//        navigationItem.title = "SideQuest"
+        // Nav Bar Color
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(red: 0.491, green: 0.57, blue: 0.771, alpha: 1)
+        navigationItem.standardAppearance = appearance;
+        navigationItem.scrollEdgeAppearance = navigationItem.standardAppearance
+
+        // Title
+        navigationItem.title = "SideQuest"
 
         // Chat Button
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: chatBubble, style: .plain, target: self, action: nil)

@@ -38,13 +38,17 @@ class mainTabBarViewController: UITabBarController {
     
     func tab() {
         let firstVC = UINavigationController(rootViewController: HomePage(user: nil))
-        let secondVC = UINavigationController(rootViewController: AddJobViewController())
+        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user))
+        let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user))
         
-        let item1 = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        let item2 = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        let item1 = UITabBarItem(title: "", image: UIImage(named: "search-post"), selectedImage: UIImage(named: "search-post"))
+        let item2 = UITabBarItem(title: "", image: UIImage(named: "create-posting"), selectedImage: UIImage(named: "create-posting"))
+        let item3 = UITabBarItem(title: "", image: UIImage(named: "profile-icon"), selectedImage: UIImage(named: "selected-profile"))
 
         firstVC.tabBarItem = item1
         secondVC.tabBarItem = item2
+        thirdVC.tabBarItem = item3
+        
         
 //        UITabBar.appearance().tintColor = .white
 //        UITabBar.appearance().unselectedItemTintColor = .white
@@ -70,7 +74,7 @@ class mainTabBarViewController: UITabBarController {
 
         
         
-        viewControllers = [firstVC, secondVC]
+        viewControllers = [firstVC, secondVC, thirdVC]
         
         }
 

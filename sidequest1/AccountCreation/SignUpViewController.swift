@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         passwordTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.textColor = .black
-        passwordTextField.textContentType = .init(rawValue: "")
+        passwordTextField.textContentType = .oneTimeCode
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true

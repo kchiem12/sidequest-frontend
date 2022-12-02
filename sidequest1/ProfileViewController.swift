@@ -126,6 +126,7 @@ class ProfileViewController: UIViewController {
                 // section
                 let section = NSCollectionLayoutSection(group: group)
                 section.contentInsets.leading = 20
+                section.contentInsets.bottom = 20
                 section.orthogonalScrollingBehavior = .paging
                  //Creates a section header
                 section.boundarySupplementaryItems = [
@@ -137,6 +138,7 @@ class ProfileViewController: UIViewController {
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .absolute(200)))
                 item.contentInsets.trailing = 20
+                item.contentInsets.bottom = 25
                 
                 // group
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(

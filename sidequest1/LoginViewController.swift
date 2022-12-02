@@ -68,6 +68,7 @@ class LoginViewController: UIViewController {
         passwordLabel.text = "password"
         passwordLabel.textColor = UIColor(rgb: 0x7D91C5)
         passwordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
+        passwordTextField.textContentType = .init(rawValue: "")
         passwordLabel.backgroundColor = .clear
         view.addSubview(passwordLabel)
         
@@ -77,6 +78,7 @@ class LoginViewController: UIViewController {
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.textContentType = .oneTimeCode
         view.addSubview(passwordTextField)
         
         forgetPasswordLabel.text = "forgot your password?"
@@ -119,7 +121,7 @@ class LoginViewController: UIViewController {
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = HomePage(user: user)
+                    .first?.rootViewController = mainTabBarViewController(user: user)
             } else {
                 print("\(errorMsg!)")
                 // make this some error label!!
