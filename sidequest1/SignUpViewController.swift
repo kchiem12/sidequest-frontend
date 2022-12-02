@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
     let profileImageView: UIImageView = UIImageView()
     let addProfileLabel: UILabel = UILabel()
     let imagePicker: UIImagePickerController = UIImagePickerController()
+    let errorLabel: UILabel = UILabel()
     
 
     override func viewDidLoad() {
@@ -83,6 +84,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         passwordTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.textColor = .black
+        passwordTextField.textContentType = .init(rawValue: "")
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
@@ -133,6 +135,12 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         createButton.layer.cornerRadius = 8
         view.addSubview(createButton)
         
+        errorLabel.text = ""
+        errorLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 20)
+        errorLabel.textColor = UIColor(rgb: 0xdb4c42)
+        errorLabel.sizeToFit()
+        view.addSubview(errorLabel)
+        
         setupConstraints()
         
     }
@@ -161,6 +169,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
                     .first?.rootViewController = HomePage(user: user)
             } else {
                 print("\(errorMsg!)")
+                self.errorLabel.text = "One or more text fields are blank"
             }
         }
     }
@@ -268,6 +277,11 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
             make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
             make.height.equalTo(46)
             make.width.equalTo(262)
+        }
+        
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(createButton.snp.bottom).offset(20)
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
         }
         
     }

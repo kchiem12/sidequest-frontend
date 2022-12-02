@@ -96,8 +96,9 @@ class NetworkManager {
                 completion(false, error.localizedDescription)
             }
         }
-        
     }
+    
+//    static func getAllJobs(completion: @escaping ([]))
 
     
 

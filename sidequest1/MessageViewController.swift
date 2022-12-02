@@ -10,6 +10,7 @@ import SnapKit
 
 class MessageViewController: UIViewController, UITableViewDelegate {
     
+    // Change it later to incorporate users
     let messages = UITableView()
     let messageReuseIdentifier: String = "messageReuseIdentifier"
     let gradient: CAGradientLayer = CAGradientLayer()
@@ -26,8 +27,9 @@ class MessageViewController: UIViewController, UITableViewDelegate {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradient, at: 0)
         
-        messages.register(UITableViewCell.self, forCellReuseIdentifier: messageReuseIdentifier)
+        messages.register(MessageTableViewCell.self, forCellReuseIdentifier: messageReuseIdentifier)
         messages.delegate = self
+        messages.rowHeight = 100
         messages.dataSource = self
         messages.backgroundColor = .clear
         view.addSubview(messages)
@@ -55,15 +57,15 @@ class MessageViewController: UIViewController, UITableViewDelegate {
 
 extension MessageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: messageReuseIdentifier, for: indexPath)
-        cell.textLabel?.text = "Testing"
-        cell.accessoryType = .disclosureIndicator // indicates user can tap into cell
-//        cell.backgroundColor = .white
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: messageReuseIdentifier, for: indexPath) as? MessageTableViewCell {
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 }
 //

@@ -15,10 +15,10 @@ struct User: Codable {
     var first: String
     var last: String
     var phone_number: Int
-    var assets: [SimpleImage]?
-    var job_as_poster: [SimpleJob]?
-    var job_as_receiver: [SimpleJob]?
-    var job_as_potential: [SimpleJob]?
-    var rating_as_poster: [SimpleRating]?
-    var rating_as_postee: [SimpleRating]?
+    var assets: [SimpleImage]
+    var job_as_poster: [SimpleJob]
+    var job_as_receiver: [SimpleJob]
+    var job_as_potential: [SimpleJob]
+    var rating_as_poster: [SimpleRating]
+    var rating_as_postee: [SimpleRating]
 }

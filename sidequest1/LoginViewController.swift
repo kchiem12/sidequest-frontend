@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     let gradient: CAGradientLayer = CAGradientLayer()
     let signText = "don't have an account? sign up here!"
     let backBarButton: UIBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+    let errorLabel: UILabel = UILabel()
     
 
     override func viewDidLoad() {
@@ -101,6 +102,12 @@ class LoginViewController: UIViewController {
         signupLabel.textColor = UIColor(rgb: 0x6EBABA)
         view.addSubview(signupLabel)
         
+        errorLabel.text = ""
+        errorLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 20)
+        errorLabel.textColor = UIColor(rgb: 0xdb4c42)
+        errorLabel.sizeToFit()
+        view.addSubview(errorLabel)
+        
         setupConstraints()
     }
     
@@ -116,6 +123,7 @@ class LoginViewController: UIViewController {
             } else {
                 print("\(errorMsg!)")
                 // make this some error label!!
+                self.errorLabel.text = "Incorrect email or password"
             }
         }
     }
@@ -126,6 +134,9 @@ class LoginViewController: UIViewController {
                 
         if gesture.didTapAttributedTextInLabel(label: signupLabel, inRange: signupRange) {
             navigationController?.pushViewController(SignUpViewController(), animated: true)
+            self.userTextField.text = ""
+            self.passwordTextField.text = ""
+            self.errorLabel.text = ""
         } else {
             print("none")
         }
@@ -179,6 +190,13 @@ class LoginViewController: UIViewController {
         signupLabel.snp.makeConstraints { make in
             make.top.equalTo(loginButton.snp.bottom).offset(1)
             make.left.equalTo(userLabel.snp.left)
+        }
+        
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(signupLabel.snp.bottom).offset(40)
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+//            make.width.equalTo(150)
+//            make.height.equalTo(30)
         }
         
     }
