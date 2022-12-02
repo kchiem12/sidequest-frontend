@@ -119,7 +119,7 @@ class LoginViewController: UIViewController {
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = mainTabBarViewController(user: user)
+                    .first?.rootViewController = HomePage(user: user)
             } else {
                 print("\(errorMsg!)")
                 // make this some error label!!

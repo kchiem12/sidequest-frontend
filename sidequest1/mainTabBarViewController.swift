@@ -38,7 +38,7 @@ class mainTabBarViewController: UITabBarController {
     
     func tab() {
         let firstVC = UINavigationController(rootViewController: HomePage(user: nil))
-        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user!))
+        let secondVC = UINavigationController(rootViewController: AddJobViewController())
         
         let item1 = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         let item2 = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
