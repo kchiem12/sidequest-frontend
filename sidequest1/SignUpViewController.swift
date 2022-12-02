@@ -166,7 +166,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = HomePage(user: user)
+                    .first?.rootViewController = mainTabBarViewController(user: user)
             } else {
                 print("\(errorMsg!)")
                 self.errorLabel.text = "One or more text fields are blank"

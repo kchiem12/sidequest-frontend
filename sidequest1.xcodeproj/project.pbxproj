@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
-		A0DA06042932B4A200FD161F /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06032932B4A200FD161F /* tabBarViewController.swift */; };
+		A0ADD11229353551007712B0 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADD11129353551007712B0 /* Filter.swift */; };
+		A0ADD1142935529F007712B0 /* PublishJobPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADD1132935529F007712B0 /* PublishJobPresentViewController.swift */; };
 		A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06052932B52900FD161F /* AddJobViewController.swift */; };
 		A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */; };
+		A0F95FDB293A87AB00065D61 /* YourPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F95FDA293A87AB00065D61 /* YourPostCollectionViewCell.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -24,7 +26,6 @@
 		BE9F7D072931C0B000561E8F /* UIColor+RGBHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */; };
 		BE9F7D092931C0F600561E8F /* JobCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */; };
 		BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0A2931C11D00561E8F /* HomePage.swift */; };
-		BE9F7D0D2931C13600561E8F /* Joba.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0C2931C13600561E8F /* Joba.swift */; };
 		BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D0E2931C14C00561E8F /* Posting.swift */; };
 		BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */; };
 		BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */; };
@@ -39,12 +40,6 @@
 		BEB7F04329347FAC003DF523 /* SimpleRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04229347FAC003DF523 /* SimpleRating.swift */; };
 		BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F04429347FB9003DF523 /* SimpleUser.swift */; };
 		BEB7F0472934812A003DF523 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0462934812A003DF523 /* Job.swift */; };
-		BEB7F04B293499E3003DF523 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */; };
-		BEB7F04D29349AEF003DF523 /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */; };
-		BEB7F04F29349AF5003DF523 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */; };
-		BEB7F05129349AFC003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */; };
-		BEB7F05329349BF4003DF523 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */; };
-		BEB7F05529349C99003DF523 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */; };
 		BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0572935A5FE003DF523 /* Chat.swift */; };
 		BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0592935A711003DF523 /* ChatUser.swift */; };
 		BEB7F05C2935A76A003DF523 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F05B2935A76A003DF523 /* Message.swift */; };
@@ -62,9 +57,11 @@
 		2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidequest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.debug.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.debug.xcconfig"; sourceTree = "<group>"; };
 		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
-		A0DA06032932B4A200FD161F /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
+		A0ADD11129353551007712B0 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		A0ADD1132935529F007712B0 /* PublishJobPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishJobPresentViewController.swift; sourceTree = "<group>"; };
 		A0DA06052932B52900FD161F /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarViewController.swift; sourceTree = "<group>"; };
+		A0F95FDA293A87AB00065D61 /* YourPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +77,6 @@
 		BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBHex.swift"; sourceTree = "<group>"; };
 		BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7D0A2931C11D00561E8F /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		BE9F7D0C2931C13600561E8F /* Joba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joba.swift; sourceTree = "<group>"; };
 		BE9F7D0E2931C14C00561E8F /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
 		BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoPresentViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +108,12 @@
 		BEB7F07B293A0320003DF523 /* ChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModal.swift; sourceTree = "<group>"; };
 		BEB7F07D293A0361003DF523 /* MessageModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModal.swift; sourceTree = "<group>"; };
 		BEB7F07F293A03E9003DF523 /* SimpleChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleChat.swift; sourceTree = "<group>"; };
+		BEB7F0642936B358003DF523 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		BEB7F0662936B363003DF523 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
+		BEB7F0682936B36C003DF523 /* Merriweather-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.ttf"; sourceTree = "<group>"; };
+		BEB7F06A2936B373003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
+		BEB7F06C2936B382003DF523 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		BEB7F06E2936B392003DF523 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,39 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A0F95FD92939FFDB00065D61 /* HomePageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
+				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
+				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
+				BEB7F0462934812A003DF523 /* Job.swift */,
+				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
+				A0ADD11129353551007712B0 /* Filter.swift */,
+				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
+			);
+			path = HomePageScreen;
+			sourceTree = "<group>";
+		};
+		A0F95FDC293A87C900065D61 /* PostJobScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A0ADD1132935529F007712B0 /* PublishJobPresentViewController.swift */,
+				A0F95FDA293A87AB00065D61 /* YourPostCollectionViewCell.swift */,
+				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
+			);
+			path = PostJobScreen;
+			sourceTree = "<group>";
+		};
+		A0F95FDD293A87EA00065D61 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
+				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
 		AF2F9D387C99546E47786BE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +185,7 @@
 				BE9F7CE52931BEDC00561E8F /* Products */,
 				6B29D49BA1F604722D4F4123 /* Pods */,
 				AF2F9D387C99546E47786BE1 /* Frameworks */,
+				BEB7F0622936B30B003DF523 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,7 +204,7 @@
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
-				BE9F7CFB2931BFF200561E8F /* LoginViewController.swift */,
+				A0F95FDD293A87EA00065D61 /* LoginScreen */,
 				BEB7F0562935A5EC003DF523 /* Chatting */,
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
 				A0DA06032932B4A200FD161F /* tabBarViewController.swift */,
@@ -176,6 +212,8 @@
 				BEB7F076293807AF003DF523 /* TestViewController.swift */,
 				BEB7F07029373AFC003DF523 /* ProfileViewController.swift */,
 				BEB7F048293499B6003DF523 /* Assets */,
+				A0F95FDC293A87C900065D61 /* PostJobScreen */,
+				BEB7F0632936B31E003DF523 /* Fonts */,
 				BEB7F03729347D7C003DF523 /* Asset.swift */,
 				BEB7F03D29347F77003DF523 /* SimpleModals */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
@@ -183,6 +221,7 @@
 				BEB7F03329347D64003DF523 /* Rating.swift */,
 				BEB7F0462934812A003DF523 /* Job.swift */,
 				BEB7F07A293A0305003DF523 /* Modals */,
+				A0F95FD92939FFDB00065D61 /* HomePageScreen */,
 				BEB7F03529347D6A003DF523 /* MessageViewController.swift */,
 				BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */,
 				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
@@ -224,27 +263,6 @@
 			path = SimpleModals;
 			sourceTree = "<group>";
 		};
-		BEB7F048293499B6003DF523 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				BEB7F049293499BE003DF523 /* Fonts */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		BEB7F049293499BE003DF523 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */,
-				BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */,
-				BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */,
-				BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */,
-				BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */,
-				BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		BEB7F0562935A5EC003DF523 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,13 +274,30 @@
 			path = Chatting;
 			sourceTree = "<group>";
 		};
-		BEB7F07A293A0305003DF523 /* Modals */ = {
+		BEB7F0622936B30B003DF523 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				BEB7F07B293A0320003DF523 /* ChatModal.swift */,
-				BEB7F07D293A0361003DF523 /* MessageModal.swift */,
+				BEB7F05029349AFC003DF523 /* Merriweather-Bold.ttf */,
+				BEB7F04A293499E3003DF523 /* IBMPlexSans-Medium.ttf */,
+				BEB7F04C29349AEF003DF523 /* Merriweather-Light.ttf */,
+				BEB7F05429349C99003DF523 /* IBMPlexSans-Light.ttf */,
+				BEB7F05229349BF4003DF523 /* IBMPlexSans-Thin.ttf */,
+				BEB7F04E29349AF5003DF523 /* Merriweather-Regular.ttf */,
 			);
-			path = Modals;
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		BEB7F0632936B31E003DF523 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F06E2936B392003DF523 /* IBMPlexSans-Thin.ttf */,
+				BEB7F06C2936B382003DF523 /* IBMPlexSans-Medium.ttf */,
+				BEB7F06A2936B373003DF523 /* Merriweather-Bold.ttf */,
+				BEB7F0682936B36C003DF523 /* Merriweather-Light.ttf */,
+				BEB7F0662936B363003DF523 /* Merriweather-Regular.ttf */,
+				BEB7F0642936B358003DF523 /* IBMPlexSans-Light.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,14 +360,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEB7F05129349AFC003DF523 /* Merriweather-Bold.ttf in Resources */,
-				BEB7F04B293499E3003DF523 /* IBMPlexSans-Medium.ttf in Resources */,
+				BEB7F0652936B358003DF523 /* IBMPlexSans-Light.ttf in Resources */,
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
-				BEB7F04D29349AEF003DF523 /* Merriweather-Light.ttf in Resources */,
-				BEB7F05529349C99003DF523 /* IBMPlexSans-Light.ttf in Resources */,
-				BEB7F05329349BF4003DF523 /* IBMPlexSans-Thin.ttf in Resources */,
+				BEB7F06F2936B392003DF523 /* IBMPlexSans-Thin.ttf in Resources */,
+				BEB7F0672936B363003DF523 /* Merriweather-Regular.ttf in Resources */,
+				BEB7F06D2936B382003DF523 /* IBMPlexSans-Medium.ttf in Resources */,
+				BEB7F06B2936B373003DF523 /* Merriweather-Bold.ttf in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
-				BEB7F04F29349AF5003DF523 /* Merriweather-Regular.ttf in Resources */,
+				BEB7F0692936B36C003DF523 /* Merriweather-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,10 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0DA06042932B4A200FD161F /* tabBarViewController.swift in Sources */,
+				A0ADD11229353551007712B0 /* Filter.swift in Sources */,
 				BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */,
 				BE9F7CFC2931BFF200561E8F /* LoginViewController.swift in Sources */,
 				BEB7F07C293A0320003DF523 /* ChatModal.swift in Sources */,
+				A0ADD1142935529F007712B0 /* PublishJobPresentViewController.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
 				BEB7F080293A03E9003DF523 /* SimpleChat.swift in Sources */,
 				BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */,
@@ -412,7 +448,6 @@
 				A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */,
 				BEB7F03F29347F8C003DF523 /* SimpleImage.swift in Sources */,
 				BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */,
-				BE9F7D0D2931C13600561E8F /* Joba.swift in Sources */,
 				BE9F7D052931C09800561E8F /* UITextField+TapGesture.swift in Sources */,
 				BEB7F07129373AFC003DF523 /* ProfileViewController.swift in Sources */,
 				BE9F7D0F2931C14C00561E8F /* Posting.swift in Sources */,
@@ -424,6 +459,7 @@
 				BE9F7D012931C05800561E8F /* UITapGestureRecognizer+didTapAttributedText.swift in Sources */,
 				BE9F7CFE2931C00800561E8F /* SignUpViewController.swift in Sources */,
 				BEB7F077293807AF003DF523 /* TestViewController.swift in Sources */,
+				A0F95FDB293A87AB00065D61 /* YourPostCollectionViewCell.swift in Sources */,
 				BEB7F03029347D40003DF523 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

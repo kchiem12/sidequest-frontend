@@ -4,12 +4,12 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>IBMPlexSans-Medium.ttf</string>
-		<string>Merriweather-Bold.ttf</string>
-		<string>Merriweather-Regular.ttf</string>
-		<string>Merriweather-Light.ttf</string>
 		<string>IBMPlexSans-Thin.ttf</string>
+		<string>IBMPlexSans-Medium.ttf</string>
 		<string>IBMPlexSans-Light.ttf</string>
+		<string>Merriweather-Bold.ttf</string>
+		<string>Merriweather-Light.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
