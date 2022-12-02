@@ -98,6 +98,54 @@ class NetworkManager {
         }
         
     }
+    
+    // function to get all posts
+    static func getAllPosts(completion: @escaping ([Job]) -> Void) {
+        let endpoint = "\(host)/api/job/"
+        AF.request(endpoint, method: .get).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let userResponse = try? jsonDecoder.decode([Job].self, from: data) {
+                    completion(userResponse)
+                } else {
+                    print("Failed to decode getAllPosts")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // function to create a post
+    static func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Job) -> Void) {
+        let endpoint = "\(host)/api/user/\(userID)/"
+        let params: Parameters = [
+            "title": title,
+            "description": description,
+            "location": location,
+            "date_activity": date_activity,
+            "duration": duration,
+            "reward": reward,
+            "category": category,
+            "longtitude": longtitude,
+            "latitude": latitude
+        ]
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let userResponse = try? jsonDecoder.decode(Job.self, from: data) {
+                    completion(userResponse)
+                }
+                else {
+                    print("Failed to decode createPost")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        } 
+    }
 
     
 
