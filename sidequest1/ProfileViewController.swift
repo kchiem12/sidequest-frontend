@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     
     
     // Allows the current user to be passed in
-    init(user: User?) {
+    init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: createLayout()
     )
-    var user: User?
+    var user: User
     
     let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
     let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
@@ -42,10 +42,23 @@ class ProfileViewController: UIViewController {
     var inProgress: [Posting] = []
     var favorites: [Posting] = []
     
+    let logoutImageView: UIImageView = UIImageView()
     
-
+    @objc func logout() {
+        UIApplication
+            .shared
+            .connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+            .first?.rootViewController = LoginViewController()
+    }
+    
+    let navigationImageView: UIImageView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationImageView.image = UIImage(named: "navigation title")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
         
         // add gradient background
         gradient.frame = self.view.bounds
@@ -56,17 +69,32 @@ class ProfileViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradient, at: 0)
         
+        logoutImageView.image = UIImage(named: "logout")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: logoutImageView.image, style: .plain, target: self, action: #selector(logout))
+        
+//        NetworkManager.getSpecificUser(userID: user?.id!) { user in
+//            self.user = user
+//        }
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: chatBubble, style: .plain, target: self, action: nil)
+//        navigationItem.rightBarButtonItem?.tintColor = .black
+        
         inProgress = [posting1, posting2]
         favorites = [posting4, posting5]
         
         // gets the profile image from the url provided by backend
-        profileImageView.setImageFromStringrlL(url: user?.assets[0].url! ?? "")
+        
+        NetworkManager.getSpecificUser(userID: user.id) { response in
+            self.user = response
+            self.profileImageView.setImageFromStringrlL(url: self.user.assets[0].url ?? "")
+            return
+        }
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 50
         view.addSubview(profileImageView)
         
-        profileName.text = "FirstName LastName"
+        profileName.text = user.first + " " + user.last
         profileName.font = UIFont(name: "Merriweather-Regular", size: 20)
         profileName.textColor = UIColor(rgb: 0x435B99)
         profileName.backgroundColor = .clear

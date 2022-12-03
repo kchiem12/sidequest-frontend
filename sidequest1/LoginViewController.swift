@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
         
         // De-select textfield
         self.hideKeyboardWhenTappedAround()
-        logoImageView.image = UIImage(named: "Logo-png")
+        logoImageView.image = UIImage(named: "sidequest logo")
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
         view.addSubview(logoImageView)
