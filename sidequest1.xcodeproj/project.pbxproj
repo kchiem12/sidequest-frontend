@@ -10,6 +10,10 @@
 		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
 		A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06052932B52900FD161F /* AddJobViewController.swift */; };
 		A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */; };
+		A0F95FDF293AA99200065D61 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */; };
+		A0F95FE1293AA9AD00065D61 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */; };
+		A0F95FE3293AA9B800065D61 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */; };
+		A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -51,12 +55,8 @@
 		BEB7F08A293A91A3003DF523 /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F089293A91A3003DF523 /* tabBarViewController.swift */; };
 		BEB7F08E293A9203003DF523 /* ChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F08D293A9203003DF523 /* ChatModal.swift */; };
 		BEB7F090293A9228003DF523 /* MessageModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F08F293A9228003DF523 /* MessageModal.swift */; };
-		BEB7F092293A9371003DF523 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F091293A9371003DF523 /* IBMPlexSans-Light.ttf */; };
-		BEB7F094293A938B003DF523 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F093293A938B003DF523 /* Merriweather-Regular.ttf */; };
 		BEB7F096293A939A003DF523 /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */; };
 		BEB7F098293A93A5003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */; };
-		BEB7F09A293A93C7003DF523 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F099293A93C7003DF523 /* IBMPlexSans-Medium.ttf */; };
-		BEB7F09C293A93D5003DF523 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F09B293A93D5003DF523 /* IBMPlexSans-Thin.ttf */; };
 		BEB7F09F293A946A003DF523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F09E293A946A003DF523 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +66,10 @@
 		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
 		A0DA06052932B52900FD161F /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarViewController.swift; sourceTree = "<group>"; };
+		A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
+		A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
+		A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,12 +121,8 @@
 		BEB7F089293A91A3003DF523 /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
 		BEB7F08D293A9203003DF523 /* ChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModal.swift; sourceTree = "<group>"; };
 		BEB7F08F293A9228003DF523 /* MessageModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModal.swift; sourceTree = "<group>"; };
-		BEB7F091293A9371003DF523 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Light.ttf"; path = "../../../Downloads/IBM_Plex_Sans/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
-		BEB7F093293A938B003DF523 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
 		BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.ttf"; sourceTree = "<group>"; };
 		BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
-		BEB7F099293A93C7003DF523 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
-		BEB7F09B293A93D5003DF523 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		BEB7F09E293A946A003DF523 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,12 +265,12 @@
 		BEB7F0632936B31E003DF523 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BEB7F09B293A93D5003DF523 /* IBMPlexSans-Thin.ttf */,
-				BEB7F099293A93C7003DF523 /* IBMPlexSans-Medium.ttf */,
+				A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */,
+				A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */,
+				A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */,
 				BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */,
 				BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */,
-				BEB7F093293A938B003DF523 /* Merriweather-Regular.ttf */,
-				BEB7F091293A9371003DF523 /* IBMPlexSans-Light.ttf */,
+				A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -372,13 +372,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB7F098293A93A5003DF523 /* Merriweather-Bold.ttf in Resources */,
-				BEB7F092293A9371003DF523 /* IBMPlexSans-Light.ttf in Resources */,
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
-				BEB7F094293A938B003DF523 /* Merriweather-Regular.ttf in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
 				BEB7F096293A939A003DF523 /* Merriweather-Light.ttf in Resources */,
-				BEB7F09C293A93D5003DF523 /* IBMPlexSans-Thin.ttf in Resources */,
-				BEB7F09A293A93C7003DF523 /* IBMPlexSans-Medium.ttf in Resources */,
+				A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */,
+				A0F95FE3293AA9B800065D61 /* IBMPlexSans-Thin.ttf in Resources */,
+				A0F95FDF293AA99200065D61 /* Merriweather-Regular.ttf in Resources */,
+				A0F95FE1293AA9AD00065D61 /* IBMPlexSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

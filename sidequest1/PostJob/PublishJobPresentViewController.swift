@@ -129,8 +129,10 @@ class PublishJobPresentViewController: UIViewController {
         view.addSubview(notesField)
         
         publishButton.setTitle("Publish", for: .normal)
+        publishButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         publishButton.layer.cornerRadius = 16
         publishButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
+        publishButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         view.addSubview(publishButton)
         
         // Set Up Constraints
