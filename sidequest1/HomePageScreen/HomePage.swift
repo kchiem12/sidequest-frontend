@@ -59,13 +59,12 @@ class HomePage: UIViewController {
     let spacing1: CGFloat = 15
     let jobReuseIdentifier: String = "jobReuseIdentifier"
 
-    
     // Set Up Collection Objects for Job Postings
-    let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting3 = Posting(gigName: "DJ for ISU Party", gigAmount: 30, profilePic: "danielwong", profileName: "Daniel Wong", gigDescription: "We need a DJ tomorrow for our party. Must be 21+.", categoryName: "Entertainment", relevantSkills: "Music", otherNotes: "N/A", favorite: false, job: nil)
-    let posting4 = Posting(gigName: "Loading Furniture", gigAmount: 70, profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting5 = Posting(gigName: "CS Tutoring", gigAmount: 15, profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A", favorite: false, job: nil)
+    let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A")
+    let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A")
+    let posting3 = Posting(gigName: "DJ for ISU Party", gigAmount: 30, profilePic: "danielwong", profileName: "Daniel Wong", gigDescription: "We need a DJ tomorrow for our party. Must be 21+.", categoryName: "Entertainment", relevantSkills: "Music", otherNotes: "N/A")
+    let posting4 = Posting(gigName: "Loading Furniture", gigAmount: 70, profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A")
+    let posting5 = Posting(gigName: "CS Tutoring", gigAmount: 15, profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A")
 
     var allPostings: [Posting] = []
     var postings: [Posting] = []
@@ -75,12 +74,15 @@ class HomePage: UIViewController {
     let spacing2: CGFloat = 15
     let postingReuseIdentifier: String = "postingReuseIdentifier"
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "SideQuest"
 
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
@@ -104,7 +106,6 @@ class HomePage: UIViewController {
        
         postings = [posting1, posting2, posting3, posting4, posting5]
         allPostings = postings
-        getPosts() // to populate the screen with postings from the database
         
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: chatImage, style: .plain, target: self, action: #selector(presentMessages))]
         
@@ -199,23 +200,6 @@ class HomePage: UIViewController {
     // presents a message view
     @objc func presentMessages() {
         navigationController?.pushViewController(MessageViewController(), animated: true)
-    }
-    
-    // gets every posts
-    func getPosts() {
-        var posts: [Posting] = []
-        
-        NetworkManager.getAllPosts { jobs in
-            for job in jobs.jobs {
-                
-                var asset = ""
-                                
-                var post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false)
-                posts.insert(post, at: 0)
-            }
-        }
-        
-        allPostings.insert(contentsOf: posts, at: 0)
     }
 }
 
@@ -337,6 +321,7 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         collectionView.reloadData()
     }
 }
+
 
 
 
