@@ -145,6 +145,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
     }
     
+    
+    
     // Converts the UIImage to Base64 String
     static func convertImageToBase64String (img: UIImage) -> String {
         let extensionBase = img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""

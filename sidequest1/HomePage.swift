@@ -208,16 +208,14 @@ class HomePage: UIViewController {
         NetworkManager.getAllPosts { jobs in
             for job in jobs.jobs {
                 
-                var asset = ""
+                print("works!!!")
+                                
+                let post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
                 
-//                NetworkManager.g
-                
-//                var post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false)
-//                posts.insert(post, at: 0)
+                posts.insert(post, at: 0)
             }
+            self.postings.insert(contentsOf: posts, at: 0)
         }
-        
-        allPostings.insert(contentsOf: posts, at: 0)
     }
 }
 
@@ -333,7 +331,7 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         }
         
         if (collectionView == postingCollectionView) {
-            present(moreInfoPresentViewController(posting: postings[indexPath.item]), animated: true)
+            present(moreInfoPresentViewController(posting: postings[indexPath.item], user: user!), animated: true)
         }
         
         collectionView.reloadData()

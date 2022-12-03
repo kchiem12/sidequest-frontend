@@ -164,6 +164,22 @@ class NetworkManager {
             }
         }
     }
+    
+    static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool) -> Void) {
+        
+        let endpoint = "\(host)/api/user/\(userID)/job/\(jobID)/"
+        
+        let params: Parameters = [:]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(_):
+                completion(true)
+            case .failure(_):
+                completion(false)
+            }
+        }
+    }
 
     
 

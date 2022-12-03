@@ -10,7 +10,7 @@ import UIKit
 class moreInfoPresentViewController: UIViewController {
     
     
-    let posting: Posting
+    var posting: Posting
     
     var gigName = UILabel()
     var gigAmount = UILabel()
@@ -21,10 +21,13 @@ class moreInfoPresentViewController: UIViewController {
     var relevantSkills = UILabel()
     var otherNotes = UILabel()
     var contactButton = UIButton()
+    var interestButton = UIButton()
+    var user: User
     
    
-    init(posting: Posting) {
+    init(posting: Posting, user: User) {
         self.posting = posting
+        self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -87,6 +90,14 @@ class moreInfoPresentViewController: UIViewController {
 //        contactButton.addTarget(self, action: nil, for: .touchUpInside)
         view.addSubview(contactButton)
         
+        interestButton.setTitle("I'm Interested", for: .normal)
+        interestButton.layer.backgroundColor = UIColor(rgb: 0xD8DFF2).cgColor
+        interestButton.titleLabel?.textColor = UIColor(rgb: 0x1B3168)
+        interestButton.layer.cornerRadius = 8
+        interestButton.setTitleColor(UIColor(red: 0.106, green: 0.192, blue: 0.408, alpha: 1), for: .normal)
+        interestButton.addTarget(self, action: #selector(interestAction), for: .touchUpInside)
+        view.addSubview(interestButton)
+        
         gigName.snp.makeConstraints{ (make) -> Void in
             make.top.equalTo(self.view.snp.top).offset(177)
             make.left.equalTo(self.view.snp.left).offset(25)
@@ -135,12 +146,31 @@ class moreInfoPresentViewController: UIViewController {
             make.right.equalTo(self.view.snp.right).offset(-25)
         }
         
+        interestButton.snp.makeConstraints { make in
+            make.top.equalTo(otherNotes.snp.bottom).offset(20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(50)
+            make.width.equalTo(336)
+        }
+        
         contactButton.snp.makeConstraints{(make) -> Void in
             make.width.equalTo(336)
             make.height.equalTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(view.snp.bottom).offset(-50)
         }
+    }
+    
+    @objc func interestAction() {
+        
+        NetworkManager.interestInJob(userID: user.id, jobID: posting.job!.id) { success in
+            if success {
+                print("bet")
+            } else {
+                print("doesn't work")
+            }
+        }
+        
     }
     
     func createView() {
