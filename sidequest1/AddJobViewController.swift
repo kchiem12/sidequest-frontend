@@ -10,11 +10,15 @@ import SnapKit
 
 class AddJobViewController: UIViewController {
     
-    // Set Up Variables
+    // MARK: UI Elements
     var yourGigLabel = UILabel()
     var createPostButton = UIButton()
     var user: User?
 
+    // MARK: Data
+    var postingData: [Job] = []
+    var shownPostingData: [Job] = []
+    
     init(user: User?) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
@@ -32,8 +36,8 @@ class AddJobViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "YAAKHFLAJKDG"
-        
+        navigationItem.title = "SideQuest"
+                
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -54,7 +58,7 @@ class AddJobViewController: UIViewController {
         yourPostCollectionView.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
 
         // Set collection view data source
-//        yourPostCollectionView.dataSource = self
+        yourPostCollectionView.dataSource = self
 
         // Set collection view delegate
         yourPostCollectionView.delegate = self
@@ -63,21 +67,56 @@ class AddJobViewController: UIViewController {
         yourPostCollectionView.register(YourPostCollectionViewCell.self, forCellWithReuseIdentifier: yourPostReuseIdentifier)
         view.addSubview(yourPostCollectionView)
 
+        createDummyData()
         
         // Set Up Properties
+        yourGigLabel.text = "Your gig posts"
+        yourGigLabel.font = UIFont(name: "Merriweather-Regular", size: 24)
+        yourGigLabel.textColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1)
+        view.addSubview(yourGigLabel)
+        
         createPostButton.setTitle("Create post!", for: .normal)
+        createPostButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         createPostButton.layer.cornerRadius = 16
         createPostButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
         createPostButton.addTarget(self, action: #selector(createPost as () -> Void), for: .touchUpInside)
         view.addSubview(createPostButton)
         
         // Set Up Constraints
+        yourGigLabel.snp.makeConstraints {(make) -> Void in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            make.left.equalTo(view.snp.left).offset(30)
+        }
+        
         createPostButton.snp.makeConstraints{(make) -> Void in
             make.width.equalTo(336)
             make.height.equalTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
 
+        }
+    
+        yourPostCollectionView.snp.makeConstraints {(make) -> Void in
+            make.top.equalTo(yourGigLabel.snp.bottom).offset(17)
+            make.left.equalTo(view.snp.left).offset(15)
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.bottom.equalTo(createPostButton.snp.top).offset(-34)
+        }
+    }
+    
+    func createDummyData() {
+        // MARK: Use getAllPosts
+        /**
+         We want to retrieve data from the server here upon refresh. Make sure to
+         1) Sort the posts with `sortPostData`
+         2) Update `postData` & `shownPostData` and reload `postTableView`
+         */
+
+        NetworkManager.getAllPosts { posts in
+            self.postingData = posts
+//            self.sortPostData()
+            self.shownPostingData = self.postingData
+            self.yourPostCollectionView.reloadData()
         }
     }
     
@@ -92,23 +131,34 @@ extension AddJobViewController: CreatePostDelegate {
         
         NetworkManager.createPost(userID: user!.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { Job in
             //TODO: Finish this
+            self.shownPostingData = [Job] + self.shownPostingData
+            self.yourPostCollectionView.reloadData()
         }
         
     }
 }
 
-//extension AddJobViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//
-//
-//}
+extension AddJobViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shownPostingData.count
+    }
 
-extension AddJobViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourPostReuseIdentifier, for: indexPath) as? YourPostCollectionViewCell{
+            cell.configure(job: shownPostingData[indexPath.row])
+            cell.contentView.backgroundColor = UIColor.white
+            cell.contentView.layer.cornerRadius = 16
+            return cell
+        }
+        else {
+            return UICollectionViewCell()
+        }
+    }
+
+}
+
+extension AddJobViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 365, height: 313)
+    }
 }

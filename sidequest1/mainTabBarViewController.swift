@@ -50,7 +50,7 @@ class mainTabBarViewController: UITabBarController {
         thirdVC.tabBarItem = item3
         
         
-//        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().tintColor = .white
 //        UITabBar.appearance().unselectedItemTintColor = .white
         
         if #available(iOS 15, *) {
@@ -90,7 +90,10 @@ extension mainTabBarViewController: UITabBarControllerDelegate {
         let tabBarIndex = tabBarController.selectedIndex
         print(tabBarIndex)
         if tabBarIndex == 0 {
-            
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(red: 0.491, green: 0.57, blue: 0.771, alpha: 1)
+            tabBar.standardAppearance = appearance
         }
         else {
             let appearance = UITabBarAppearance()

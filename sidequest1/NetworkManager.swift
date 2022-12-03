@@ -118,7 +118,7 @@ class NetworkManager {
     
     // function to create a post
     static func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Job) -> Void) {
-        let endpoint = "\(host)/api/user/\(userID)/"
+        let endpoint = "\(host)/api/user/\(userID)/job/"
         let params: Parameters = [
             "title": title,
             "description": description,
