@@ -42,13 +42,13 @@ class PostingCollectionViewCell: UICollectionViewCell {
         gigDescription.lineBreakMode = .byWordWrapping
         contentView.addSubview(gigDescription)
         
-        let star = UILabel()
-        star.frame = CGRect(x: 0, y: 0, width: 33.44, height: 33.35)
-        star.backgroundColor = .white
-        star.layer.cornerRadius = 2
-        star.layer.borderWidth = 2
-        star.layer.borderColor = UIColor(red: 0.263, green: 0.357, blue: 0.6, alpha: 1).cgColor
-        contentView.addSubview(star)
+//        let star = UILabel()
+//        star.frame = CGRect(x: 0, y: 0, width: 33.44, height: 33.35)
+//        star.backgroundColor = .white
+//        star.layer.cornerRadius = 2
+//        star.layer.borderWidth = 2
+//        star.layer.borderColor = UIColor(red: 0.263, green: 0.357, blue: 0.6, alpha: 1).cgColor
+//        contentView.addSubview(star)
         
         // Set Up Constraints
         
@@ -82,19 +82,16 @@ class PostingCollectionViewCell: UICollectionViewCell {
             make.right.equalTo(self.contentView.snp.right).offset(-15)
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-5)
         }
-        
-        star.snp.makeConstraints { make in
-            make.bottom.equalTo(gigDescription.snp.bottom)
-            make.right.equalTo(self.contentView.snp.right).offset(-15)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-        }
     }
 //
     func configure(posting: Posting){
         gigName.text = posting.gigName
         gigAmount.text = String(format: "$%.2f", posting.gigAmount)
-        profilePic.setImageFromStringrlL(url: posting.profilePic)
+        if (posting.profilePic.count > 12) {
+            profilePic.setImageFromStringrlL(url: posting.profilePic)
+        } else {
+            profilePic.image = UIImage(named: posting.profilePic)
+        }
         profileName.text = posting.profileName
         gigDescription.text = "Gig: \(posting.gigDescription)"
     }
