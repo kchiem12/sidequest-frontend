@@ -104,6 +104,7 @@ class HomePage: UIViewController {
        
         postings = [posting1, posting2, posting3, posting4, posting5]
         allPostings = postings
+        getPosts() // to populate the screen with postings from the database
         
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: chatImage, style: .plain, target: self, action: #selector(presentMessages))]
         
@@ -198,6 +199,25 @@ class HomePage: UIViewController {
     // presents a message view
     @objc func presentMessages() {
         navigationController?.pushViewController(MessageViewController(), animated: true)
+    }
+    
+    // gets every posts
+    func getPosts() {
+        var posts: [Posting] = []
+        
+        NetworkManager.getAllPosts { jobs in
+            for job in jobs.jobs {
+                
+                var asset = ""
+                
+                NetworkManager.g
+                
+                var post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false)
+                posts.insert(post, at: 0)
+            }
+        }
+        
+        allPostings.insert(contentsOf: posts, at: 0)
     }
 }
 

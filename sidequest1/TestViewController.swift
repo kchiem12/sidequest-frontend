@@ -19,7 +19,7 @@ class TestViewController: UIViewController {
         view.backgroundColor = .white
         
         let url = URL(string: "https://None.s3.us-east-1.amazonaws.com/SUI3WA7SGNS4W1DI.jpg")
-        testImageView.setImageFromStringrlL(url: "https://None.s3.us-east-2.amazonaws.com/9R56U5MON7IKW7JI.jpg")
+        testImageView.setImageFromStringrlL(url: "https://images-hack-challenge-jack.s3.us-east-2.amazonaws.com/IG4BETO2DTPBDPKH.jpg")
         testImageView.contentMode = .scaleAspectFill
         testImageView.clipsToBounds = true
         view.addSubview(testImageView)

@@ -37,7 +37,7 @@ class mainTabBarViewController: UITabBarController {
     
     
     func tab() {
-        let firstVC = UINavigationController(rootViewController: HomePage(user: nil))
+        let firstVC = UINavigationController(rootViewController: HomePage(user: user))
         let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user))
         let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user))
         
