@@ -210,10 +210,10 @@ class HomePage: UIViewController {
                 
                 var asset = ""
                 
-                NetworkManager.g
+//                NetworkManager.g
                 
-                var post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false)
-                posts.insert(post, at: 0)
+//                var post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false)
+//                posts.insert(post, at: 0)
             }
         }
         

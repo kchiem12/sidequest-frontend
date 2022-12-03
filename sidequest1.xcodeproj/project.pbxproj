@@ -14,6 +14,7 @@
 		A0F95FE1293AA9AD00065D61 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */; };
 		A0F95FE3293AA9B800065D61 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */; };
 		A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */; };
+		A0F95FE7293AE6EE00065D61 /* EditPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentViewController.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */,
 				BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */,
+				A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */,
 			);
 			path = PostJob;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				BEB7F03429347D64003DF523 /* Rating.swift in Sources */,
 				BEB7F090293A9228003DF523 /* MessageModal.swift in Sources */,
 				BEB7F0732937CBEC003DF523 /* InProgressCollectionViewCell.swift in Sources */,
+				A0F95FE7293AE6EE00065D61 /* EditPresentViewController.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
 				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,

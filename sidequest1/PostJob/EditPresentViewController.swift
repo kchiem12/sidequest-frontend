@@ -1,13 +1,13 @@
 //
-//  PublishJobPresentViewController.swift
+//  EditPresentViewController.swift
 //  sidequest1
 //
-//  Created by Jesse Cheng on 11/28/22.
+//  Created by Jesse Cheng on 12/2/22.
 //
 
 import UIKit
 
-class PublishJobPresentViewController: UIViewController {
+class EditPresentViewController: UIViewController {
     
     class TextFieldWithPadding: UITextField {
         var textPadding = UIEdgeInsets(
@@ -16,16 +16,23 @@ class PublishJobPresentViewController: UIViewController {
             bottom: 10,
             right: 20
         )
-
+        
         override func textRect(forBounds bounds: CGRect) -> CGRect {
-                let rect = super.textRect(forBounds: bounds)
-                return rect.inset(by: textPadding)
-            }
-
-            override func editingRect(forBounds bounds: CGRect) -> CGRect {
-                let rect = super.editingRect(forBounds: bounds)
-                return rect.inset(by: textPadding)
-            }
+            let rect = super.textRect(forBounds: bounds)
+            return rect.inset(by: textPadding)
+        }
+        
+        override func editingRect(forBounds bounds: CGRect) -> CGRect {
+            let rect = super.editingRect(forBounds: bounds)
+            return rect.inset(by: textPadding)
+        }
+    }
+    
+    let job: Job
+    
+    init(job: Job) {
+        self.job = job
+        super.init(nibName: nil, bundle: nil)
     }
     
     // Set Up Variables
@@ -42,19 +49,12 @@ class PublishJobPresentViewController: UIViewController {
     var skillsField = TextFieldWithPadding()
     var notesLabel = UILabel()
     var notesField = UITextView()
-    var user: User?
-
+    
     var publishButton = UIButton()
     
     let categories = ["Research Study", "Entertainment", "Labor", "Tutoring", "Pet Sitting"]
-    
-    weak var delegate: CreatePostDelegate?
-    
-    init(delegate: CreatePostDelegate, user: User) {
-        self.delegate = delegate
-        self.user = user
-        super.init(nibName: nil, bundle: nil)
-    }
+
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -65,13 +65,14 @@ class PublishJobPresentViewController: UIViewController {
         
         view.backgroundColor = .clear
         createView()
-
+        
         // Set Up Properties
         gigLabel.text = "Gig title"
         gigLabel.textColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1)
         gigLabel.font = .systemFont(ofSize: 16)
         view.addSubview(gigLabel)
         
+        gigTitleField.text = job.title
         gigTitleField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         gigTitleField.layer.cornerRadius = 8
         view.addSubview(gigTitleField)
@@ -81,6 +82,7 @@ class PublishJobPresentViewController: UIViewController {
         payLabel.font = .systemFont(ofSize: 16)
         view.addSubview(payLabel)
         
+        payField.text = job.reward
         payField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         payField.layer.cornerRadius = 8
         view.addSubview(payField)
@@ -90,6 +92,7 @@ class PublishJobPresentViewController: UIViewController {
         descriptionLabel.font = .systemFont(ofSize: 16)
         view.addSubview(descriptionLabel)
         
+        descriptionField.text = job.description
         descriptionField.font = .systemFont(ofSize: 16)
         descriptionField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
         descriptionField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
@@ -102,6 +105,7 @@ class PublishJobPresentViewController: UIViewController {
         categoryLabel.font = .systemFont(ofSize: 16)
         view.addSubview(categoryLabel)
         
+        categoryField.text = job.category
         categoryField.attributedPlaceholder = NSAttributedString(string: "Select category...", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.435, green: 0.729, blue: 0.733, alpha: 1)])
         categoryField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         categoryField.layer.cornerRadius = 8
@@ -136,7 +140,7 @@ class PublishJobPresentViewController: UIViewController {
         publishButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         publishButton.layer.cornerRadius = 16
         publishButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
-        publishButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+//        publishButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         view.addSubview(publishButton)
         
         // Set Up Constraints
@@ -219,7 +223,7 @@ class PublishJobPresentViewController: UIViewController {
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
-    
+        
         func createView() {
             let newView = UIView(frame: CGRect(x: 0, y: 110, width: view.frame.width, height: 670))
             newView.layer.cornerRadius = 16
@@ -228,28 +232,9 @@ class PublishJobPresentViewController: UIViewController {
         }
         
     }
-    
-    @objc func saveAction() {
-        let userID = user!.id
-        let title = gigTitleField.text!
-        let description = descriptionField.text!
-        let location = ""
-        let date_activity = ""
-        let duration = 0
-        let reward = payField.text!
-        let category = categoryField.text!
-        let longtitude = 0
-        let latitude = 0
-        
-        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
-        
-        dismiss(animated: true)
-    }
-    
 }
 
-
-extension PublishJobPresentViewController: UIPickerViewDataSource {
+extension EditPresentViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
@@ -259,7 +244,7 @@ extension PublishJobPresentViewController: UIPickerViewDataSource {
     }
 }
 
-extension PublishJobPresentViewController: UIPickerViewDelegate {
+extension EditPresentViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        return categories[row]
     }
@@ -269,7 +254,3 @@ extension PublishJobPresentViewController: UIPickerViewDelegate {
         categoryField.resignFirstResponder()
     }
 }
-
-protocol CreatePostDelegate: UIViewController {
-        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
-    }

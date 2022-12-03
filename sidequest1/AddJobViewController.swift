@@ -113,7 +113,7 @@ class AddJobViewController: UIViewController {
          */
 
         NetworkManager.getAllPosts { posts in
-            self.postingData = posts
+            self.postingData = posts.jobs
 //            self.sortPostData()
             self.shownPostingData = self.postingData
             self.yourPostCollectionView.reloadData()

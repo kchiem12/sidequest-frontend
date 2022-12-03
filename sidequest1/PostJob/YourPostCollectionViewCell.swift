@@ -35,6 +35,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         
         editButton.setTitle("Edit", for: .normal)
         editButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+//        editButton.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
         editButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         editButton.layer.cornerRadius = 16
         contentView.addSubview(editButton)
@@ -93,7 +94,9 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     
     func configure(job: Job) {
         gigName.text = job.title
-        datePosted.text = "Date Posted: \(job.date_created)"
+        let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
+        let newStr = String(job.date_created[..<indexEndOfText])
+        datePosted.text = "Date Posted: \(newStr)"
         gigAmount.text = "$\(job.reward)"
     }
     
@@ -101,4 +104,12 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    @objc func changePost() {
+//        parent?.navigationController.present(EditPresentViewController(), animated: true)
+//    }
+    
 }
+
+
+
+
