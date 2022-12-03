@@ -99,13 +99,13 @@ class NetworkManager {
     }
     
     // function to get all posts
-    static func getAllPosts(completion: @escaping ([Job]) -> Void) {
+    static func getAllPosts(completion: @escaping (JobList) -> Void) {
         let endpoint = "\(host)/api/job/"
         AF.request(endpoint, method: .get).validate().responseData { response in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                if let userResponse = try? jsonDecoder.decode([Job].self, from: data) {
+                if let userResponse = try? jsonDecoder.decode(JobList.self, from: data) {
                     completion(userResponse)
                 } else {
                     print("Failed to decode getAllPosts")

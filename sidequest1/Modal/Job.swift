@@ -20,8 +20,14 @@ struct Job: Codable {
     var category: String
     var done: Bool
     var taken: Bool
+    var longtitude: Int
+    var latitude: Int
     var asset: [SimpleImage]
     var poster: [SimpleUser]
     var receiver: [SimpleUser]
     var potential: [SimpleUser]
+}
+
+struct JobList: Codable {
+    var jobs: [Job]
 }

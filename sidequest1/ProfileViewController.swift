@@ -59,7 +59,8 @@ class ProfileViewController: UIViewController {
         inProgress = [posting1, posting2]
         favorites = [posting4, posting5]
         
-        profileImageView.image = UIImage(named: "profile_placeholder")
+        // gets the profile image from the url provided by backend
+        profileImageView.setImageFromStringrlL(url: user?.assets[0].url! ?? "")
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 50
