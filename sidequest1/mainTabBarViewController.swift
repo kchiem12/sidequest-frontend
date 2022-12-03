@@ -38,8 +38,8 @@ class mainTabBarViewController: UITabBarController {
     
     func tab() {
         let firstVC = UINavigationController(rootViewController: HomePage(user: user))
-        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user))
-        let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user))
+        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user!))
+        let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user!))
         
         let item1 = UITabBarItem(title: "", image: UIImage(named: "search-post"), selectedImage: UIImage(named: "search-post"))
         let item2 = UITabBarItem(title: "", image: UIImage(named: "create-posting"), selectedImage: UIImage(named: "create-posting"))

@@ -116,6 +116,25 @@ class NetworkManager {
         }
     }
     
+    static func getSpecificUser(userID: Int, completion: @escaping (User) -> Void) {
+        
+        let endpoint = "\(host)/api/user/\(userID)/"
+        
+        AF.request(endpoint, method: .get).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
+                    completion(userResponse)
+                } else {
+                    print("failed to decode user specific")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // function to create a post
     static func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Job) -> Void) {
         let endpoint = "\(host)/api/user/\(userID)/job/"
@@ -177,6 +196,27 @@ class NetworkManager {
                 completion(true)
             case .failure(_):
                 completion(false)
+            }
+        }
+    }
+    
+    static func getSpecificJob(jobID: Int, completion: @escaping (Job) -> Void) {
+        let endpoint = "\(host)/api/job/\(jobID)/"
+        
+        let params: Parameters = [:]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let userResponse = try? jsonDecoder.decode(Job.self, from: data) {
+                    completion(userResponse)
+                } else {
+                    print("failed to decode")
+                }
+            case .failure(_):
+                print("failed")
             }
         }
     }

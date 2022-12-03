@@ -78,10 +78,19 @@ class HomePage: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
     }
+    
+    let navigationImageView: UIImageView = UIImageView()
+    
+    @objc func pushMessages() {
+        navigationController?.pushViewController(MessageViewController(), animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationImageView.image = UIImage(named: "navigation title")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
+        
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -89,11 +98,8 @@ class HomePage: UIViewController {
         navigationItem.standardAppearance = appearance;
         navigationItem.scrollEdgeAppearance = navigationItem.standardAppearance
 
-        // Title
-        navigationItem.title = "SideQuest"
-
         // Chat Button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: chatBubble, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: chatBubble, style: .plain, target: self, action: #selector(pushMessages))
         navigationItem.rightBarButtonItem?.tintColor = .black
 
         // Background Color
@@ -210,11 +216,12 @@ class HomePage: UIViewController {
                 
                 print("works!!!")
                                 
-                let post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: job.asset[0].url!, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
+                let post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: "profile_placeholder", profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
                 
                 posts.insert(post, at: 0)
             }
             self.postings.insert(contentsOf: posts, at: 0)
+            self.allPostings.insert(contentsOf: posts, at: 0)
         }
     }
 }

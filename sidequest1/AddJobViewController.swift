@@ -13,15 +13,15 @@ class AddJobViewController: UIViewController {
     // MARK: UI Elements
     var yourGigLabel = UILabel()
     var createPostButton = UIButton()
-    var user: User?
+    var user: User
 
     // MARK: Data
     var postingData: [Job] = []
     var shownPostingData: [Job] = []
     
-    init(user: User?) {
-        super.init(nibName: nil, bundle: nil)
+    init(user: User) {
         self.user = user
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -33,11 +33,14 @@ class AddJobViewController: UIViewController {
     let spacing1: CGFloat = 15
     let yourPostReuseIdentifier: String = "yourPostReuseIdentifier"
     
+    let navigationImageView: UIImageView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = "SideQuest"
-                
+        
+        navigationImageView.image = UIImage(named: "navigation title")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
+        
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -112,16 +115,29 @@ class AddJobViewController: UIViewController {
          2) Update `postData` & `shownPostData` and reload `postTableView`
          */
 
-        NetworkManager.getAllPosts { posts in
-            self.postingData = posts.jobs
-//            self.sortPostData()
-            self.shownPostingData = self.postingData
-            self.yourPostCollectionView.reloadData()
+//        NetworkManager.getAllPosts { posts in
+//            self.postingData = posts.jobs
+////            self.sortPostData()
+//            self.shownPostingData = self.postingData
+//            self.yourPostCollectionView.reloadData()
+//        }
+        
+        var posts: [Job] = []
+        
+        print("\(user.job_as_poster.count)")
+        for job in user.job_as_poster {
+            print("\(job.id)")
+            NetworkManager.getSpecificJob(jobID: job.id!) { job in
+                posts.append(job)
+                self.postingData = posts
+                self.shownPostingData = self.postingData
+                self.yourPostCollectionView.reloadData()
+            }
         }
     }
     
     @objc func createPost() {
-        present(PublishJobPresentViewController(delegate: self, user: user!), animated: true)
+        present(PublishJobPresentViewController(delegate: self, user: user), animated: true)
     }
 
 }
@@ -129,7 +145,7 @@ class AddJobViewController: UIViewController {
 extension AddJobViewController: CreatePostDelegate {
     func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int) {
         
-        NetworkManager.createPost(userID: user!.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { Job in
+        NetworkManager.createPost(userID: user.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { Job in
             //TODO: Finish this
             self.shownPostingData = [Job] + self.shownPostingData
             

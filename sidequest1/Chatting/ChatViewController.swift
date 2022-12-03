@@ -55,10 +55,8 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate, Messag
     }
     
     
-    var message1 = Message(dictionary: ["id": "1", "content": "hello bruh moment", "created": Date(), "senderID": "1", "senderName": "matt"])
-    var message2 = Message(dictionary: ["id": "2", "content": "hello????", "created": Date(), "senderID": "2", "senderName": "corbin"])
-    var message3 = Message(dictionary: ["id": "3", "content": "hello bruh moment", "created": Date(), "senderID": "1", "senderName": "matt"])
-    var message4 = Message(dictionary: ["id": "4", "content": "hello bruh moment", "created": Date(), "senderID": "1", "senderName": "matt"])
+    var message1 = Message(dictionary: ["id": "1", "content": "Hi! I am interested in this job", "created": Date(), "senderID": "1", "senderName": "matt"])
+    var message2 = Message(dictionary: ["id": "2", "content": "Hello! Can you tell me a little about yourself?", "created": Date(), "senderID": "2", "senderName": "corbin"])
 
 
 
@@ -73,7 +71,7 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate, Messag
             .font: UIFont(name: "Merriweather-Regular", size: 20)
         ]
         
-        messages = [message1!, message2!, message3!, message4!]
+        messages = [message1!, message2!]
         
         addHandlers()
         socketConnection.socket.connect()

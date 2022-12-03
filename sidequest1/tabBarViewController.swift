@@ -21,7 +21,7 @@ class tabBarViewController: UIViewController {
     func tab() {
         tabBar.tabBar.tintColor = UIColor.red
 //        let firstVC = HomePage()
-        let secondVC = AddJobViewController(user: nil)
+//        let secondVC = AddJobViewController(user: nil)
         
 //        let item1 = UITabBarItem(tabBarSystemItem: .search, tag: 0)
 //        let item2 = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)

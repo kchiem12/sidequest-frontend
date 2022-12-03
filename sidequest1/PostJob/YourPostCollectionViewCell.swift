@@ -93,7 +93,9 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     
     func configure(job: Job) {
         gigName.text = job.title
-        datePosted.text = "Date Posted: \(job.date_created)"
+        let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
+        let newStr = String(job.date_created[..<indexEndOfText])
+        datePosted.text = "Date Posted: \(newStr)"
         gigAmount.text = "$\(job.reward)"
     }
     
