@@ -145,6 +145,25 @@ class NetworkManager {
             }
         } 
     }
+    
+    static func uploadJobAsset(jobID: Int, base64: String, completion: @escaping (_ success: Bool, String?) -> Void) {
+        
+        let endpoint = "\(host)/api/job/\(jobID)/upload/"
+        
+        let params: Parameters = [
+            "image_data": base64
+        ]
+        
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(_):
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error.localizedDescription)
+            }
+        }
+    }
 
     
 

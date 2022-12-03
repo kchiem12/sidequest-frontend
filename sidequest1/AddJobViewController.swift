@@ -132,6 +132,17 @@ extension AddJobViewController: CreatePostDelegate {
         NetworkManager.createPost(userID: user!.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { Job in
             //TODO: Finish this
             self.shownPostingData = [Job] + self.shownPostingData
+            
+            //let image: UIImageView = UIImageView()
+            
+//            NetworkManager.uploadJobAsset(jobID: Job.id, base64: (self.user?.assets[0].url)!) { success, ack in
+//                if success {
+//                    print("success")
+//                } else {
+//                    print("failed to upload image")
+//                }
+//            }
+            
             self.yourPostCollectionView.reloadData()
         }
         
