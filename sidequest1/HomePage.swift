@@ -10,6 +10,7 @@ import SnapKit
 
 class HomePage: UIViewController {
 
+    // Adds padding to textfield
     class TextFieldWithPadding: UITextField {
         var textPadding = UIEdgeInsets(
             top: 10,
@@ -41,11 +42,12 @@ class HomePage: UIViewController {
         let tutoring = Filter(jobCategoryName: "Tutoring", isSelected: false)
         let petsitting = Filter(jobCategoryName: "Pet Sitting", isSelected: false)
         var jobs: [Filter] = []
-    var user: User?
+    var user: User
     var chatImage = UIImage(named: "Send-2")?.withRenderingMode(.alwaysOriginal)
     
     
-    init(user: User?) {
+    // Initializes the user in HomePage
+    init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,40 +56,35 @@ class HomePage: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Set Up CollectionView Var
+    // Set Up CollectionView var for filter
     var filterCollectionView: UICollectionView!
     let spacing1: CGFloat = 15
     let jobReuseIdentifier: String = "jobReuseIdentifier"
 
     
-    // Set Up Collection Objects for Job Postings
+    // Set Up Collection Objects for Job Postings (hard coded data)
     let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
     let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
     let posting3 = Posting(gigName: "DJ for ISU Party", gigAmount: 30, profilePic: "danielwong", profileName: "Daniel Wong", gigDescription: "We need a DJ tomorrow for our party. Must be 21+.", categoryName: "Entertainment", relevantSkills: "Music", otherNotes: "N/A", favorite: false, job: nil)
     let posting4 = Posting(gigName: "Loading Furniture", gigAmount: 70, profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
     let posting5 = Posting(gigName: "CS Tutoring", gigAmount: 15, profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A", favorite: false, job: nil)
 
+    // Postings array to contain all Posting objects
     var allPostings: [Posting] = []
     var postings: [Posting] = []
 
-    // Set Up CollectionView var
+    // Set Up CollectionView var for postings
     var postingCollectionView: UICollectionView!
     let spacing2: CGFloat = 15
     let postingReuseIdentifier: String = "postingReuseIdentifier"
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
+    // Displays the logo on the top left of screen
     let navigationImageView: UIImageView = UIImageView()
     
-    @objc func pushMessages() {
-        navigationController?.pushViewController(MessageViewController(), animated: true)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Sets the top left of the screen as the logo
         navigationImageView.image = UIImage(named: "navigation title")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
         
@@ -105,29 +102,27 @@ class HomePage: UIViewController {
         // Background Color
         view.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
 
-        // Collection Objects in Arrays
+        // Collection Objects for filter array
         jobs = [researchStudies, entertainment, labor, tutoring, petsitting]
        
-        postings = [posting1, posting2, posting3, posting4, posting5]
-        allPostings = postings
         getPosts() // to populate the screen with postings from the database
         
+        // Adds the chat icon on the top right
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: chatImage, style: .plain, target: self, action: #selector(presentMessages))]
-        
 
-
-        // Set Up Properties
+        //---- Set Up Properties ----
 
         // FilterTextField
         filterTextField.backgroundColor = .white
         filterTextField.attributedPlaceholder = NSAttributedString(string: "Search for gigs...", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)])
         filterTextField.textAlignment = NSTextAlignment.left
         filterTextField.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
-        filterTextField.font = .systemFont(ofSize: 16)
+        filterTextField.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
         filterTextField.layer.cornerRadius = 12
         view.addSubview(filterTextField)
         
-        // ResultNumberLabel - work on this later
+        // ResultNumberLabel
+        // TODO: Make it so this displays the number of Postings on the homescreen
         resultNumberLabel.text = "X results"
         resultNumberLabel.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         resultNumberLabel.font = .systemFont(ofSize: 16)
@@ -139,17 +134,17 @@ class HomePage: UIViewController {
         jobLayout.minimumInteritemSpacing = spacing1
         jobLayout.scrollDirection = .horizontal
 
-        // Instantiate collection view
+        // Instantiate filter collection view
         filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: jobLayout)
         filterCollectionView.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
 
-        // Set collection view data source
+        // Set filter collection view data source
         filterCollectionView.dataSource = self
 
-        // Set collection view delegate
+        // Set filter collection view delegate
         filterCollectionView.delegate = self
 
-        // Register view
+        // Register the cells to the collection view
         filterCollectionView.register(JobCollectionViewCell.self, forCellWithReuseIdentifier: jobReuseIdentifier)
         view.addSubview(filterCollectionView)
 
@@ -159,29 +154,34 @@ class HomePage: UIViewController {
         postingLayout.minimumLineSpacing = spacing2
         postingLayout.scrollDirection = .vertical
 
-        // Instantiate collection view
+        // Instantiate posting collection view
         postingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: postingLayout)
         postingCollectionView.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
 
-        // Set collection view data source
+        // Set posting collection view data source
         postingCollectionView.dataSource = self
 
-        // Set collection view delegate
+        // Set posting collection view delegate
         postingCollectionView.delegate = self
 
-        // Register collection view
+        // Register posting collection view cell
         postingCollectionView.register(PostingCollectionViewCell.self, forCellWithReuseIdentifier: postingReuseIdentifier)
         view.addSubview(postingCollectionView)
 
 
-        // Set Up Constraints
+        setupConstraints()
+    }
+    
+    // Sets up the constraints
+    fileprivate func setupConstraints() {
+        
         filterTextField.snp.makeConstraints{(make) -> Void in
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(12)
             make.width.equalTo(359)
             make.height.equalTo(42)
         }
-
+        
         filterCollectionView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(filterTextField.snp.bottom).offset(10)
             make.left.equalTo(filterTextField.snp.left)
@@ -193,7 +193,7 @@ class HomePage: UIViewController {
             make.top.equalTo(filterCollectionView.snp.bottom).offset(20)
             make.left.equalTo(filterCollectionView.snp.left).offset(10)
         }
-
+        
         postingCollectionView.snp.makeConstraints {(make) -> Void in
             make.left.equalTo(filterTextField.snp.left)
             make.right.equalTo(filterTextField.snp.right)
@@ -207,24 +207,38 @@ class HomePage: UIViewController {
         navigationController?.pushViewController(MessageViewController(), animated: true)
     }
     
+    // pushes message view controller when the chat icon is tapped on
+    @objc func pushMessages() {
+        navigationController?.pushViewController(MessageViewController(), animated: true)
+    }
+
+    
     // gets every posts
     func getPosts() {
         var posts: [Posting] = []
         
         NetworkManager.getAllPosts { jobs in
             for job in jobs.jobs {
-                
-                print("works!!!")
-                                
-                let post = Posting(gigName: job.title, gigAmount: Double(job.reward)!, profilePic: "profile_placeholder", profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
-                
-                posts.insert(post, at: 0)
+
+                // to safely unwrap values
+                if let reward = job.reward {
+                    let post = Posting(gigName: job.title, gigAmount: Double(reward)!, profilePic: "profile_placeholder", profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
+                    posts.insert(post, at: 0)
+                } else {
+                    print("One of the jobs has invalid information")
+                }
             }
+            
+            // Add in hardcoded data alongside posts from database
+            self.postings = [self.posting1, self.posting2, self.posting3, self.posting4, self.posting5]
+            self.allPostings = self.postings
             self.postings.insert(contentsOf: posts, at: 0)
             self.allPostings.insert(contentsOf: posts, at: 0)
+            self.postingCollectionView.reloadData()
         }
     }
 }
+
 
 // Conform to UICollectionViewDataSource
 extension HomePage: UICollectionViewDataSource {
@@ -232,7 +246,6 @@ extension HomePage: UICollectionViewDataSource {
         if (collectionView == postingCollectionView) {
             return postings.count
         }
-
         return jobs.count
     }
 
@@ -247,24 +260,19 @@ extension HomePage: UICollectionViewDataSource {
                 cell2.contentView.layer.shadowColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1).cgColor
                 return cell2
             }
-            else {
-                return UICollectionViewCell()
-            }
-        }
-
-        if let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: jobReuseIdentifier, for: indexPath) as? JobCollectionViewCell{
+        } else if let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: jobReuseIdentifier, for: indexPath) as? JobCollectionViewCell{
             cell1.configure(job: jobs[indexPath.item])
             return cell1
         }
-        else {
-            return UICollectionViewCell()
-        }
+        return UICollectionViewCell()
     }
 }
 
 // Confrom to UICollectionViewDelegateFlowLayout
 extension HomePage: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // TODO: Refactor and cut/make this neater
         if (collectionView == postingCollectionView) {
             return CGSize(width: 353, height: 162)
         }
@@ -338,7 +346,7 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         }
         
         if (collectionView == postingCollectionView) {
-            present(moreInfoPresentViewController(posting: postings[indexPath.item], user: user!), animated: true)
+            present(moreInfoPresentViewController(posting: postings[indexPath.item], user: user), animated: true)
         }
         
         collectionView.reloadData()

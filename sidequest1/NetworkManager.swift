@@ -43,7 +43,6 @@ class NetworkManager {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                // TODO: add a delegate so that we can present an error message
             }
         }
     }

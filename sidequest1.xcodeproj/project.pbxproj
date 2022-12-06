@@ -58,6 +58,7 @@
 		BEB7F096293A939A003DF523 /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */; };
 		BEB7F098293A93A5003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */; };
 		BEB7F09F293A946A003DF523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F09E293A946A003DF523 /* LoginViewController.swift */; };
+		BEB7F0A7293FDDD7003DF523 /* base64Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.ttf"; sourceTree = "<group>"; };
 		BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
 		BEB7F09E293A946A003DF523 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = base64Encode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +184,6 @@
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
 				BEB7F0A0293A9485003DF523 /* AccountCreation */,
-				BEB7F09E293A946A003DF523 /* LoginViewController.swift */,
 				BEB7F0562935A5EC003DF523 /* Chatting */,
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
@@ -220,6 +221,7 @@
 				BE9F7D022931C07E00561E8F /* UIViewController+AddGestureViewController.swift */,
 				BE9F7D042931C09800561E8F /* UITextField+TapGesture.swift */,
 				BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */,
+				BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -290,6 +292,7 @@
 		BEB7F0A0293A9485003DF523 /* AccountCreation */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7F09E293A946A003DF523 /* LoginViewController.swift */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 			);
 			path = AccountCreation;
@@ -451,6 +454,7 @@
 				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,
 				BEB7F05C2935A76A003DF523 /* Message.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
+				BEB7F0A7293FDDD7003DF523 /* base64Encode.swift in Sources */,
 				BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */,
 				BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
