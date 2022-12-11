@@ -146,6 +146,7 @@ class HomePage: UIViewController {
 
         // Register the cells to the collection view
         filterCollectionView.register(JobCollectionViewCell.self, forCellWithReuseIdentifier: jobReuseIdentifier)
+        
         view.addSubview(filterCollectionView)
 
         // Posting Collection View
@@ -274,30 +275,13 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // TODO: Refactor and cut/make this neater
+        
         if (collectionView == postingCollectionView) {
             return CGSize(width: 353, height: 162)
+        } else {
+            let item = jobs[indexPath.row].jobCategoryName
+            return CGSize(width: item.size(withAttributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 26)]).width + 5, height: 42)
         }
-
-        if indexPath.row == 0 {
-            return CGSize(width: 105, height: 42)
-        }
-        
-        else if indexPath.row == 1 {
-            return CGSize(width: 137, height: 42)
-        }
-        
-        else if indexPath.row == 2 {
-            return CGSize(width: 85, height: 42)
-        }
-        
-        else if indexPath.row == 3 {
-            return CGSize(width: 100, height: 42)
-        }
-        
-        else {
-            return CGSize(width: 110, height: 42)
-        }
-        
         
     }
 
