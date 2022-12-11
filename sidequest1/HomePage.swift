@@ -221,8 +221,8 @@ class HomePage: UIViewController {
             for job in jobs.jobs {
 
                 // to safely unwrap values
-                if let reward = job.reward {
-                    let post = Posting(gigName: job.title, gigAmount: Double(reward)!, profilePic: "profile_placeholder", profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
+                if let reward = job.reward, let picture = job.asset[0].url {
+                    let post = Posting(gigName: job.title, gigAmount: Double(reward)!, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
                     posts.insert(post, at: 0)
                 } else {
                     print("One of the jobs has invalid information")
@@ -242,6 +242,7 @@ class HomePage: UIViewController {
 
 // Conform to UICollectionViewDataSource
 extension HomePage: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == postingCollectionView) {
             return postings.count

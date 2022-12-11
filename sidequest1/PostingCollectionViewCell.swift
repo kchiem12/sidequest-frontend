@@ -87,11 +87,14 @@ class PostingCollectionViewCell: UICollectionViewCell {
     func configure(posting: Posting){
         gigName.text = posting.gigName
         gigAmount.text = String(format: "$%.2f", posting.gigAmount)
-        if (posting.profilePic.count > 12) {
+        
+        // Sets the profile image of the posting cell depending on whether it's a link
+        if (posting.profilePic.contains("http")) {
             profilePic.setImageFromStringrlL(url: posting.profilePic)
         } else {
             profilePic.image = UIImage(named: posting.profilePic)
         }
+        
         profileName.text = posting.profileName
         gigDescription.text = "Gig: \(posting.gigDescription)"
     }
