@@ -34,6 +34,9 @@ class HomePage: UIViewController {
     let filterTextField = TextFieldWithPadding()
     let chatBubble = UIImage(named: "chatbubble")
     let resultNumberLabel = UILabel()
+    
+    let refreshControl = UIRefreshControl()
+    
 
     // Set Up Collection Objects for Filter
     let researchStudies = Filter(jobCategoryName: "Research", isSelected: false)
@@ -44,6 +47,7 @@ class HomePage: UIViewController {
         var jobs: [Filter] = []
     var user: User
     var chatImage = UIImage(named: "Send-2")?.withRenderingMode(.alwaysOriginal)
+    
     
     
     // Initializes the user in HomePage
@@ -60,6 +64,8 @@ class HomePage: UIViewController {
     var filterCollectionView: UICollectionView!
     let spacing1: CGFloat = 15
     let jobReuseIdentifier: String = "jobReuseIdentifier"
+    
+//    var numberPostings = 0
 
     
     // Set Up Collection Objects for Job Postings (hard coded data)
@@ -123,7 +129,7 @@ class HomePage: UIViewController {
         
         // ResultNumberLabel
         // TODO: Make it so this displays the number of Postings on the homescreen
-        resultNumberLabel.text = "X results"
+//        resultNumberLabel.text = "\(self.postings.count) results"
         resultNumberLabel.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         resultNumberLabel.font = .systemFont(ofSize: 16)
         view.addSubview(resultNumberLabel)
@@ -158,6 +164,16 @@ class HomePage: UIViewController {
         // Instantiate posting collection view
         postingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: postingLayout)
         postingCollectionView.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
+        
+        // Setup action for refresh control
+        refreshControl.addTarget(self, action: #selector(refreshPostings(_:)), for: .valueChanged)
+        
+        // Add refresh control to collection view
+        if #available(iOS 10.0, *) {
+            postingCollectionView.refreshControl = refreshControl
+        } else {
+            postingCollectionView.addSubview(refreshControl)
+        }
 
         // Set posting collection view data source
         postingCollectionView.dataSource = self
@@ -212,6 +228,13 @@ class HomePage: UIViewController {
     @objc func pushMessages() {
         navigationController?.pushViewController(MessageViewController(), animated: true)
     }
+    
+    // refreshes the posting collection view
+    @objc func refreshPostings(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.getPosts()
+        }
+    }
 
     
     // gets every posts
@@ -222,12 +245,13 @@ class HomePage: UIViewController {
             for job in jobs.jobs {
 
                 // to safely unwrap values
-                if let reward = job.reward, let picture = job.asset[0].url {
+                if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
                     let post = Posting(gigName: job.title, gigAmount: Double(reward)!, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
                     posts.insert(post, at: 0)
                 } else {
                     print("One of the jobs has invalid information")
                 }
+                self.refreshControl.endRefreshing()
             }
             
             // Add in hardcoded data alongside posts from database
@@ -235,7 +259,10 @@ class HomePage: UIViewController {
             self.allPostings = self.postings
             self.postings.insert(contentsOf: posts, at: 0)
             self.allPostings.insert(contentsOf: posts, at: 0)
+//            self.numberPostings = self.allPostings.count
+            self.resultNumberLabel.text = "\(self.allPostings.count) results"
             self.postingCollectionView.reloadData()
+            
         }
     }
 }
@@ -327,6 +354,8 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
                     }
             
             postingCollectionView.reloadData()
+            collectionView.reloadData()
+            self.resultNumberLabel.text = "\(self.postings.count) results"
             
         }
         
@@ -334,7 +363,6 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
             present(moreInfoPresentViewController(posting: postings[indexPath.item], user: user), animated: true)
         }
         
-        collectionView.reloadData()
     }
 }
 

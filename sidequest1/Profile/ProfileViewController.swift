@@ -83,10 +83,17 @@ class ProfileViewController: UIViewController {
         favorites = [posting4, posting5]
         
         // gets the profile image from the url provided by backend
-        
         NetworkManager.getSpecificUser(userID: user.id) { response in
             self.user = response
-            self.profileImageView.setImageFromStringrlL(url: self.user.assets[0].url ?? "")
+            if (self.user.assets.count == 0) {
+                self.profileImageView.image = UIImage(named: "profile_placeholder")
+            } else {
+                ImageProvider.sharedCache.getImage(url: self.user.assets[0].url!) { [weak self] image in
+                    DispatchQueue.main.async {
+                        self?.profileImageView.image = image
+                    }
+                }
+            }
             return
         }
         profileImageView.contentMode = .scaleAspectFill

@@ -90,7 +90,10 @@ class PostingCollectionViewCell: UICollectionViewCell {
         
         // Sets the profile image of the posting cell depending on whether it's a link
         if (posting.profilePic.contains("http")) {
-            profilePic.setImageFromStringrlL(url: posting.profilePic)
+//            profilePic.setImageFromStringrlL(url: posting.profilePic)
+            ImageProvider.sharedCache.getImage(url: posting.profilePic) { [weak self] image in
+                self?.profilePic.image = image
+            }
         } else {
             profilePic.image = UIImage(named: posting.profilePic)
         }

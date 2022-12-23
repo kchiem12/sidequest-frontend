@@ -202,10 +202,8 @@ class NetworkManager {
     static func getSpecificJob(jobID: Int, completion: @escaping (Job) -> Void) {
         let endpoint = "\(host)/api/job/\(jobID)/"
         
-        let params: Parameters = [:]
         
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
-            
+        AF.request(endpoint, method: .get).validate().responseData { response in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()

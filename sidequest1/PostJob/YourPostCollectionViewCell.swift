@@ -96,7 +96,11 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
         let newStr = String(job.date_created[..<indexEndOfText])
         datePosted.text = "Date Posted: \(newStr)"
-        gigAmount.text = "$\(job.reward)"
+        if let reward = job.reward {
+            gigAmount.text = "$\(reward)"
+        } else {
+            gigAmount.text = "No stated reward"
+        }
     }
     
     required init?(coder: NSCoder) {

@@ -127,7 +127,7 @@ class LoginViewController: UIViewController {
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = mainTabBarViewController(user: user)
+                    .first?.rootViewController = mainTabBarViewController(user: user!)
             } else {
                 print("\(errorMsg!)")
                 // changes the text of error label

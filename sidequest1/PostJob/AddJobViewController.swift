@@ -19,6 +19,7 @@ class AddJobViewController: UIViewController {
     var postingData: [Job] = []
     var shownPostingData: [Job] = []
     
+    
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -38,17 +39,18 @@ class AddJobViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set top left image as logo
         navigationImageView.image = UIImage(named: "navigation title")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
+        
+        view.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
         
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1)
+        appearance.backgroundColor = UIColor(rgb: 0x6EBABA)
         navigationItem.standardAppearance = appearance;
         navigationItem.scrollEdgeAppearance = navigationItem.standardAppearance
-        
-        view.backgroundColor = UIColor(red: 0.847, green: 0.876, blue: 0.95, alpha: 1)
         
         // Posting Collection View
         // Setup flow layout
@@ -70,7 +72,7 @@ class AddJobViewController: UIViewController {
         yourPostCollectionView.register(YourPostCollectionViewCell.self, forCellWithReuseIdentifier: yourPostReuseIdentifier)
         view.addSubview(yourPostCollectionView)
 
-        createDummyData()
+        getUsersPosts()
         
         // Set Up Properties
         yourGigLabel.text = "Your gig posts"
@@ -101,41 +103,32 @@ class AddJobViewController: UIViewController {
     
         yourPostCollectionView.snp.makeConstraints {(make) -> Void in
             make.top.equalTo(yourGigLabel.snp.bottom).offset(17)
-            make.left.equalTo(view.snp.left).offset(15)
-            make.right.equalTo(view.snp.right).offset(-15)
+            make.left.equalTo(view.snp.left).offset(1)
+            make.right.equalTo(view.snp.right).offset(-1)
             make.bottom.equalTo(createPostButton.snp.top).offset(-34)
         }
     }
     
-    func createDummyData() {
-        // MARK: Use getAllPosts
-        /**
-         We want to retrieve data from the server here upon refresh. Make sure to
-         1) Sort the posts with `sortPostData`
-         2) Update `postData` & `shownPostData` and reload `postTableView`
-         */
-
-//        NetworkManager.getAllPosts { posts in
-//            self.postingData = posts.jobs
-////            self.sortPostData()
-//            self.shownPostingData = self.postingData
-//            self.yourPostCollectionView.reloadData()
-//        }
+    // Retrieves every job the User has posted
+    func getUsersPosts() {
         
-        var posts: [Job] = []
-        
+        var postsData: [Job] = []
         print("\(user.job_as_poster.count)")
-        for job in user.job_as_poster {
-            print("\(job.id)")
-            NetworkManager.getSpecificJob(jobID: job.id!) { job in
-                posts.append(job)
-                self.postingData = posts
-                self.shownPostingData = self.postingData
-                self.yourPostCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            for job in self.user.job_as_poster {
+                print("\(job.id!)")
+                NetworkManager.getSpecificJob(jobID: job.id!) { job in
+                    postsData.append(job)
+                    self.postingData = postsData
+                    self.shownPostingData = self.postingData
+                    self.yourPostCollectionView.reloadData()
+                }
             }
         }
     }
     
+    // Presents a view controller to allow a user to create a post
     @objc func createPost() {
         present(PublishJobPresentViewController(delegate: self, user: user), animated: true)
     }
@@ -145,20 +138,10 @@ class AddJobViewController: UIViewController {
 extension AddJobViewController: CreatePostDelegate {
     func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int) {
         
-        NetworkManager.createPost(userID: user.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { Job in
+        NetworkManager.createPost(userID: user.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { job in
             //TODO: Finish this
-            self.shownPostingData = [Job] + self.shownPostingData
-            
-            //let image: UIImageView = UIImageView()
-            
-//            NetworkManager.uploadJobAsset(jobID: Job.id, base64: (self.user?.assets[0].url)!) { success, ack in
-//                if success {
-//                    print("success")
-//                } else {
-//                    print("failed to upload image")
-//                }
-//            }
-            
+            self.shownPostingData = [job] + self.shownPostingData
+            self.postingData = self.shownPostingData
             self.yourPostCollectionView.reloadData()
         }
         
