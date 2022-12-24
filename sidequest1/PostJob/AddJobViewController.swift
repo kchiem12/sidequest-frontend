@@ -119,7 +119,12 @@ class AddJobViewController: UIViewController {
             for job in self.user.job_as_poster {
                 print("\(job.id!)")
                 NetworkManager.getSpecificJob(jobID: job.id!) { job in
-                    postsData.append(job)
+                    
+                    guard let theJob = job else {
+                        return
+                    }
+                    
+                    postsData.append(theJob)
                     self.postingData = postsData
                     self.shownPostingData = self.postingData
                     self.yourPostCollectionView.reloadData()
@@ -148,6 +153,51 @@ extension AddJobViewController: CreatePostDelegate {
     }
 }
 
+extension AddJobViewController: EditPostDelegate {
+    func presentEditVC(job: Job) {
+        present(EditJobViewController(delegate: self, job: job), animated: true)
+    }
+    
+    func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int) {
+        
+        NetworkManager.updateJob(jobId: jobID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { completionStatus in
+            if (completionStatus) {
+                print("Update successful")
+                self.getUsersPosts() // Update the collection view
+            } else {
+                print("Update unsuccessful")
+            }
+        }
+    }
+    
+    
+    func deletePost(jobID: Int, index: Int) {
+        
+        let archiveAlert = UIAlertController(title: "Archive Post", message: "Post will be removed from public", preferredStyle: UIAlertController.Style.alert)
+        
+        archiveAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
+            NetworkManager.archiveJob(jobID: jobID) { success in
+                if (success) {
+                    print("Archive successful")
+                    self.postingData.remove(at: index)
+                    self.shownPostingData.remove(at: index)
+                    self.yourPostCollectionView.reloadData()
+                } else {
+                    print("Archive unsuccessful")
+                }
+            }
+            archiveAlert.dismiss(animated: true)
+        }))
+        
+        archiveAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("canceled archive")
+            archiveAlert.dismiss(animated: true)
+        }))
+        
+        present(archiveAlert, animated: true, completion: nil)
+    }
+}
+
 extension AddJobViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shownPostingData.count
@@ -155,7 +205,7 @@ extension AddJobViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourPostReuseIdentifier, for: indexPath) as? YourPostCollectionViewCell{
-            cell.configure(job: shownPostingData[indexPath.row])
+            cell.configure(job: shownPostingData[indexPath.row], delegate: self, index: indexPath.row)
             cell.contentView.backgroundColor = UIColor.white
             cell.contentView.layer.cornerRadius = 16
             return cell

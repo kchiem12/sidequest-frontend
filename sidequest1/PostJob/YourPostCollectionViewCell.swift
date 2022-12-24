@@ -17,8 +17,15 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     var interactionButton = UIButton()
     var archiveButton = UIButton()
     
+    weak var delegate: EditPostDelegate?
+    
+    
+    var job: Job?
+    var index: Int = 0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         
         // Set up Properties
         gigName.textColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1)
@@ -36,6 +43,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         editButton.setTitle("Edit", for: .normal)
         editButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         editButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
+        editButton.addTarget(self, action: #selector(presentEditScreen), for: .touchUpInside)
         editButton.layer.cornerRadius = 16
         contentView.addSubview(editButton)
         
@@ -49,6 +57,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         archiveButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         archiveButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         archiveButton.layer.cornerRadius = 16
+        archiveButton.addTarget(self, action: #selector(archiveJob), for: .touchUpInside)
         contentView.addSubview(archiveButton)
         
         // Set Up Constraints
@@ -91,8 +100,30 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(job: Job) {
+    // Presents the edit post view controller
+    @objc func presentEditScreen() {
+        delegate?.presentEditVC(job: self.job!)
+    }
+    
+    @objc func archiveJob() {
+        
+        print("clicked on")
+        
+        guard let jobId = job?.id else {
+            print("lele")
+            return
+        }
+        
+        
+        
+        delegate?.deletePost(jobID: jobId, index: self.index)
+    }
+    
+    func configure(job: Job, delegate: EditPostDelegate, index: Int) {
         gigName.text = job.title
+        self.index = index
+        self.delegate = delegate
+        self.job = job
         let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
         let newStr = String(job.date_created[..<indexEndOfText])
         datePosted.text = "Date Posted: \(newStr)"
