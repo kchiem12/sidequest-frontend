@@ -69,11 +69,11 @@ class HomePage: UIViewController {
 
     
     // Set Up Collection Objects for Job Postings (hard coded data)
-    let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: 40, profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting2 = Posting(gigName: "Research Study", gigAmount: 20, profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting3 = Posting(gigName: "DJ for ISU Party", gigAmount: 30, profilePic: "danielwong", profileName: "Daniel Wong", gigDescription: "We need a DJ tomorrow for our party. Must be 21+.", categoryName: "Entertainment", relevantSkills: "Music", otherNotes: "N/A", favorite: false, job: nil)
-    let posting4 = Posting(gigName: "Loading Furniture", gigAmount: 70, profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
-    let posting5 = Posting(gigName: "CS Tutoring", gigAmount: 15, profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A", favorite: false, job: nil)
+    let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: "40.00", profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
+    let posting2 = Posting(gigName: "Research Study", gigAmount: "20.00", profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
+    let posting3 = Posting(gigName: "DJ for ISU Party", gigAmount: "30.00", profilePic: "danielwong", profileName: "Daniel Wong", gigDescription: "We need a DJ tomorrow for our party. Must be 21+.", categoryName: "Entertainment", relevantSkills: "Music", otherNotes: "N/A", favorite: false, job: nil)
+    let posting4 = Posting(gigName: "Loading Furniture", gigAmount: "70.00", profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
+    let posting5 = Posting(gigName: "CS Tutoring", gigAmount: "15.00", profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A", favorite: false, job: nil)
 
     // Postings array to contain all Posting objects
     var allPostings: [Posting] = []
@@ -246,12 +246,11 @@ class HomePage: UIViewController {
 
                 // to safely unwrap values
                 if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
-                    let post = Posting(gigName: job.title, gigAmount: Double(reward)!, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
+                    let post = Posting(gigName: job.title, gigAmount: reward, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: "", otherNotes: "", favorite: false, job: job)
                     posts.insert(post, at: 0)
                 } else {
                     print("One of the jobs has invalid information")
                 }
-                self.refreshControl.endRefreshing()
             }
             
             // Add in hardcoded data alongside posts from database
@@ -262,6 +261,7 @@ class HomePage: UIViewController {
 //            self.numberPostings = self.allPostings.count
             self.resultNumberLabel.text = "\(self.allPostings.count) results"
             self.postingCollectionView.reloadData()
+            self.refreshControl.endRefreshing()
             
         }
     }

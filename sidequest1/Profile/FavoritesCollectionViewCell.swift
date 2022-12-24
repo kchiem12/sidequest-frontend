@@ -105,7 +105,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     
     func configure(posting: Posting){
         gigName.text = posting.gigName
-        gigAmount.text = String(format: "$%.2f", posting.gigAmount)
+        gigAmount.text = "$" + posting.gigAmount
         profilePic.image = UIImage(named: posting.profilePic)
         profileName.text = posting.profileName
         gigDescription.text = "Gig: \(posting.gigDescription)"
