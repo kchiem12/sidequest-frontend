@@ -10,7 +10,7 @@ import UIKit
 
 class Posting{
     var gigName: String
-    var gigAmount: Double
+    var gigAmount: String
     var profilePic: String
     var profileName: String
     var gigDescription: String
@@ -20,7 +20,7 @@ class Posting{
     var favorite: Bool
     var job: Job?
     
-    init(gigName: String, gigAmount: Double, profilePic: String, profileName: String, gigDescription: String, categoryName: String, relevantSkills: String, otherNotes: String, favorite: Bool, job: Job?) {
+    init(gigName: String, gigAmount: String, profilePic: String, profileName: String, gigDescription: String, categoryName: String, relevantSkills: String, otherNotes: String, favorite: Bool, job: Job?) {
         self.gigName = gigName
         self.gigAmount = gigAmount
         self.profilePic = profilePic

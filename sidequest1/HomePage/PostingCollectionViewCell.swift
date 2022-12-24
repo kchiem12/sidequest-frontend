@@ -86,7 +86,7 @@ class PostingCollectionViewCell: UICollectionViewCell {
 //
     func configure(posting: Posting){
         gigName.text = posting.gigName
-        gigAmount.text = String(format: "$%.2f", posting.gigAmount)
+        gigAmount.text = "$" + posting.gigAmount
         
         // Sets the profile image of the posting cell depending on whether it's a link
         if (posting.profilePic.contains("http")) {

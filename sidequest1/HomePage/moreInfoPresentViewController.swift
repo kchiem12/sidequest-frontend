@@ -46,7 +46,7 @@ class moreInfoPresentViewController: UIViewController {
         gigName.font = .systemFont(ofSize: 24, weight: .medium)
         view.addSubview(gigName)
         
-        gigAmount.text = String(format: "$%.2f", posting.gigAmount)
+        gigAmount.text = "$" + posting.gigAmount
         gigAmount.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         gigAmount.font = .systemFont(ofSize: 24, weight: .medium)
         view.addSubview(gigAmount)
