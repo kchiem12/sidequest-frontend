@@ -129,7 +129,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(notesLabel)
         
         notesField.font = .systemFont(ofSize: 16)
-        notesField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
+//        notesField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
         notesField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         notesField.layer.cornerRadius = 8
         view.addSubview(notesField)
@@ -251,8 +251,10 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         let category = categoryField.text!
         let longtitude = 0
         let latitude = 0
+        let other_notes = ""
+        let relevant_skills = ""
         
-        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
+        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
         
         dismiss(animated: true)
     }
@@ -326,5 +328,5 @@ extension String {
 }
 
 protocol CreatePostDelegate: UIViewController {
-        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
+        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String)
     }

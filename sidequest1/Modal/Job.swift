@@ -22,6 +22,8 @@ struct Job: Codable {
     var category: String
     var longtitude: Int
     var latitude: Int
+    var other_notes: String
+    var relevant_skills: String
     var asset: [SimpleImage]
     var poster: [SimpleUser]
     var receiver: [SimpleUser]

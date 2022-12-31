@@ -270,10 +270,12 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
         let category = categoryField.text!
         let longtitude = 0
         let latitude = 0
+        let other_notes = ""
+        let relevant_skills = ""
         
         print("\(jobID!)")
         
-        delegate?.editPost(jobID: jobID!, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
+        delegate?.editPost(jobID: jobID!, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
         
         dismiss(animated: true)
     }
@@ -321,7 +323,7 @@ extension EditJobViewController: UIPickerViewDelegate {
 }
 
 protocol EditPostDelegate: UIViewController {
-        func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
+    func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String)
     
     func presentEditVC(job: Job)
     
