@@ -43,7 +43,6 @@ class NetworkManager {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                // TODO: add a delegate so that we can present an error message
             }
         }
     }
@@ -200,13 +199,11 @@ class NetworkManager {
         }
     }
     
-    static func getSpecificJob(jobID: Int, completion: @escaping (Job) -> Void) {
+    static func getSpecificJob(jobID: Int, completion: @escaping (Job?) -> Void) {
         let endpoint = "\(host)/api/job/\(jobID)/"
         
-        let params: Parameters = [:]
         
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
-            
+        AF.request(endpoint, method: .get).validate().responseData { response in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
@@ -216,11 +213,57 @@ class NetworkManager {
                     print("failed to decode")
                 }
             case .failure(_):
+                completion(nil)
                 print("failed")
             }
         }
     }
-
+    
+    // to update a posting
+    static func updateJob(jobId: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Bool) -> Void) {
+        
+        let endpoint = "\(host)/api/job/\(jobId)/"
+        
+        print(endpoint)
+        
+        let params: Parameters = [
+            "title": title,
+            "description": description,
+            "location": location,
+            "date_activity": date_activity,
+            "duration": duration,
+            "reward": reward,
+            "category": category,
+            "longtitude": longtitude,
+            "latitude": latitude
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(_):
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
+    // Archives a job (currently it deletes, but we may want it to do something else instead)
+    static func archiveJob(jobID: Int, completion: @escaping (Bool) -> Void) {
+        
+        let endpoint = "\(host)/api/job/\(jobID)/"
+        
+        AF.request(endpoint, method: .delete).validate().responseData { response in
+            switch response.result {
+            case .success(_):
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
     
 
 }

@@ -9,9 +9,10 @@ import UIKit
 
 class mainTabBarViewController: UITabBarController {
     
-    var user: User?
+    var user: User
     
-    init(user: User?) {
+    // Requires a User to be passed into it
+    init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,23 +24,19 @@ class mainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.delegate = self
         
+//        tabBar.tintColor = UIColor(rgb: 0x4b66ac)
+//        tabBar.unselectedItemTintColor = UIColor(rgb: 0xFFFFFF)
         tab()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-//        navigationController?.isNavigationBarHidden = false
     }
     
     
+    // Configure Tabs (located at bottom)
     func tab() {
         let firstVC = UINavigationController(rootViewController: HomePage(user: user))
-        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user!))
-        let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user!))
+        let secondVC = UINavigationController(rootViewController: AddJobViewController(user: user))
+        let thirdVC = UINavigationController(rootViewController: ProfileViewController(user: user))
         
         let item1 = UITabBarItem(title: "", image: UIImage(named: "search-post"), selectedImage: UIImage(named: "search-post"))
         let item2 = UITabBarItem(title: "", image: UIImage(named: "create-posting"), selectedImage: UIImage(named: "create-posting"))
@@ -49,57 +46,42 @@ class mainTabBarViewController: UITabBarController {
         secondVC.tabBarItem = item2
         thirdVC.tabBarItem = item3
         
-        
-        UITabBar.appearance().tintColor = .white
-//        UITabBar.appearance().unselectedItemTintColor = .white
-        
-        if #available(iOS 15, *) {
-                   let tabBarAppearance = UITabBarAppearance()
-                    tabBarAppearance.backgroundColor = .white
-                    tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.red]
-                    tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
-                    tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.black
-                    tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor.red
-                    tabBar.standardAppearance = tabBarAppearance
-                    tabBar.scrollEdgeAppearance = tabBarAppearance
-         }
-        
-        let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 0.491, green: 0.57, blue: 0.771, alpha: 1)
-        tabBar.standardAppearance = appearance
-        
-        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
-//        tabBar.scrollEdgeAppearance = nil
+        configureTabColors(tabBar: tabBar, background: UIColor(rgb: 0x7D91C5))
 
-        
-        
         viewControllers = [firstVC, secondVC, thirdVC]
         
         }
 
 }
 
+// Configure tab bar background
+func configureTabColors(tabBar: UITabBar, background: UIColor) {
+    if #available(iOS 15, *) {
+       let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = background
+        tabBarAppearance.stackedLayoutAppearance.normal.iconColor = .white
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor(rgb: 0x4b66ac)
+        tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
+    } else {
+        let tabBarAppearance = UITabBarAppearance()
+         tabBarAppearance.backgroundColor = background
+         tabBarAppearance.stackedLayoutAppearance.normal.iconColor = .white
+         tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor(rgb: 0x4b66ac)
+         tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
+    }
+}
+
 extension mainTabBarViewController: UITabBarControllerDelegate {
-    
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//       print("selected item")
-//    }
-    
+    // If User selects Create tab, then the background of the tabbar will be a different color
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
-        print(tabBarIndex)
-        if tabBarIndex == 0 {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(red: 0.491, green: 0.57, blue: 0.771, alpha: 1)
-            tabBar.standardAppearance = appearance
+        if tabBarIndex == 1 {
+            configureTabColors(tabBar: tabBar, background: UIColor(rgb: 0x6EBABA))
         }
         else {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1)
-            tabBar.standardAppearance = appearance
+            configureTabColors(tabBar: tabBar, background: UIColor(rgb: 0x7D91C5))
         }
     }
 }

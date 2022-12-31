@@ -14,7 +14,8 @@
 		A0F95FE1293AA9AD00065D61 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */; };
 		A0F95FE3293AA9B800065D61 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */; };
 		A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */; };
-		A0F95FE7293AE6EE00065D61 /* EditPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */; };
+		BE26868B295634D100DD8CAD /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26868A295634D100DD8CAD /* ImageProvider.swift */; };
+		BE26868D29564EE900DD8CAD /* EditJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26868C29564EE900DD8CAD /* EditJobViewController.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -53,12 +54,12 @@
 		BEB7F082293A8F39003DF523 /* PublishJobPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */; };
 		BEB7F086293A8FEA003DF523 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F085293A8FEA003DF523 /* Filter.swift */; };
 		BEB7F088293A9040003DF523 /* YourPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */; };
-		BEB7F08A293A91A3003DF523 /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F089293A91A3003DF523 /* tabBarViewController.swift */; };
 		BEB7F08E293A9203003DF523 /* ChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F08D293A9203003DF523 /* ChatModal.swift */; };
 		BEB7F090293A9228003DF523 /* MessageModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F08F293A9228003DF523 /* MessageModal.swift */; };
 		BEB7F096293A939A003DF523 /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */; };
 		BEB7F098293A93A5003DF523 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */; };
 		BEB7F09F293A946A003DF523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F09E293A946A003DF523 /* LoginViewController.swift */; };
+		BEB7F0A7293FDDD7003DF523 /* base64Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +72,8 @@
 		A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
-		A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentViewController.swift; sourceTree = "<group>"; };
+		BE26868A295634D100DD8CAD /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		BE26868C29564EE900DD8CAD /* EditJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobViewController.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,12 +122,12 @@
 		BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishJobPresentViewController.swift; sourceTree = "<group>"; };
 		BEB7F085293A8FEA003DF523 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostCollectionViewCell.swift; sourceTree = "<group>"; };
-		BEB7F089293A91A3003DF523 /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
 		BEB7F08D293A9203003DF523 /* ChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModal.swift; sourceTree = "<group>"; };
 		BEB7F08F293A9228003DF523 /* MessageModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModal.swift; sourceTree = "<group>"; };
 		BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.ttf"; sourceTree = "<group>"; };
 		BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.ttf"; sourceTree = "<group>"; };
 		BEB7F09E293A946A003DF523 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = base64Encode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE2686872956337100DD8CAD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7F07829386E2B003DF523 /* FavoritesCollectionViewCell.swift */,
+				BEB7F07029373AFC003DF523 /* ProfileViewController.swift */,
+				BEB7F0722937CBEC003DF523 /* InProgressCollectionViewCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE268689295633A000DD8CAD /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
+				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
+				BEB7F085293A8FEA003DF523 /* Filter.swift */,
+				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
+				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		BE9F7CDB2931BEDC00561E8F = {
 			isa = PBXGroup;
 			children = (
@@ -180,32 +204,20 @@
 			isa = PBXGroup;
 			children = (
 				A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */,
+				BE26868A295634D100DD8CAD /* ImageProvider.swift */,
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
+				BE268689295633A000DD8CAD /* HomePage */,
 				BEB7F0A0293A9485003DF523 /* AccountCreation */,
-				BEB7F09E293A946A003DF523 /* LoginViewController.swift */,
 				BEB7F0562935A5EC003DF523 /* Chatting */,
 				BEB7F03129347D60003DF523 /* NetworkManager.swift */,
-				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
 				BEB7F076293807AF003DF523 /* TestViewController.swift */,
-				BEB7F089293A91A3003DF523 /* tabBarViewController.swift */,
 				BEB7F08C293A91E2003DF523 /* Modal */,
-				BEB7F07029373AFC003DF523 /* ProfileViewController.swift */,
+				BE2686872956337100DD8CAD /* Profile */,
 				BEB7F0632936B31E003DF523 /* Fonts */,
-				BEB7F03729347D7C003DF523 /* Asset.swift */,
 				BEB7F03D29347F77003DF523 /* SimpleModals */,
-				BEB7F085293A8FEA003DF523 /* Filter.swift */,
-				BEB7F03529347D6A003DF523 /* MessageViewController.swift */,
-				BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */,
-				BE9F7D082931C0F600561E8F /* JobCollectionViewCell.swift */,
-				BE9F7D0A2931C11D00561E8F /* HomePage.swift */,
 				BEB7F0A2293A94C7003DF523 /* PostJob */,
-				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
-				BEB7F07829386E2B003DF523 /* FavoritesCollectionViewCell.swift */,
-				BEB7F0722937CBEC003DF523 /* InProgressCollectionViewCell.swift */,
-				BE9F7D122931C19800561E8F /* moreInfoPresentViewController.swift */,
-				BE9F7D102931C16A00561E8F /* PostingCollectionViewCell.swift */,
 				BEB7F0A3293A9A84003DF523 /* ken-changes */,
 				BE9F7CFF2931C01D00561E8F /* extensions */,
 				BE9F7CF02931BEDE00561E8F /* Assets.xcassets */,
@@ -222,6 +234,7 @@
 				BE9F7D022931C07E00561E8F /* UIViewController+AddGestureViewController.swift */,
 				BE9F7D042931C09800561E8F /* UITextField+TapGesture.swift */,
 				BE9F7D062931C0B000561E8F /* UIColor+RGBHex.swift */,
+				BEB7F0A6293FDDD7003DF523 /* base64Encode.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -241,6 +254,8 @@
 		BEB7F0562935A5EC003DF523 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7F03529347D6A003DF523 /* MessageViewController.swift */,
+				BEB7F05D2935CE3E003DF523 /* MessageTableViewCell.swift */,
 				BEB7F03929347D84003DF523 /* ChatViewController.swift */,
 				BEB7F0572935A5FE003DF523 /* Chat.swift */,
 				BEB7F0592935A711003DF523 /* ChatUser.swift */,
@@ -280,10 +295,12 @@
 		BEB7F08C293A91E2003DF523 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7F03729347D7C003DF523 /* Asset.swift */,
 				BEB7F02F29347D40003DF523 /* User.swift */,
 				BEB7F08D293A9203003DF523 /* ChatModal.swift */,
 				BEB7F03329347D64003DF523 /* Rating.swift */,
 				BEB7F0462934812A003DF523 /* Job.swift */,
+				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
 				BEB7F08F293A9228003DF523 /* MessageModal.swift */,
 			);
 			path = Modal;
@@ -292,6 +309,7 @@
 		BEB7F0A0293A9485003DF523 /* AccountCreation */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7F09E293A946A003DF523 /* LoginViewController.swift */,
 				BE9F7CFD2931C00800561E8F /* SignUpViewController.swift */,
 			);
 			path = AccountCreation;
@@ -300,6 +318,8 @@
 		BEB7F0A2293A94C7003DF523 /* PostJob */ = {
 			isa = PBXGroup;
 			children = (
+				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
+				BE26868C29564EE900DD8CAD /* EditJobViewController.swift */,
 				BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */,
 				BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */,
 				A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */,
@@ -437,8 +457,10 @@
 				BEB7F09F293A946A003DF523 /* LoginViewController.swift in Sources */,
 				BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
+				BE26868B295634D100DD8CAD /* ImageProvider.swift in Sources */,
 				BEB7F080293A03E9003DF523 /* SimpleChat.swift in Sources */,
 				BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */,
+				BE26868D29564EE900DD8CAD /* EditJobViewController.swift in Sources */,
 				BEB7F086293A8FEA003DF523 /* Filter.swift in Sources */,
 				BEB7F04129347F9B003DF523 /* SimpleJob.swift in Sources */,
 				BEB7F08E293A9203003DF523 /* ChatModal.swift in Sources */,
@@ -455,11 +477,11 @@
 				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,
 				BEB7F05C2935A76A003DF523 /* Message.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
+				BEB7F0A7293FDDD7003DF523 /* base64Encode.swift in Sources */,
 				BEB7F0582935A5FE003DF523 /* Chat.swift in Sources */,
 				BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
-				BEB7F08A293A91A3003DF523 /* tabBarViewController.swift in Sources */,
 				A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */,
 				BEB7F03F29347F8C003DF523 /* SimpleImage.swift in Sources */,
 				BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */,

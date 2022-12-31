@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
+class EditJobViewController: UIViewController, UITextFieldDelegate {
     
     class TextFieldWithPadding: UITextField {
         var textPadding = UIEdgeInsets(
@@ -42,17 +42,19 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
     var skillsField = TextFieldWithPadding()
     var notesLabel = UILabel()
     var notesField = TextFieldWithPadding()
-    var user: User
+    
+    var job: Job?
 
-    var publishButton = UIButton()
+    var applyChangeButton = UIButton()
+    var dismissButton = UIButton()
     
     let categories = ["Research Study", "Entertainment", "Labor", "Tutoring", "Pet Sitting"]
     
-    weak var delegate: CreatePostDelegate?
+    weak var delegate: EditPostDelegate?
     
-    init(delegate: CreatePostDelegate, user: User) {
+    init(delegate: EditPostDelegate, job: Job) {
         self.delegate = delegate
-        self.user = user
+        self.job = job
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -63,8 +65,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .clear
-        createView()
+        view.backgroundColor = .white
 
         // Set Up Properties
         gigLabel.text = "Gig title"
@@ -74,6 +75,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         
         gigTitleField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         gigTitleField.layer.cornerRadius = 8
+        gigTitleField.text = job?.title
         view.addSubview(gigTitleField)
         
         payLabel.text = "Pay"
@@ -84,6 +86,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         payField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         payField.addTarget(self, action: #selector(rewardTextFieldChanged), for: .editingChanged)
         payField.placeholder = "$20.00"
+        payField.text = "$\(job?.reward ?? "0.00")"
         payField.layer.cornerRadius = 8
         view.addSubview(payField)
         
@@ -92,11 +95,11 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         descriptionLabel.font = .systemFont(ofSize: 16)
         view.addSubview(descriptionLabel)
         
-        descriptionField.font = .systemFont(ofSize: 16)
-        descriptionField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
+        descriptionField.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 20)
         descriptionField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         descriptionField.layer.cornerRadius = 8
         descriptionField.isEditable = true
+        descriptionField.text = job?.description
         view.addSubview(descriptionField)
         
         categoryLabel.text = "Category"
@@ -107,6 +110,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         categoryField.attributedPlaceholder = NSAttributedString(string: "Select category...", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.435, green: 0.729, blue: 0.733, alpha: 1)])
         categoryField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         categoryField.layer.cornerRadius = 8
+        categoryField.text = job?.category
         view.addSubview(categoryField)
         
         categoryPicker.delegate = self
@@ -128,23 +132,28 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         notesLabel.font = .systemFont(ofSize: 16)
         view.addSubview(notesLabel)
         
-        notesField.font = .systemFont(ofSize: 16)
-        notesField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
         notesField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         notesField.layer.cornerRadius = 8
         view.addSubview(notesField)
         
-        publishButton.setTitle("Publish", for: .normal)
-        publishButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
-        publishButton.layer.cornerRadius = 16
-        publishButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
-        publishButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
-        view.addSubview(publishButton)
+        applyChangeButton.setTitle("Publish", for: .normal)
+        applyChangeButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        applyChangeButton.layer.cornerRadius = 16
+        applyChangeButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
+        applyChangeButton.addTarget(self, action: #selector(updatePosting), for: .touchUpInside)
+        view.addSubview(applyChangeButton)
+        
+        dismissButton.setTitle("Dismiss", for: .normal)
+        dismissButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        dismissButton.layer.cornerRadius = 16
+        dismissButton.layer.backgroundColor = UIColor(red: 0.25, green: 0.521, blue: 0.521, alpha: 1).cgColor
+        dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        view.addSubview(dismissButton)
         
         // Set Up Constraints
         
         gigLabel.snp.makeConstraints{(make) -> Void in
-            make.top.equalTo(self.view.snp.top).offset(130)
+            make.top.equalTo(self.view.snp.top).offset(40)
             make.left.equalTo(self.view.snp.left).offset(30)
         }
         
@@ -215,19 +224,29 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
             make.top.equalTo(notesLabel.snp.bottom).offset(1)
         }
         
-        publishButton.snp.makeConstraints{(make) -> Void in
-            make.width.equalTo(336)
+        applyChangeButton.snp.makeConstraints{(make) -> Void in
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(15)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-15)
+            make.height.equalTo(60)
+            make.centerX.equalTo(view.snp.centerX)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-90)
+        }
+        
+        dismissButton.snp.makeConstraints { make in
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(15)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-15)
             make.height.equalTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
     
-        func createView() {
-            let newView = UIView(frame: CGRect(x: 0, y: 110, width: view.frame.width, height: 670))
-            newView.layer.cornerRadius = 16
-            newView.backgroundColor = .white
-            view.addSubview(newView)
-        }
+//        func createView() {
+//            let newView = UIView(frame: CGRect(x: 0, y: 150, width: view.frame.width, height: 630))
+//            newView.layer.cornerRadius = 16
+//            newView.backgroundColor = .white
+//            view.addSubview(newView)
+//
+//        }
         
     }
     
@@ -238,10 +257,10 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func saveAction() {
-
+    // Updates the job posting
+    @objc func updatePosting() {
         //TODO: Handle any error/null cases. Ex. if the reward textfield is empty, then we should not create a post
-        let userID = user.id
+        let jobID = job?.id
         let title = gigTitleField.text!
         let description = descriptionField.text!
         let location = ""
@@ -252,8 +271,15 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         let longtitude = 0
         let latitude = 0
         
-        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
+        print("\(jobID!)")
         
+        delegate?.editPost(jobID: jobID!, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
+        
+        dismiss(animated: true)
+    }
+    
+    // Dismisses the view
+    @objc func dismissView() {
         dismiss(animated: true)
     }
     
@@ -273,7 +299,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
 }
 
 
-extension PublishJobPresentViewController: UIPickerViewDataSource {
+extension EditJobViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
@@ -283,7 +309,7 @@ extension PublishJobPresentViewController: UIPickerViewDataSource {
     }
 }
 
-extension PublishJobPresentViewController: UIPickerViewDelegate {
+extension EditJobViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        return categories[row]
     }
@@ -294,37 +320,10 @@ extension PublishJobPresentViewController: UIPickerViewDelegate {
     }
 }
 
-//https://stackoverflow.com/questions/29782982/how-to-input-currency-format-on-a-text-field-from-right-to-left-using-swift
-extension String {
-
-    // formatting text for currency textField
-    func currencyInputFormatting() -> String {
+protocol EditPostDelegate: UIViewController {
+        func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
     
-        var number: NSNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
+    func presentEditVC(job: Job)
     
-        var amountWithPrefix = self
-    
-        // remove from String: "$", ".", ","
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-    
-        let double = (amountWithPrefix as NSString).doubleValue
-        number = NSNumber(value: (double / 100))
-    
-        // if first number is 0 or all numbers were deleted
-        guard number != 0 as NSNumber else {
-            return ""
-        }
-    
-        return formatter.string(from: number)!
-    }
-}
-
-protocol CreatePostDelegate: UIViewController {
-        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
+    func deletePost(jobID: Int, index: Int)
     }

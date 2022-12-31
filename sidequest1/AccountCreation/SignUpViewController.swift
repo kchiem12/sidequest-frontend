@@ -10,6 +10,7 @@ import SnapKit
 
 class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // Sets up variables
     let gradient: CAGradientLayer = CAGradientLayer()
     let whiteBackgroundView: UIView = UIView()
     let emailLabel: UILabel = UILabel()
@@ -32,7 +33,6 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // add gradient background
         gradient.frame = self.view.bounds
         gradient.colors = [
@@ -42,21 +42,23 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         gradient.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradient, at: 0)
         
-        // hides the back button on the navigationitem
-        
+        // Allows user to hide keyboard
         self.hideKeyboardWhenTappedAround()
+        
         
         whiteBackgroundView.backgroundColor = .white
         whiteBackgroundView.layer.cornerRadius = 16
-        whiteBackgroundView.layer.zPosition = 0 // set the uiview to back of z-index
+        whiteBackgroundView.layer.zPosition = 0 // set the uiview (white background) to back of z-index
         view.addSubview(whiteBackgroundView)
         
+        // configuring profile imageview
         profileImageView.image = UIImage(named: "profile_placeholder")
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 65
         view.addSubview(profileImageView)
         
+        // configuring profile label
         addProfileLabel.text = "add profile picture"
         addProfileLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         addProfileLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeImage(gesture:))))
@@ -64,11 +66,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         addProfileLabel.isUserInteractionEnabled = true
         view.addSubview(addProfileLabel)
         
+        // configuring email label
         emailLabel.text = "email"
         emailLabel.textColor = UIColor(rgb: 0x6EBABA)
         emailLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(emailLabel)
         
+        // configuring email textfield
         emailTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         emailTextField.layer.cornerRadius = 8
         emailTextField.textColor = .black
@@ -76,11 +80,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         emailTextField.autocapitalizationType = .none
         view.addSubview(emailTextField)
         
+        // configuring password label
         passwordLabel.text = "password"
         passwordLabel.textColor = UIColor(rgb: 0x6EBABA)
         passwordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(passwordLabel)
         
+        // configuring password textfield
         passwordTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.textColor = .black
@@ -90,11 +96,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
+        // configuring first name label
         firstNameLabel.text = "first name"
         firstNameLabel.textColor = UIColor(rgb: 0x6EBABA)
         firstNameLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(firstNameLabel)
         
+        // configuring firstname textfield
         firstNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         firstNameTextField.layer.cornerRadius = 8
         firstNameTextField.textColor = .black
@@ -102,11 +110,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         firstNameTextField.autocorrectionType = .no
         view.addSubview(firstNameTextField)
         
+        // configuring last name label
         lastNameLabel.text = "last name"
         lastNameLabel.textColor = UIColor(rgb: 0x6EBABA)
         lastNameLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(lastNameLabel)
         
+        // configuring lastname textfield
         lastNameTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         lastNameTextField.layer.cornerRadius = 8
         lastNameTextField.textColor = .black
@@ -114,11 +124,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         lastNameTextField.autocapitalizationType = .none
         view.addSubview(lastNameTextField)
         
+        // configuring phone number label
         phoneNumberLabel.text = "phone number"
         phoneNumberLabel.textColor = UIColor(rgb: 0x6EBABA)
         phoneNumberLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         view.addSubview(phoneNumberLabel)
         
+        // configuring phone number text field
         phoneNumberTextField.backgroundColor = UIColor(rgb: 0xE1F8F8)
         phoneNumberTextField.layer.cornerRadius = 8
         phoneNumberTextField.textColor = .black
@@ -127,6 +139,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         phoneNumberTextField.autocorrectionType = .no
         view.addSubview(phoneNumberTextField)
         
+        // configuring singup button
         createButton.setTitle("create account", for: .normal)
         createButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         createButton.titleLabel?.textColor = UIColor(rgb: 0xE1F8F8)
@@ -135,6 +148,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         createButton.layer.cornerRadius = 8
         view.addSubview(createButton)
         
+        // error label config
         errorLabel.text = ""
         errorLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 20)
         errorLabel.textColor = UIColor(rgb: 0xdb4c42)
@@ -142,14 +156,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         view.addSubview(errorLabel)
         
         setupConstraints()
-        
     }
     
     
     
     // Converts the UIImage to Base64 String
     static func convertImageToBase64String (img: UIImage) -> String {
-        let extensionBase = img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+        let extensionBase = img.jpegData(compressionQuality: 0.7)?.base64EncodedString(options: .lineLength64Characters) ?? ""
         return "data:image/jpeg;base64,\(extensionBase)"
     }
     
@@ -158,24 +171,37 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         NetworkManager.registerAccount(email: emailTextField.text!, password: passwordTextField.text!, first: firstNameTextField.text!, last: lastNameTextField.text!, phone_number: phoneNumberTextField.text!) { user, success, errorMsg in
             if success {
                 
-                let base64Rep = SignUpViewController.convertImageToBase64String(img: self.profileImageView.image!)
-                NetworkManager.uploadAccImg(userID: user!.id, base64: base64Rep) { successs, error in
-                    if !successs {
-                        print("Error in uploading image")
+                // Let image be an asynchronous call
+                DispatchQueue.global().async {
+                    let base64Rep = base64Encode.convertImageToBase64String(img: self.profileImageView.image!)
+                    NetworkManager.uploadAccImg(userID: user!.id, base64: base64Rep) { successs, error in
+                        if !successs {
+                            print("Error in uploading image")
+                        }
                     }
                 }
+                
+//                let base64Rep = SignUpViewController.convertImageToBase64String(img: self.profileImageView.image!)
+//                NetworkManager.uploadAccImg(userID: user!.id, base64: base64Rep) { successs, error in
+//                    if !successs {
+//                        print("Error in uploading image")
+//                    }
+//                }
+                
                 UIApplication
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = mainTabBarViewController(user: user)
+                    .first?.rootViewController = mainTabBarViewController(user: user!)
             } else {
+                // Error in signing up
                 print("\(errorMsg!)")
                 self.errorLabel.text = "One or more text fields are blank"
             }
         }
     }
     
+    // Allows the user to select an image from their camera roll
     @objc func changeImage(gesture: UITapGestureRecognizer) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             imagePicker.delegate = self
@@ -194,6 +220,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         profileImageView.image = image
     }
     
+    // Sets the constraints of the signup
     func setupConstraints() {
         whiteBackgroundView.snp.makeConstraints { make in
             make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
@@ -288,6 +315,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
         
     }
     
+    // Makes it so the phone number textfield only accepts numerical input
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)

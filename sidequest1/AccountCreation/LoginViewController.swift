@@ -28,12 +28,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        for family in UIFont.familyNames.sorted() {
-//            let names = UIFont.fontNames(forFamilyName: family)
-//            print("Family: \(family) Font names: \(names)")
-//        }
-        
-        
         // add gradient background
         gradient.frame = self.view.bounds
         gradient.colors = [
@@ -43,21 +37,26 @@ class LoginViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradient, at: 0)
         
+        // Names the back bar button as Login (this shows when user presses sign up)
         navigationItem.backBarButtonItem = backBarButton
         
         // De-select textfield
         self.hideKeyboardWhenTappedAround()
+        
+        // Displays logo
         logoImageView.image = UIImage(named: "sidequest logo")
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
         view.addSubview(logoImageView)
         
+        // Email label
         userLabel.text = "email"
         userLabel.textColor = UIColor(rgb: 0x7D91C5)
         userLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         userLabel.backgroundColor = .clear
         view.addSubview(userLabel)
         
+        // Textfield to take in email
         userTextField.layer.cornerRadius = 8
         userTextField.backgroundColor = .white
         userTextField.textColor = .black
@@ -65,6 +64,7 @@ class LoginViewController: UIViewController {
         userTextField.autocapitalizationType = .none
         view.addSubview(userTextField)
         
+        // Password label
         passwordLabel.text = "password"
         passwordLabel.textColor = UIColor(rgb: 0x7D91C5)
         passwordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 16)
@@ -72,6 +72,7 @@ class LoginViewController: UIViewController {
         passwordLabel.backgroundColor = .clear
         view.addSubview(passwordLabel)
         
+        // Password textfield
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.backgroundColor = .white
         passwordTextField.textColor = .black
@@ -81,12 +82,15 @@ class LoginViewController: UIViewController {
         passwordTextField.textContentType = .oneTimeCode
         view.addSubview(passwordTextField)
         
+        // Label that reads 'forgot password'
+        // TODO: Add a 'forgot password functionality'
         forgetPasswordLabel.text = "forgot your password?"
         forgetPasswordLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         forgetPasswordLabel.textColor = UIColor(rgb: 0x6EBABA)
         forgetPasswordLabel.backgroundColor = .clear
         view.addSubview(forgetPasswordLabel)
         
+        // Button to log user in
         loginButton.setTitle("login", for: .normal)
         loginButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Light", size: 16)
         loginButton.titleLabel?.textColor = UIColor(rgb: 0xD8DFF2)
@@ -95,6 +99,7 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 8
         view.addSubview(loginButton)
         
+        // Signup label text (acts as a button to reach the sign up screen)
         signupLabel.text = signText
         signupLabel.font = UIFont(name: "IBMPlexSans-Light", size: 12)
         signupLabel.isUserInteractionEnabled = true
@@ -104,6 +109,7 @@ class LoginViewController: UIViewController {
         signupLabel.textColor = UIColor(rgb: 0x6EBABA)
         view.addSubview(signupLabel)
         
+        // Error message that displays when user inputs wrong credentials
         errorLabel.text = ""
         errorLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 20)
         errorLabel.textColor = UIColor(rgb: 0xdb4c42)
@@ -113,7 +119,7 @@ class LoginViewController: UIViewController {
         setupConstraints()
     }
     
-    // Handles login
+    // Handles login (if the user enters incorrect information, error message pops up)
     @objc func loginTap() {
         NetworkManager.loginAccount(email: userTextField.text!, password: passwordTextField.text!) { user, success, errorMsg in
             if success {
@@ -121,31 +127,31 @@ class LoginViewController: UIViewController {
                     .shared
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = mainTabBarViewController(user: user)
+                    .first?.rootViewController = mainTabBarViewController(user: user!)
             } else {
                 print("\(errorMsg!)")
-                // make this some error label!!
+                // changes the text of error label
                 self.errorLabel.text = "Incorrect email or password"
             }
         }
     }
     
+    // Function when user taps the 'sign up' text
     @objc func tapLabel(gesture: UITapGestureRecognizer) {
         // sets the range of clickable text
         let signupRange = (signText as NSString).range(of: "sign up here!")
-                
+            
         if gesture.didTapAttributedTextInLabel(label: signupLabel, inRange: signupRange) {
             navigationController?.pushViewController(SignUpViewController(), animated: true)
+            // resets the textfields to blank
             self.userTextField.text = ""
             self.passwordTextField.text = ""
             self.errorLabel.text = ""
-        } else {
-            print("none")
         }
     }
     
+    // Sets constraints of each UI components
     func setupConstraints() {
-        
         logoImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.view.bounds.height / 10)
             make.height.equalTo(152)
@@ -197,8 +203,6 @@ class LoginViewController: UIViewController {
         errorLabel.snp.makeConstraints { make in
             make.top.equalTo(signupLabel.snp.bottom).offset(40)
             make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
-//            make.width.equalTo(150)
-//            make.height.equalTo(30)
         }
         
     }

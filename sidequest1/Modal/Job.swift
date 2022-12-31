@@ -16,10 +16,10 @@ struct Job: Codable {
     var date_created: String
     var date_activity: String
     var duration: Int
-    var reward: String
-    var category: String
+    var reward: String?
     var done: Bool
     var taken: Bool
+    var category: String
     var longtitude: Int
     var latitude: Int
     var asset: [SimpleImage]
