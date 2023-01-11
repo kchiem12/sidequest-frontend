@@ -100,6 +100,7 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
         descriptionField.layer.cornerRadius = 8
         descriptionField.isEditable = true
         descriptionField.text = job?.description
+        descriptionField.font = .systemFont(ofSize: 16)
         view.addSubview(descriptionField)
         
         categoryLabel.text = "Category"

@@ -98,7 +98,6 @@ class AddJobViewController: UIViewController {
             make.height.equalTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
-
         }
     
         yourPostCollectionView.snp.makeConstraints {(make) -> Void in
@@ -149,7 +148,6 @@ extension AddJobViewController: CreatePostDelegate {
             self.postingData = self.shownPostingData
             self.yourPostCollectionView.reloadData()
         }
-        
     }
 }
 

@@ -32,6 +32,7 @@ class HomePage: UIViewController {
 
     // Set Up Variables
     let filterTextField = TextFieldWithPadding()
+//    let filterTextField = UISearchBar()
     let chatBubble = UIImage(named: "chatbubble")
     let resultNumberLabel = UILabel()
     
@@ -118,13 +119,15 @@ class HomePage: UIViewController {
 
         //---- Set Up Properties ----
 
-        // FilterTextField
+//         FilterTextField
         filterTextField.backgroundColor = .white
         filterTextField.attributedPlaceholder = NSAttributedString(string: "Search for gigs...", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)])
         filterTextField.textAlignment = NSTextAlignment.left
         filterTextField.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         filterTextField.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
         filterTextField.layer.cornerRadius = 12
+
+//        filterTextField.delegate = self
         view.addSubview(filterTextField)
         
         // ResultNumberLabel
@@ -365,6 +368,31 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         
     }
 }
+
+//extension HomePage: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        postings = []
+//
+//        if searchText == "" {
+//            postings = allPostings
+//            resultNumberLabel.text = "\(postings.count) results"
+//        }
+//
+//        for posting in allPostings {
+//            if posting.gigName.contains(searchText) {
+//                postings.append(posting)
+//                if postings.count == 1 {
+//                    resultNumberLabel.text = "\(postings.count) result"
+//                }
+//                else {
+//                    resultNumberLabel.text = "\(postings.count) results"
+//                }
+//            }
+//
+//            postingCollectionView.reloadData()
+//        }
+//    }
+//}
 
 
 

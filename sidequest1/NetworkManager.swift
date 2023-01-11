@@ -185,7 +185,7 @@ class NetworkManager {
         }
     }
     
-    static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool) -> Void) {
+    static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool, String?) -> Void) {
         
         let endpoint = "\(host)/api/user/\(userID)/job/\(jobID)/"
         
@@ -194,9 +194,9 @@ class NetworkManager {
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
             case .success(_):
-                completion(true)
-            case .failure(_):
-                completion(false)
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error.localizedDescription)
             }
         }
     }
