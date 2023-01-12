@@ -241,18 +241,18 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
     @objc func saveAction() {
 
         //TODO: Handle any error/null cases. Ex. if the reward textfield is empty, then we should not create a post
+        
+        guard let title = gigTitleField.text, let description = descriptionField.text, let rewardNum = payField.text, let category = categoryField.text, let other_notes = notesField.text, let relevant_skills = skillsField.text, !title.isEmpty, !description.isEmpty, !rewardNum.isEmpty, !category.isEmpty, !other_notes.isEmpty, !relevant_skills.isEmpty else {
+            return;
+        }
+        
         let userID = user.id
-        let title = gigTitleField.text!
-        let description = descriptionField.text!
         let location = ""
         let date_activity = ""
         let duration = 0
-        let reward = String(payField.text!.dropFirst())
-        let category = categoryField.text!
+        let reward = String(rewardNum.dropFirst())
         let longtitude = 0
         let latitude = 0
-        let other_notes = ""
-        let relevant_skills = ""
         
         delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
         

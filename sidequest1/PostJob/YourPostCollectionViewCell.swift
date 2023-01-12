@@ -42,7 +42,6 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         
         editButton.setTitle("Edit", for: .normal)
         editButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
-//        editButton.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
         editButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         editButton.addTarget(self, action: #selector(presentEditScreen), for: .touchUpInside)
         editButton.layer.cornerRadius = 16
@@ -107,11 +106,9 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func archiveJob() {
-        
-        print("clicked on")
-        
+                
         guard let jobId = job?.id else {
-            print("lele")
+            print("Job ID doesn't exist")
             return
         }
         

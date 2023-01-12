@@ -126,6 +126,7 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
         
         skillsField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         skillsField.layer.cornerRadius = 8
+        skillsField.text = job?.relevant_skills
         view.addSubview(skillsField)
         
         notesLabel.text = "Other Notes"
@@ -135,6 +136,7 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
         
         notesField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         notesField.layer.cornerRadius = 8
+        notesField.text = job?.other_notes
         view.addSubview(notesField)
         
         applyChangeButton.setTitle("Publish", for: .normal)
@@ -240,15 +242,7 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
-    
-//        func createView() {
-//            let newView = UIView(frame: CGRect(x: 0, y: 150, width: view.frame.width, height: 630))
-//            newView.layer.cornerRadius = 16
-//            newView.backgroundColor = .white
-//            view.addSubview(newView)
-//
-//        }
-        
+            
     }
     
     // To format the rewards textfield so that it only accepts decimal numbers
@@ -261,22 +255,19 @@ class EditJobViewController: UIViewController, UITextFieldDelegate {
     // Updates the job posting
     @objc func updatePosting() {
         //TODO: Handle any error/null cases. Ex. if the reward textfield is empty, then we should not create a post
-        let jobID = job?.id
-        let title = gigTitleField.text!
-        let description = descriptionField.text!
+        
+        guard let jobID = job?.id, let title = gigTitleField.text, let description = descriptionField.text, let rewardNum = payField.text, let category = categoryField.text, let other_notes = notesField.text, let relevant_skills = skillsField.text, !title.isEmpty, !description.isEmpty, !rewardNum.isEmpty, !category.isEmpty, !other_notes.isEmpty, !relevant_skills.isEmpty else {
+            return;
+        }
+        
         let location = ""
         let date_activity = ""
         let duration = 0
-        let reward = String(payField.text!.dropFirst())
-        let category = categoryField.text!
+        let reward = String(rewardNum.dropFirst())
         let longtitude = 0
         let latitude = 0
-        let other_notes = ""
-        let relevant_skills = ""
         
-        print("\(jobID!)")
-        
-        delegate?.editPost(jobID: jobID!, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
+        delegate?.editPost(jobID: jobID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
         
         dismiss(animated: true)
     }

@@ -71,6 +71,7 @@ class NetworkManager {
                     print("Failed to login")
                 }
             case .failure(let error):
+                print(error);
                 print(error.localizedDescription)
                 completion(nil, false, error.localizedDescription)
             }
