@@ -135,7 +135,7 @@ class NetworkManager {
     }
     
     // function to create a post
-    static func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Job) -> Void) {
+    static func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String, completion: @escaping (Job) -> Void) {
         let endpoint = "\(host)/api/user/\(userID)/job/"
         let params: Parameters = [
             "title": title,
@@ -146,7 +146,9 @@ class NetworkManager {
             "reward": reward,
             "category": category,
             "longtitude": longtitude,
-            "latitude": latitude
+            "latitude": latitude,
+            "other_notes": other_notes,
+            "relevant_skills": relevant_skills
         ]
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
@@ -183,7 +185,7 @@ class NetworkManager {
         }
     }
     
-    static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool) -> Void) {
+    static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool, String?) -> Void) {
         
         let endpoint = "\(host)/api/user/\(userID)/job/\(jobID)/"
         
@@ -192,9 +194,9 @@ class NetworkManager {
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
             case .success(_):
-                completion(true)
-            case .failure(_):
-                completion(false)
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error.localizedDescription)
             }
         }
     }
@@ -220,7 +222,7 @@ class NetworkManager {
     }
     
     // to update a posting
-    static func updateJob(jobId: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, completion: @escaping (Bool) -> Void) {
+    static func updateJob(jobId: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String, completion: @escaping (Bool) -> Void) {
         
         let endpoint = "\(host)/api/job/\(jobId)/"
         
@@ -235,7 +237,9 @@ class NetworkManager {
             "reward": reward,
             "category": category,
             "longtitude": longtitude,
-            "latitude": latitude
+            "latitude": latitude,
+            "other_notes": other_notes,
+            "relevant_skills": relevant_skills
         ]
         
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in

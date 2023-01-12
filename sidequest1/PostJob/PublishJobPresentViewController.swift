@@ -63,7 +63,8 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
+        createView()
 
         // Set Up Properties
         gigLabel.text = "Gig title"
@@ -91,7 +92,8 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         descriptionLabel.font = .systemFont(ofSize: 16)
         view.addSubview(descriptionLabel)
         
-        descriptionField.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 20)
+        descriptionField.font = .systemFont(ofSize: 16)
+        descriptionField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
         descriptionField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         descriptionField.layer.cornerRadius = 8
         descriptionField.isEditable = true
@@ -126,6 +128,8 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         notesLabel.font = .systemFont(ofSize: 16)
         view.addSubview(notesLabel)
         
+        notesField.font = .systemFont(ofSize: 16)
+//        notesField.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 20)
         notesField.layer.backgroundColor = UIColor(red: 0.882, green: 0.973, blue: 0.973, alpha: 1).cgColor
         notesField.layer.cornerRadius = 8
         view.addSubview(notesField)
@@ -140,7 +144,7 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         // Set Up Constraints
         
         gigLabel.snp.makeConstraints{(make) -> Void in
-            make.top.equalTo(self.view.snp.top).offset(40)
+            make.top.equalTo(self.view.snp.top).offset(130)
             make.left.equalTo(self.view.snp.left).offset(30)
         }
         
@@ -218,13 +222,12 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
     
-//        func createView() {
-//            let newView = UIView(frame: CGRect(x: 0, y: 150, width: view.frame.width, height: 630))
-//            newView.layer.cornerRadius = 16
-//            newView.backgroundColor = .white
-//            view.addSubview(newView)
-//
-//        }
+        func createView() {
+            let newView = UIView(frame: CGRect(x: 0, y: 110, width: view.frame.width, height: 670))
+            newView.layer.cornerRadius = 16
+            newView.backgroundColor = .white
+            view.addSubview(newView)
+        }
         
     }
     
@@ -248,8 +251,10 @@ class PublishJobPresentViewController: UIViewController, UITextFieldDelegate {
         let category = categoryField.text!
         let longtitude = 0
         let latitude = 0
+        let other_notes = ""
+        let relevant_skills = ""
         
-        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude)
+        delegate?.createPost(userID: userID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills)
         
         dismiss(animated: true)
     }
@@ -323,5 +328,5 @@ extension String {
 }
 
 protocol CreatePostDelegate: UIViewController {
-        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int)
+        func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String)
     }

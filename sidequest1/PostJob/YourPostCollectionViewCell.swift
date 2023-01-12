@@ -42,6 +42,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         
         editButton.setTitle("Edit", for: .normal)
         editButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+//        editButton.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
         editButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         editButton.addTarget(self, action: #selector(presentEditScreen), for: .touchUpInside)
         editButton.layer.cornerRadius = 16
@@ -138,4 +139,12 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    @objc func changePost() {
+//        parent?.navigationController.present(EditPresentViewController(), animated: true)
+//    }
+    
 }
+
+
+
+

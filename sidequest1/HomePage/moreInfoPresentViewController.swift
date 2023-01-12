@@ -23,8 +23,7 @@ class moreInfoPresentViewController: UIViewController {
     var contactButton = UIButton()
     var interestButton = UIButton()
     var user: User
-    
-   
+       
     init(posting: Posting, user: User) {
         self.posting = posting
         self.user = user
@@ -104,8 +103,20 @@ class moreInfoPresentViewController: UIViewController {
         interestButton.titleLabel?.textColor = UIColor(rgb: 0x1B3168)
         interestButton.layer.cornerRadius = 8
         interestButton.setTitleColor(UIColor(red: 0.106, green: 0.192, blue: 0.408, alpha: 1), for: .normal)
+        for job in self.user.job_as_poster {
+            if posting.job!.id == job.id! {
+                interestButton.isHidden = true
+            }
+            else {
+                interestButton.isHidden = false
+                   }
+        }
+        
         interestButton.addTarget(self, action: #selector(interestAction), for: .touchUpInside)
         view.addSubview(interestButton)
+        
+
+
         
         gigName.snp.makeConstraints{ (make) -> Void in
             make.top.equalTo(self.view.snp.top).offset(177)
@@ -156,7 +167,7 @@ class moreInfoPresentViewController: UIViewController {
         }
         
         interestButton.snp.makeConstraints { make in
-            make.top.equalTo(otherNotes.snp.bottom).offset(20)
+            make.top.equalTo(otherNotes.snp.bottom).offset(140)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(50)
             make.width.equalTo(336)
@@ -172,11 +183,25 @@ class moreInfoPresentViewController: UIViewController {
     
     @objc func interestAction() {
         
-        NetworkManager.interestInJob(userID: user.id, jobID: posting.job!.id) { success in
+        NetworkManager.interestInJob(userID: user.id, jobID: posting.job!.id) { success, errorMssg in
             if success {
-                print("bet")
+                let successAlert = UIAlertController()
+                successAlert.title = "Success!"
+                successAlert.message = "You're request has been received.\nPlease wait for the job poster to contact you."
+                successAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(successAlert, animated: true, completion: nil)
+                
             } else {
-                print("doesn't work")
+                let invalidAlert = UIAlertController()
+                invalidAlert.title = "Alert"
+                invalidAlert.message = "Invalid User Action."
+                invalidAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(invalidAlert, animated: true, completion: nil)
+                
             }
         }
         

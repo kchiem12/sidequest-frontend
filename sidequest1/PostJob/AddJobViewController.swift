@@ -98,7 +98,6 @@ class AddJobViewController: UIViewController {
             make.height.equalTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
-
         }
     
         yourPostCollectionView.snp.makeConstraints {(make) -> Void in
@@ -141,15 +140,14 @@ class AddJobViewController: UIViewController {
 }
 
 extension AddJobViewController: CreatePostDelegate {
-    func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int) {
+    func createPost(userID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String) {
         
-        NetworkManager.createPost(userID: user.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { job in
+        NetworkManager.createPost(userID: user.id, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills) { job in
             //TODO: Finish this
             self.shownPostingData = [job] + self.shownPostingData
             self.postingData = self.shownPostingData
             self.yourPostCollectionView.reloadData()
         }
-        
     }
 }
 
@@ -158,9 +156,9 @@ extension AddJobViewController: EditPostDelegate {
         present(EditJobViewController(delegate: self, job: job), animated: true)
     }
     
-    func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int) {
+    func editPost(jobID: Int, title: String, description: String, location: String, date_activity: String, duration: Int, reward: String, category: String, longtitude: Int, latitude: Int, other_notes: String, relevant_skills: String) {
         
-        NetworkManager.updateJob(jobId: jobID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude) { completionStatus in
+        NetworkManager.updateJob(jobId: jobID, title: title, description: description, location: location, date_activity: date_activity, duration: duration, reward: reward, category: category, longtitude: longtitude, latitude: latitude, other_notes: other_notes, relevant_skills: relevant_skills) { completionStatus in
             if (completionStatus) {
                 print("Update successful")
                 self.getUsersPosts() // Update the collection view

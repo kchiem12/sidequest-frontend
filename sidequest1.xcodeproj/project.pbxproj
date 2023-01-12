@@ -322,6 +322,7 @@
 				BE26868C29564EE900DD8CAD /* EditJobViewController.swift */,
 				BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */,
 				BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */,
+				A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */,
 			);
 			path = PostJob;
 			sourceTree = "<group>";
@@ -470,6 +471,7 @@
 				BEB7F03429347D64003DF523 /* Rating.swift in Sources */,
 				BEB7F090293A9228003DF523 /* MessageModal.swift in Sources */,
 				BEB7F0732937CBEC003DF523 /* InProgressCollectionViewCell.swift in Sources */,
+				A0F95FE7293AE6EE00065D61 /* EditPresentViewController.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
 				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,
