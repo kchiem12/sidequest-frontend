@@ -195,7 +195,6 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate & 
                     .first?.rootViewController = mainTabBarViewController(user: user!)
             } else {
                 // Error in signing up
-                print("\(errorMsg!)")
                 self.errorLabel.text = "One or more text fields are blank"
             }
         }
