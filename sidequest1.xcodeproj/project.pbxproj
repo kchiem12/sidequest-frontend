@@ -18,6 +18,8 @@
 		A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */; };
 		BE26868B295634D100DD8CAD /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26868A295634D100DD8CAD /* ImageProvider.swift */; };
 		BE26868D29564EE900DD8CAD /* EditJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26868C29564EE900DD8CAD /* EditJobViewController.swift */; };
+		BE2CC6BF2970DEC30056F1B2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6BE2970DEC30056F1B2 /* Error.swift */; };
+		BE2CC6C12970FC3B0056F1B2 /* MessageJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6C02970FC3B0056F1B2 /* MessageJSON.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -78,6 +80,8 @@
 		A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
 		BE26868A295634D100DD8CAD /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		BE26868C29564EE900DD8CAD /* EditJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobViewController.swift; sourceTree = "<group>"; };
+		BE2CC6BE2970DEC30056F1B2 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BE2CC6C02970FC3B0056F1B2 /* MessageJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageJSON.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				BEB7F0462934812A003DF523 /* Job.swift */,
 				BE9F7D0E2931C14C00561E8F /* Posting.swift */,
 				BEB7F08F293A9228003DF523 /* MessageModal.swift */,
+				BE2CC6BE2970DEC30056F1B2 /* Error.swift */,
+				BE2CC6C02970FC3B0056F1B2 /* MessageJSON.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				BEB7F080293A03E9003DF523 /* SimpleChat.swift in Sources */,
 				BEB7F05A2935A711003DF523 /* ChatUser.swift in Sources */,
 				BE26868D29564EE900DD8CAD /* EditJobViewController.swift in Sources */,
+				BE2CC6C12970FC3B0056F1B2 /* MessageJSON.swift in Sources */,
 				BEB7F086293A8FEA003DF523 /* Filter.swift in Sources */,
 				BEB7F04129347F9B003DF523 /* SimpleJob.swift in Sources */,
 				BEB7F08E293A9203003DF523 /* ChatModal.swift in Sources */,
@@ -504,6 +511,7 @@
 				BEB7F077293807AF003DF523 /* TestViewController.swift in Sources */,
 				BEB7F03029347D40003DF523 /* User.swift in Sources */,
 				BEB7F088293A9040003DF523 /* YourPostCollectionViewCell.swift in Sources */,
+				BE2CC6BF2970DEC30056F1B2 /* Error.swift in Sources */,
 				BEB7F082293A8F39003DF523 /* PublishJobPresentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

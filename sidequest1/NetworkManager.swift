@@ -13,7 +13,7 @@ class NetworkManager {
     //TODO: error handling in signup
 
     static let host = "http://34.85.181.121"
-    
+        
     
     // function to register an account
     static func registerAccount(email: String, password: String, first: String, last: String, phone_number: String, completion: @escaping (User?, Bool, _ errorMsg: String?) -> Void) {
@@ -32,14 +32,26 @@ class NetworkManager {
             "phone_number": phone_number
         ]
         
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate(statusCode: 200..<401).responseData { response in
             switch response.result {
             case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
-                    completion(userResponse, true, nil)
-                } else {
-                    print("Failed to decode registerAccount")
+                switch response.response?.statusCode {
+                case 201:
+                    let jsonDecoder = JSONDecoder()
+                    if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
+                        print(userResponse.token)
+                        completion(userResponse, true, nil)
+                    } else {
+                        print("Failed to decode registerAccount")
+                    }
+                case 400:
+                    if let errorMessage = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(nil, false, errorMessage.error)
+                    } else {
+                        print("Failed to decode error message")
+                    }
+                default:
+                    print("Unknown status code")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -61,14 +73,25 @@ class NetworkManager {
             "password": password
         ]
         
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate(statusCode: 200..<405).responseData { response in
             switch response.result {
             case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
-                    completion(userResponse, true, nil)
-                } else {
-                    print("Failed to login")
+                switch response.response?.statusCode {
+                case 200:
+                    let jsonDecoder = JSONDecoder()
+                    if let userResponse = try? jsonDecoder.decode(User.self, from: data) {
+                        completion(userResponse, true, nil)
+                    } else {
+                        print("Failed to login")
+                    }
+                case 401:
+                    if let errorMessage = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(nil, false, errorMessage.error)
+                    } else {
+                        print("Failed to decode error message")
+                    }
+                default:
+                    print("Unknown status code")
                 }
             case .failure(let error):
                 print(error);
@@ -267,6 +290,41 @@ class NetworkManager {
                 print(error.localizedDescription)
                 completion(false)
             }
+        }
+    }
+    
+    // Function to log user out
+    static func logOut(token: String, completion: @escaping (Bool, String?) -> Void) {
+        let endpoint = "\(host)/api/logout/"
+        
+        let header: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Accept": "application/json"
+        ]
+        
+        AF.request(endpoint, method: .post, headers: header).validate(statusCode: 200..<405).responseData { response in
+            switch response.result {
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 200:
+                    if let message = try? JSONDecoder().decode(MessageJSON.self, from: data) {
+                        completion(true, message.message)
+                    } else {
+                        print("Failed to decode message")
+                    }
+                case 400:
+                    if let errorMessage = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMessage.error)
+                    } else {
+                        print("Failed to decode error")
+                    }
+                default:
+                    print("Unknown status code")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
         }
     }
     

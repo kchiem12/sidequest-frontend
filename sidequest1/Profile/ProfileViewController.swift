@@ -44,12 +44,24 @@ class ProfileViewController: UIViewController {
     
     let logoutImageView: UIImageView = UIImageView()
     
+    // Logs user out and sends them to login screen
     @objc func logout() {
-        UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-            .first?.rootViewController = LoginViewController()
+        NetworkManager.logOut(token: user.token) { success, messageResponse in
+            guard let message = messageResponse else {
+                return
+            }
+            
+            if success {
+                UIApplication
+                    .shared
+                    .connectedScenes
+                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                    .first?.rootViewController = LoginViewController()
+                print("\(message)")
+            } else {
+                print("\(message)")
+            }
+        }
     }
     
     let navigationImageView: UIImageView = UIImageView()

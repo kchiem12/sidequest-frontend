@@ -23,4 +23,5 @@ struct User: Codable {
     var rating_as_postee: [SimpleRating]
     var chats: [SimpleChat]
     var messages: [MessageModal]
+    var token: String
 }
