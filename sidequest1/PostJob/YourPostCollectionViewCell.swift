@@ -17,7 +17,8 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     var interactionButton = UIButton()
     var archiveButton = UIButton()
     
-    weak var delegate: EditPostDelegate?
+    weak var editDelegate: EditPostDelegate?
+    weak var interactionsDelegate: ViewInteractionsDelegate?
     
     
     var job: Job?
@@ -51,6 +52,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         interactionButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         interactionButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         interactionButton.layer.cornerRadius = 16
+        interactionButton.addTarget(self, action: #selector(viewInteractions), for: .touchUpInside)
         contentView.addSubview(interactionButton)
         
         archiveButton.setTitle("Archive", for: .normal)
@@ -102,7 +104,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     
     // Presents the edit post view controller
     @objc func presentEditScreen() {
-        delegate?.presentEditVC(job: self.job!)
+        editDelegate?.presentEditVC(job: self.job!)
     }
     
     @objc func archiveJob() {
@@ -114,13 +116,18 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         
         
         
-        delegate?.deletePost(jobID: jobId, index: self.index)
+        editDelegate?.deletePost(jobID: jobId, index: self.index)
     }
     
-    func configure(job: Job, delegate: EditPostDelegate, index: Int) {
+    @objc func viewInteractions() {
+        interactionsDelegate?.presentViewInteractionsVC(job: self.job!)
+    }
+    
+    func configure(job: Job, delegate1: EditPostDelegate, delegate2: ViewInteractionsDelegate, index: Int) {
         gigName.text = job.title
         self.index = index
-        self.delegate = delegate
+        self.editDelegate = delegate1
+        self.interactionsDelegate = delegate2
         self.job = job
         let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
         let newStr = String(job.date_created[..<indexEndOfText])

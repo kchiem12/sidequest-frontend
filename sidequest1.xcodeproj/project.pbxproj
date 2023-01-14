@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
+		A05FF023297203CD001A336F /* UserInterestedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */; };
+		A06DDAED2971A52E00C5DE0F /* ViewInteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */; };
 		A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06052932B52900FD161F /* AddJobViewController.swift */; };
 		A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */; };
 		A0F95FDF293AA99200065D61 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */; };
@@ -66,6 +68,8 @@
 		2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidequest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.debug.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.debug.xcconfig"; sourceTree = "<group>"; };
 		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
+		A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterestedTableViewCell.swift; sourceTree = "<group>"; };
+		A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInteractionsViewController.swift; sourceTree = "<group>"; };
 		A0DA06052932B52900FD161F /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarViewController.swift; sourceTree = "<group>"; };
 		A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
@@ -320,9 +324,10 @@
 			children = (
 				A0DA06052932B52900FD161F /* AddJobViewController.swift */,
 				BE26868C29564EE900DD8CAD /* EditJobViewController.swift */,
+				A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */,
+				A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */,
 				BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */,
 				BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */,
-				A0F95FE6293AE6EE00065D61 /* EditPresentViewController.swift */,
 			);
 			path = PostJob;
 			sourceTree = "<group>";
@@ -471,10 +476,11 @@
 				BEB7F03429347D64003DF523 /* Rating.swift in Sources */,
 				BEB7F090293A9228003DF523 /* MessageModal.swift in Sources */,
 				BEB7F0732937CBEC003DF523 /* InProgressCollectionViewCell.swift in Sources */,
-				A0F95FE7293AE6EE00065D61 /* EditPresentViewController.swift in Sources */,
+				A06DDAED2971A52E00C5DE0F /* ViewInteractionsViewController.swift in Sources */,
 				BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */,
 				BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */,
 				BEB7F07929386E2B003DF523 /* FavoritesCollectionViewCell.swift in Sources */,
+				A05FF023297203CD001A336F /* UserInterestedTableViewCell.swift in Sources */,
 				BEB7F05C2935A76A003DF523 /* Message.swift in Sources */,
 				BE9F7D132931C19800561E8F /* moreInfoPresentViewController.swift in Sources */,
 				BEB7F0A7293FDDD7003DF523 /* base64Encode.swift in Sources */,

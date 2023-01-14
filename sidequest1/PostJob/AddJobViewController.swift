@@ -196,6 +196,13 @@ extension AddJobViewController: EditPostDelegate {
     }
 }
 
+extension AddJobViewController: ViewInteractionsDelegate {
+    func presentViewInteractionsVC(job: Job) {
+        // Define func
+        present(ViewInteractionsViewController(job: job), animated: true)
+    }
+}
+
 extension AddJobViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shownPostingData.count
@@ -203,7 +210,7 @@ extension AddJobViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourPostReuseIdentifier, for: indexPath) as? YourPostCollectionViewCell{
-            cell.configure(job: shownPostingData[indexPath.row], delegate: self, index: indexPath.row)
+            cell.configure(job: shownPostingData[indexPath.row], delegate1: self, delegate2: self, index: indexPath.row)
             cell.contentView.backgroundColor = UIColor.white
             cell.contentView.layer.cornerRadius = 16
             return cell
