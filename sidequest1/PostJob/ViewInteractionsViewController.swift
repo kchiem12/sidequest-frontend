@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
-class ViewInteractionsViewController: UIViewController {
+class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
     
     //  Set Up Variables
-    var job: Job?
+    var job: Job
     
     // MARK: UI Elements
     var gigName = UILabel()
@@ -37,12 +38,13 @@ class ViewInteractionsViewController: UIViewController {
         
         view.backgroundColor = .white
         
-//        gigName.text = job?.title
-//        gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
-//        gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
-//        view.addSubview(gigName)
+        gigName.text = job.title
+        gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
+        gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
+        view.addSubview(gigName)
         
         //MARK: Initialize TableView
+        userInterestedTableView.delegate = self
         userInterestedTableView.dataSource = self
         userInterestedTableView.register(UserInterestedTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(userInterestedTableView)
@@ -52,12 +54,12 @@ class ViewInteractionsViewController: UIViewController {
         setUpConstraints()
     }
     
+    // network request to get users that have shown interest in job
     func getUsersInterested() {
         var usersData: [User] = []
         
-        for user in job!.potential {
+        for user in job.potential {
             NetworkManager.getSpecificUser(userID: user.id!) { user in
-                
                 usersData.append(user)
                 self.usersData = usersData
                 self.shownUsersData = self.usersData
@@ -98,8 +100,4 @@ extension ViewInteractionsViewController: UITableViewDataSource {
     }
     
     
-}
-
-protocol ViewInteractionsDelegate: UIViewController {
-    func presentViewInteractionsVC(job: Job)
 }

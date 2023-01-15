@@ -196,7 +196,7 @@ extension AddJobViewController: EditPostDelegate {
     }
 }
 
-extension AddJobViewController: ViewInteractionsDelegate {
+extension AddJobViewController: presentInteractionsDelegate {
     func presentViewInteractionsVC(job: Job) {
         // Define func
         present(ViewInteractionsViewController(job: job), animated: true)
