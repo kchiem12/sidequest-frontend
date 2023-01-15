@@ -40,7 +40,7 @@ class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
         
         gigName.text = job.title
         gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
-        gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
+        gigName.font = UIFont(name: "IBMPlexSans-Thin", size: 32)
         view.addSubview(gigName)
         
         //MARK: Initialize TableView
@@ -69,13 +69,13 @@ class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
     }
     
     func setUpConstraints() {
-//        gigName.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo(view.snp.top).offset(18)
-//            make.left.equalTo(view.snp.left).offset(18)
-//        }
+        gigName.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.snp.top).offset(18)
+            make.left.equalTo(view.snp.left).offset(18)
+        }
         
         userInterestedTableView.snp.makeConstraints {(make) -> Void in
-            make.top.equalTo(view.snp.top)
+            make.top.equalTo(gigName.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(view.snp.bottom)
@@ -99,5 +99,7 @@ extension ViewInteractionsViewController: UITableViewDataSource {
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 108.0
+    }
 }
