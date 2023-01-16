@@ -236,6 +236,32 @@ class NetworkManager {
         }
     }
     
+    static func pickUserInterested(userID: Int, jobID: Int, completion: @escaping (_ success: Bool, String?) -> Void) {
+        let endpoint = "\(host)/api/job/\(jobID)/user/\(userID)/"
+        
+        let params: Parameters = [:]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 201:
+                    completion(true, nil)
+                case 404:
+                    if let error = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, error.error)
+                    } else {
+                        completion(false, "Failed to decode error")
+                    }
+                default:
+                    print("Invalid status code thrown")
+                }
+            case .failure(let error):
+                completion(false, error.localizedDescription)
+            }
+        }
+    }
+    
     static func getSpecificJob(jobID: Int, completion: @escaping (Job?) -> Void) {
         let endpoint = "\(host)/api/job/\(jobID)/"
         

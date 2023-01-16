@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
+class ViewInteractionsViewController: UIViewController {
     
     //  Set Up Variables
     var job: Job
@@ -45,7 +45,7 @@ class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
         rect.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.addSubview(rect)
         
-        gigName.text = job?.title
+        gigName.text = job.title
         gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
         view.addSubview(gigName)
@@ -91,7 +91,7 @@ class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
         }
         
         userInterestedTableView.snp.makeConstraints {(make) -> Void in
-            make.top.equalTo(rect.snp.bottom)
+            make.top.equalTo(rect.snp.bottom).offset(-10)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(view.snp.bottom)
@@ -114,8 +114,38 @@ extension ViewInteractionsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108.0
+}
+
+extension ViewInteractionsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = shownUsersData[indexPath.row]
+        let userID = user.id
+        let jobID = job.id
+        
+        let pickAlert = UIAlertController(title: "Select \(user.first)?", message: "\(user.first) will be selected for the job", preferredStyle: UIAlertController.Style.alert)
+        
+        pickAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
+            NetworkManager.pickUserInterested(userID: userID, jobID: jobID) { success, errorMssg in
+                if (success) {
+                    print("User was picked")
+                } else {
+                    let invalidAlert = UIAlertController()
+                    invalidAlert.title = "Alert"
+                    invalidAlert.message = errorMssg
+                    invalidAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(invalidAlert, animated: true, completion: nil)
+                }
+            }
+            pickAlert.dismiss(animated: true)
+        }))
+        pickAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("canceled alert")
+            pickAlert.dismiss(animated: true)
+        }))
+        
+        present(pickAlert, animated: true, completion: nil)
     }
 }
+                
