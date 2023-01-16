@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5BB2E1A946AEAE167D178D9B /* Pods_sidequest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED74B6674F2183FEC82E880 /* Pods_sidequest1.framework */; };
 		A05FF023297203CD001A336F /* UserInterestedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */; };
+		A05FF02529744723001A336F /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A05FF0242974465E001A336F /* IBMPlexSans-Regular.ttf */; };
 		A06DDAED2971A52E00C5DE0F /* ViewInteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */; };
 		A0DA06062932B52900FD161F /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06052932B52900FD161F /* AddJobViewController.swift */; };
 		A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */; };
@@ -71,6 +72,7 @@
 		468AA8A8E8B0D3807CA744CF /* Pods-sidequest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.debug.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.debug.xcconfig"; sourceTree = "<group>"; };
 		55C5B7DB1146E28998090759 /* Pods-sidequest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidequest1.release.xcconfig"; path = "Target Support Files/Pods-sidequest1/Pods-sidequest1.release.xcconfig"; sourceTree = "<group>"; };
 		A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterestedTableViewCell.swift; sourceTree = "<group>"; };
+		A05FF0242974465E001A336F /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
 		A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInteractionsViewController.swift; sourceTree = "<group>"; };
 		A0DA06052932B52900FD161F /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		A0DA06072932C51B00FD161F /* mainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				A0F95FE2293AA9B800065D61 /* IBMPlexSans-Thin.ttf */,
 				A0F95FE0293AA9AD00065D61 /* IBMPlexSans-Medium.ttf */,
 				A0F95FE4293AA9E100065D61 /* IBMPlexSans-Light.ttf */,
+				A05FF0242974465E001A336F /* IBMPlexSans-Regular.ttf */,
 				BEB7F097293A93A5003DF523 /* Merriweather-Bold.ttf */,
 				BEB7F095293A939A003DF523 /* Merriweather-Light.ttf */,
 				A0F95FDE293AA99200065D61 /* Merriweather-Regular.ttf */,
@@ -409,6 +412,7 @@
 				BE9F7CF42931BEDE00561E8F /* LaunchScreen.storyboard in Resources */,
 				BE9F7CF12931BEDE00561E8F /* Assets.xcassets in Resources */,
 				BEB7F096293A939A003DF523 /* Merriweather-Light.ttf in Resources */,
+				A05FF02529744723001A336F /* IBMPlexSans-Regular.ttf in Resources */,
 				A0F95FE5293AA9E100065D61 /* IBMPlexSans-Light.ttf in Resources */,
 				A0F95FE3293AA9B800065D61 /* IBMPlexSans-Thin.ttf in Resources */,
 				A0F95FDF293AA99200065D61 /* Merriweather-Regular.ttf in Resources */,

@@ -13,8 +13,8 @@ class ViewInteractionsViewController: UIViewController {
     var job: Job?
     
     // MARK: UI Elements
+    var rect = UIView()
     var gigName = UILabel()
-    
     let userInterestedTableView = UITableView()
     let reuseIdentifier = "reuseIdentifier"
     
@@ -37,14 +37,22 @@ class ViewInteractionsViewController: UIViewController {
         
         view.backgroundColor = .white
         
-//        gigName.text = job?.title
-//        gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
-//        gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
-//        view.addSubview(gigName)
+        rect.backgroundColor = .white
+        rect.layer.shadowColor = UIColor.black.cgColor
+        rect.layer.shadowOpacity = 1
+        rect.layer.shadowRadius = 2
+        rect.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.addSubview(rect)
+        
+        gigName.text = job?.title
+        gigName.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
+        gigName.font = UIFont(name: "IBMPlexSans-Regular", size: 32)
+        view.addSubview(gigName)
         
         //MARK: Initialize TableView
         userInterestedTableView.dataSource = self
         userInterestedTableView.register(UserInterestedTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        userInterestedTableView.separatorColor = UIColor(red: 0.776, green: 0.827, blue: 0.902, alpha: 1)
         view.addSubview(userInterestedTableView)
         
         getUsersInterested()
@@ -67,13 +75,21 @@ class ViewInteractionsViewController: UIViewController {
     }
     
     func setUpConstraints() {
-//        gigName.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo(view.snp.top).offset(18)
-//            make.left.equalTo(view.snp.left).offset(18)
-//        }
+        gigName.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.snp.top).offset(30)
+            make.left.equalTo(view.snp.left).offset(30)
+        }
+        
+        rect.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(gigName.snp.bottom).offset(16)
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(10)
+        }
         
         userInterestedTableView.snp.makeConstraints {(make) -> Void in
-            make.top.equalTo(view.snp.top)
+            make.top.equalTo(rect.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(view.snp.bottom)
