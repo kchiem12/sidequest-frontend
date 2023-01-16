@@ -17,6 +17,10 @@ class UserInterestedTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        userImage.layer.cornerRadius = 32
+        userImage.layer.masksToBounds = true
+        contentView.addSubview(userImage)
+        
         userDetail.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         userDetail.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         contentView.addSubview(userDetail)
@@ -75,8 +79,8 @@ class UserInterestedTableViewCell: UITableViewCell {
     
     func configure(user: User) {
         //figure out later
-//        userImage.setImageFromStringrlL(url: user.assets[0].url!)
-        
+        user.assets.count == 0 ? self.userImage.image = UIImage(named: "profile_placeholder") :
+        self.userImage.setImageFromStringrlL(url: user.assets[0].url!)
         let indexEndOfText = user.last.index(user.last.startIndex, offsetBy: 1)
         let newStr = String(user.last[..<indexEndOfText])
         userDetail.text = "\(user.first) \(newStr). interested in gig"

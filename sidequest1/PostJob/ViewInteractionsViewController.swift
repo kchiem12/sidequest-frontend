@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
-class ViewInteractionsViewController: UIViewController {
+class ViewInteractionsViewController: UIViewController, UITableViewDelegate {
     
     //  Set Up Variables
-    var job: Job?
+    var job: Job
     
     // MARK: UI Elements
     var rect = UIView()
@@ -50,6 +51,7 @@ class ViewInteractionsViewController: UIViewController {
         view.addSubview(gigName)
         
         //MARK: Initialize TableView
+        userInterestedTableView.delegate = self
         userInterestedTableView.dataSource = self
         userInterestedTableView.register(UserInterestedTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         userInterestedTableView.separatorColor = UIColor(red: 0.776, green: 0.827, blue: 0.902, alpha: 1)
@@ -60,12 +62,12 @@ class ViewInteractionsViewController: UIViewController {
         setUpConstraints()
     }
     
+    // network request to get users that have shown interest in job
     func getUsersInterested() {
         var usersData: [User] = []
         
-        for user in job!.potential {
+        for user in job.potential {
             NetworkManager.getSpecificUser(userID: user.id!) { user in
-                
                 usersData.append(user)
                 self.usersData = usersData
                 self.shownUsersData = self.usersData
@@ -113,9 +115,7 @@ extension ViewInteractionsViewController: UITableViewDataSource {
         }
     }
     
-    
-}
-
-protocol ViewInteractionsDelegate: UIViewController {
-    func presentViewInteractionsVC(job: Job)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 108.0
+    }
 }

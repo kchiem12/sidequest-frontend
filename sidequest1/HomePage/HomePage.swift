@@ -95,6 +95,8 @@ class HomePage: UIViewController {
         navigationImageView.image = UIImage(named: "navigation title")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
         
+        
+        
         // Nav Bar Color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -187,6 +189,12 @@ class HomePage: UIViewController {
         // Register posting collection view cell
         postingCollectionView.register(PostingCollectionViewCell.self, forCellWithReuseIdentifier: postingReuseIdentifier)
         view.addSubview(postingCollectionView)
+        
+        // makes it so filter text field is deselected when screen is tapped on
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        
 
 
         setupConstraints()
@@ -237,6 +245,11 @@ class HomePage: UIViewController {
         DispatchQueue.main.async {
             self.getPosts()
         }
+    }
+    
+    // dismisses keyboard when a textifeld is not tapped on
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        filterTextField.resignFirstResponder()
     }
 
     
@@ -300,7 +313,7 @@ extension HomePage: UICollectionViewDataSource {
     }
 }
 
-// Confrom to UICollectionViewDelegateFlowLayout
+// Conform to UICollectionViewDelegateFlowLayout
 extension HomePage: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -364,6 +377,7 @@ extension HomePage: UICollectionViewDelegateFlowLayout {
         
         if (collectionView == postingCollectionView) {
             present(moreInfoPresentViewController(posting: postings[indexPath.item], user: user), animated: true)
+            print("clicked on")
         }
         
     }

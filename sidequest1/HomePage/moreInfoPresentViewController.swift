@@ -59,7 +59,6 @@ class moreInfoPresentViewController: UIViewController {
         } else {
             profilePic.image = UIImage(named: posting.profilePic)
         }
-//        profilePic.image = UIImage(named: posting.profilePic)
         profilePic.layer.cornerRadius = 15
         profilePic.layer.masksToBounds = true
         view.addSubview(profilePic)
@@ -181,6 +180,7 @@ class moreInfoPresentViewController: UIViewController {
         }
     }
     
+    // action when interested button is clicked on by user
     @objc func interestAction() {
         
         NetworkManager.interestInJob(userID: user.id, jobID: posting.job!.id) { success, errorMssg in
@@ -196,12 +196,11 @@ class moreInfoPresentViewController: UIViewController {
             } else {
                 let invalidAlert = UIAlertController()
                 invalidAlert.title = "Alert"
-                invalidAlert.message = "Invalid User Action."
+                invalidAlert.message = errorMssg
                 invalidAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 NSLog("The \"OK\" alert occured.")
                 }))
                 self.present(invalidAlert, animated: true, completion: nil)
-                
             }
         }
         
@@ -212,8 +211,6 @@ class moreInfoPresentViewController: UIViewController {
         newView.layer.cornerRadius = 16
         newView.backgroundColor = .white
         view.addSubview(newView)
-        
-        
     }
 
 }

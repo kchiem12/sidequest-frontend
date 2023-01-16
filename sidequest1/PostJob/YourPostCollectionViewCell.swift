@@ -18,7 +18,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     var archiveButton = UIButton()
     
     weak var editDelegate: EditPostDelegate?
-    weak var interactionsDelegate: ViewInteractionsDelegate?
+    weak var interactionsDelegate: presentInteractionsDelegate?
     
     
     var job: Job?
@@ -123,7 +123,7 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         interactionsDelegate?.presentViewInteractionsVC(job: self.job!)
     }
     
-    func configure(job: Job, delegate1: EditPostDelegate, delegate2: ViewInteractionsDelegate, index: Int) {
+    func configure(job: Job, delegate1: EditPostDelegate, delegate2: presentInteractionsDelegate, index: Int) {
         gigName.text = job.title
         self.index = index
         self.editDelegate = delegate1
@@ -147,6 +147,10 @@ class YourPostCollectionViewCell: UICollectionViewCell {
 //        parent?.navigationController.present(EditPresentViewController(), animated: true)
 //    }
     
+}
+
+protocol presentInteractionsDelegate: UIViewController {
+    func presentViewInteractionsVC(job: Job)
 }
 
 

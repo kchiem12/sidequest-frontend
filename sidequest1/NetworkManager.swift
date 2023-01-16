@@ -209,16 +209,27 @@ class NetworkManager {
         }
     }
     
+    // Function to allow users to express interest for a job
     static func interestInJob(userID: Int, jobID: Int, completion: @escaping (_ success: Bool, String?) -> Void) {
-        
         let endpoint = "\(host)/api/user/\(userID)/job/\(jobID)/"
         
         let params: Parameters = [:]
         
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate(statusCode: 200..<405).responseData { response in
             switch response.result {
-            case .success(_):
-                completion(true, nil)
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 201:
+                    completion(true, nil)
+                case 404:
+                    if let error = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, error.error)
+                    } else {
+                        completion(false, "Failed to decode error")
+                    }
+                default:
+                    print("Invalid status code thrown")
+                }
             case .failure(let error):
                 completion(false, error.localizedDescription)
             }
