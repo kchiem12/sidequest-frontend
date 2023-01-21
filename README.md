@@ -23,11 +23,11 @@ Can then be run on XCode with a simulator. Works best with the latest iPhone mod
 -  Allow Users to upload a profile image
 -  Users can search and filter gigs
 -  Users can post, edit, and delete gigs 
+-  Display users interested in gigs
 
 **Future WIP Features:**
 
 - [ ] Messaging feature (implemented with MessageKit & SocketIO)
-- [ ] Display users interested in gigs
 - [ ] Profile customization
 
 &nbsp;
