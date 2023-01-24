@@ -21,6 +21,8 @@
 		BE26868D29564EE900DD8CAD /* EditJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26868C29564EE900DD8CAD /* EditJobViewController.swift */; };
 		BE2CC6BF2970DEC30056F1B2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6BE2970DEC30056F1B2 /* Error.swift */; };
 		BE2CC6C12970FC3B0056F1B2 /* MessageJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6C02970FC3B0056F1B2 /* MessageJSON.swift */; };
+		BE2CC6C3297E476D0056F1B2 /* SelectedUserTaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6C2297E476D0056F1B2 /* SelectedUserTaskCollectionViewCell.swift */; };
+		BE2CC6C9297E4D9D0056F1B2 /* RateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CC6C8297E4D9D0056F1B2 /* RateUserViewController.swift */; };
 		BE9F7CE82931BEDC00561E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */; };
 		BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */; };
 		BE9F7CEC2931BEDC00561E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F7CEB2931BEDC00561E8F /* ViewController.swift */; };
@@ -84,6 +86,8 @@
 		BE26868C29564EE900DD8CAD /* EditJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobViewController.swift; sourceTree = "<group>"; };
 		BE2CC6BE2970DEC30056F1B2 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BE2CC6C02970FC3B0056F1B2 /* MessageJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageJSON.swift; sourceTree = "<group>"; };
+		BE2CC6C2297E476D0056F1B2 /* SelectedUserTaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserTaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE2CC6C8297E4D9D0056F1B2 /* RateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateUserViewController.swift; sourceTree = "<group>"; };
 		BE9F7CE42931BEDC00561E8F /* sidequest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidequest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +195,14 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+		BE2CC6C5297E4D580056F1B2 /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				BE2CC6C8297E4D9D0056F1B2 /* RateUserViewController.swift */,
+			);
+			path = Rate;
+			sourceTree = "<group>";
+		};
 		BE9F7CDB2931BEDC00561E8F = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +230,7 @@
 				BE9F7CE72931BEDC00561E8F /* AppDelegate.swift */,
 				BE9F7CE92931BEDC00561E8F /* SceneDelegate.swift */,
 				BE9F7CEB2931BEDC00561E8F /* ViewController.swift */,
+				BE2CC6C5297E4D580056F1B2 /* Rate */,
 				BE268689295633A000DD8CAD /* HomePage */,
 				BEB7F0A0293A9485003DF523 /* AccountCreation */,
 				BEB7F0562935A5EC003DF523 /* Chatting */,
@@ -336,6 +349,7 @@
 				A06DDAEC2971A52E00C5DE0F /* ViewInteractionsViewController.swift */,
 				A05FF022297203CD001A336F /* UserInterestedTableViewCell.swift */,
 				BEB7F087293A9040003DF523 /* YourPostCollectionViewCell.swift */,
+				BE2CC6C2297E476D0056F1B2 /* SelectedUserTaskCollectionViewCell.swift */,
 				BEB7F081293A8F39003DF523 /* PublishJobPresentViewController.swift */,
 			);
 			path = PostJob;
@@ -470,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB7F09F293A946A003DF523 /* LoginViewController.swift in Sources */,
+				BE2CC6C3297E476D0056F1B2 /* SelectedUserTaskCollectionViewCell.swift in Sources */,
 				BEB7F04529347FB9003DF523 /* SimpleUser.swift in Sources */,
 				BE9F7D0B2931C11D00561E8F /* HomePage.swift in Sources */,
 				BE26868B295634D100DD8CAD /* ImageProvider.swift in Sources */,
@@ -499,6 +514,7 @@
 				BEB7F03A29347D84003DF523 /* ChatViewController.swift in Sources */,
 				BE9F7CEA2931BEDC00561E8F /* SceneDelegate.swift in Sources */,
 				BE9F7D112931C16A00561E8F /* PostingCollectionViewCell.swift in Sources */,
+				BE2CC6C9297E4D9D0056F1B2 /* RateUserViewController.swift in Sources */,
 				A0DA06082932C51B00FD161F /* mainTabBarViewController.swift in Sources */,
 				BEB7F03F29347F8C003DF523 /* SimpleImage.swift in Sources */,
 				BEB7F03229347D60003DF523 /* NetworkManager.swift in Sources */,

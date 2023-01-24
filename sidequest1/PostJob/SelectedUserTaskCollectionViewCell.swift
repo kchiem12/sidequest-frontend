@@ -1,28 +1,26 @@
 //
-//  YourPostCollectionViewCell.swift
+//  SelectedUserTaskCollectionViewCell.swift
 //  sidequest1
 //
-//  Created by Ken Chiem on 12/2/22.
+//  Created by Ken Chiem on 1/22/23.
 //
 
 import UIKit
 
-class YourPostCollectionViewCell: UICollectionViewCell {
+class SelectedUserTaskCollectionViewCell: UICollectionViewCell {
     
     // Set Up Variables
     var gigName = UILabel()
     var gigAmount = UILabel()
     var datePosted = UILabel()
-    var editButton = UIButton()
-    var interactionButton = UIButton()
+    var payButton = UIButton()
+    var rateButton = UIButton()
     var archiveButton = UIButton()
-    
-    weak var editDelegate: EditPostDelegate?
-    weak var interactionsDelegate: presentInteractionsDelegate?
-    
-    
     var job: Job?
     var index: Int = 0
+    
+    weak var editDelegate: EditPostDelegate?
+    weak var rateDelegate: RateUserDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,19 +39,20 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         datePosted.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         contentView.addSubview(datePosted)
         
-        editButton.setTitle("Edit", for: .normal)
-        editButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
-        editButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
-        editButton.addTarget(self, action: #selector(presentEditScreen), for: .touchUpInside)
-        editButton.layer.cornerRadius = 16
-        contentView.addSubview(editButton)
+        payButton.setTitle("Pay QuestTaker", for: .normal)
+        payButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        payButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
+        // figure out how to handle payment of questtaker later
+//        payButton.addTarget(self, action: #selector(presentEditScreen), for: .touchUpInside)
+        payButton.layer.cornerRadius = 16
+        contentView.addSubview(payButton)
         
-        interactionButton.setTitle("View Interactions", for: .normal)
-        interactionButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
-        interactionButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
-        interactionButton.layer.cornerRadius = 16
-        interactionButton.addTarget(self, action: #selector(viewInteractions), for: .touchUpInside)
-        contentView.addSubview(interactionButton)
+        rateButton.setTitle("Rate QuestTaker", for: .normal)
+        rateButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        rateButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
+        rateButton.layer.cornerRadius = 16
+        rateButton.addTarget(self, action: #selector(presentRateVC), for: .touchUpInside)
+        contentView.addSubview(rateButton)
         
         archiveButton.setTitle("Archive", for: .normal)
         archiveButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
@@ -78,24 +77,24 @@ class YourPostCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(contentView.snp.left).offset(18)
         }
         
-        editButton.snp.makeConstraints { (make) -> Void in
+        payButton.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(336)
             make.height.equalTo(60)
             make.top.equalTo(datePosted.snp.bottom).offset(11)
             make.centerX.equalTo(contentView.snp.centerX)
         }
         
-        interactionButton.snp.makeConstraints { (make) -> Void in
+        rateButton.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(336)
             make.height.equalTo(60)
-            make.top.equalTo(editButton.snp.bottom).offset(12)
+            make.top.equalTo(payButton.snp.bottom).offset(12)
             make.centerX.equalTo(contentView.snp.centerX)
         }
         
         archiveButton.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(336)
             make.height.equalTo(60)
-            make.top.equalTo(interactionButton.snp.bottom).offset(12)
+            make.top.equalTo(rateButton.snp.bottom).offset(12)
             make.centerX.equalTo(contentView.snp.centerX)
         }
         
@@ -117,15 +116,19 @@ class YourPostCollectionViewCell: UICollectionViewCell {
         editDelegate?.deletePost(jobID: jobId, index: self.index)
     }
     
-    @objc func viewInteractions() {
-        interactionsDelegate?.presentViewInteractionsVC(job: self.job!)
+    @objc func presentRateVC() {
+        guard let job = self.job else {
+            print("No job found!")
+            return
+        }
+        rateDelegate?.presentRateViewController(job: job)
     }
     
-    func configure(job: Job, delegate1: EditPostDelegate, delegate2: presentInteractionsDelegate, index: Int) {
+    func configure(job: Job, delegate1: EditPostDelegate, delegate2: RateUserDelegate, index: Int) {
         gigName.text = job.title
         self.index = index
         self.editDelegate = delegate1
-        self.interactionsDelegate = delegate2
+        self.rateDelegate = delegate2
         self.job = job
         let indexEndOfText = job.date_created.index(job.date_created.endIndex, offsetBy: -16)
         let newStr = String(job.date_created[..<indexEndOfText])
@@ -140,13 +143,8 @@ class YourPostCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
-protocol presentInteractionsDelegate: UIViewController {
-    func presentViewInteractionsVC(job: Job)
+protocol RateUserDelegate: UIViewController {
+    func presentRateViewController(job: Job)
 }
-
-
-
-

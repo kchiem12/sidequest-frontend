@@ -26,7 +26,7 @@ class UserInterestedTableViewCell: UITableViewCell {
         userRating.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         contentView.addSubview(userRating)
         
-        messageButton.setTitle("Message", for: .normal)
+        messageButton.setTitle("Select", for: .normal)
         messageButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Regular", size: 16)
         messageButton.layer.cornerRadius = 8
         messageButton.layer.backgroundColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1).cgColor

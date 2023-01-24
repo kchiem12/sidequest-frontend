@@ -32,7 +32,8 @@ class AddJobViewController: UIViewController {
     // Set Up CollectionView Var
     var yourPostCollectionView: UICollectionView!
     let spacing1: CGFloat = 15
-    let yourPostReuseIdentifier: String = "yourPostReuseIdentifier"
+    let notTakenReuseIdentifier: String = "notTakenPostReuseIdentifier"
+    let takenReuseIdentifier: String = "takenPostReuseIdentifier"
     
     let navigationImageView: UIImageView = UIImageView()
     
@@ -69,7 +70,8 @@ class AddJobViewController: UIViewController {
         yourPostCollectionView.delegate = self
 
         // Register collection view
-        yourPostCollectionView.register(YourPostCollectionViewCell.self, forCellWithReuseIdentifier: yourPostReuseIdentifier)
+        yourPostCollectionView.register(YourPostCollectionViewCell.self, forCellWithReuseIdentifier: notTakenReuseIdentifier)
+        yourPostCollectionView.register(SelectedUserTaskCollectionViewCell.self, forCellWithReuseIdentifier: takenReuseIdentifier)
         view.addSubview(yourPostCollectionView)
 
         getUsersPosts()
@@ -209,14 +211,30 @@ extension AddJobViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourPostReuseIdentifier, for: indexPath) as? YourPostCollectionViewCell{
-            cell.configure(job: shownPostingData[indexPath.row], delegate1: self, delegate2: self, index: indexPath.row)
-            cell.contentView.backgroundColor = UIColor.white
-            cell.contentView.layer.cornerRadius = 16
-            return cell
-        }
-        else {
-            return UICollectionViewCell()
+        
+        // Conditional statement used to check if a user was already selected for the job
+        if (shownPostingData[indexPath.row].taken) {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: takenReuseIdentifier, for: indexPath) as?
+                SelectedUserTaskCollectionViewCell{
+                cell.configure(job: shownPostingData[indexPath.row], delegate1: self, delegate2: self, index: indexPath.row)
+                cell.contentView.backgroundColor = UIColor.white
+                cell.contentView.layer.cornerRadius = 16
+                return cell
+            }
+            else {
+                return UICollectionViewCell()
+            }
+        } else {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: notTakenReuseIdentifier, for: indexPath) as?
+                YourPostCollectionViewCell{
+                cell.configure(job: shownPostingData[indexPath.row], delegate1: self, delegate2: self, index: indexPath.row)
+                cell.contentView.backgroundColor = UIColor.white
+                cell.contentView.layer.cornerRadius = 16
+                return cell
+            }
+            else {
+                return UICollectionViewCell()
+            }
         }
     }
 
@@ -225,5 +243,11 @@ extension AddJobViewController: UICollectionViewDataSource {
 extension AddJobViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 365, height: 313)
+    }
+}
+
+extension AddJobViewController: RateUserDelegate {
+    func presentRateViewController(job: Job) {
+        return
     }
 }
