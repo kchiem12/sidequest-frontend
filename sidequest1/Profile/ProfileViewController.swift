@@ -57,7 +57,6 @@ class ProfileViewController: UIViewController {
                     .connectedScenes
                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
                     .first?.rootViewController = UINavigationController(rootViewController: LoginViewController())
-                self.navigationController?.popToRootViewController(animated: false)
                 print("\(message)")
             } else {
                 print("\(message)")

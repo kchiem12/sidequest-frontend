@@ -19,6 +19,8 @@ class RateUserViewController: UIViewController {
     let maximumValueLabel: UILabel = UILabel()
     let unsatisfactoryLabel: UILabel = UILabel()
     let satisfactoryLabel: UILabel = UILabel()
+    let submitRatingButton: UIButton = UIButton()
+    let ratingLabel: UILabel = UILabel()
     var gig: Job?
     
     init(gig: Job?) {
@@ -37,10 +39,11 @@ class RateUserViewController: UIViewController {
         
         ratingSlider.minimumValue = 0
         ratingSlider.maximumValue = 5
-        ratingSlider.isContinuous = false
+        ratingSlider.isContinuous = true
         ratingSlider.maximumTrackTintColor = UIColor(rgb: 0x7D91C5)
         ratingSlider.minimumTrackTintColor = UIColor(rgb: 0x435B99)
         ratingSlider.thumbTintColor = UIColor(rgb: 0x435B99)
+        ratingSlider.addTarget(self, action: #selector(displayRating), for: .valueChanged)
         view.addSubview(ratingSlider)
         
         gigNameLabel.text = "placeholder"
@@ -53,29 +56,54 @@ class RateUserViewController: UIViewController {
         dateCompletedLabel.textColor = UIColor(rgb: 0x435B99)
         view.addSubview(dateCompletedLabel)
         
-        
-        if let reward = gig?.reward {
-            rewardLabel.text = "$\(reward)"
-        } else {
-            rewardLabel.text = "$??"
-        }
+        rewardLabel.text = "$XX.XX"
         rewardLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 24)
         rewardLabel.textColor = UIColor(rgb: 0x7D91C5)
         view.addSubview(rewardLabel)
         
-        if let firstName = (gig?.receiver[0].first) {
-            rateUserPerformanceLabel.text = "Rate \(firstName)'s performance"
-        } else {
-            rateUserPerformanceLabel.text = "Rate User's performance"
-        }
+        rateUserPerformanceLabel.text = "Rate User's Performance"
         rateUserPerformanceLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         rateUserPerformanceLabel.textColor = UIColor(rgb: 0x435B99)
         view.addSubview(rateUserPerformanceLabel)
         
         minimumValueLabel.text = "0"
-//        minimumValueLabel.font = UIFont(name: "IBMPlexSans-Regular", size: <#T##CGFloat#>)
+        minimumValueLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
+        minimumValueLabel.textColor = UIColor(rgb: 0x435B99)
+        view.addSubview(minimumValueLabel)
+        
+        maximumValueLabel.text = "5"
+        maximumValueLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
+        maximumValueLabel.textColor = UIColor(rgb: 0x435B99)
+        view.addSubview(maximumValueLabel)
+        
+        unsatisfactoryLabel.text = "unsatisfactory"
+        unsatisfactoryLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 12)
+        unsatisfactoryLabel.textColor = UIColor(rgb: 0x435B99)
+        view.addSubview(unsatisfactoryLabel)
+        
+        satisfactoryLabel.text = "satisfactory"
+        satisfactoryLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 12)
+        satisfactoryLabel.textColor = UIColor(rgb: 0x435B99)
+        view.addSubview(satisfactoryLabel)
+        
+        submitRatingButton.setTitle("Submit Rating", for: .normal)
+        submitRatingButton.titleLabel?.font = UIFont(name: "IBMPlexSans-Regular", size: 24)
+        submitRatingButton.titleLabel?.textColor = UIColor(rgb: 0xD8DFF2)
+        submitRatingButton.backgroundColor = UIColor(rgb: 0x435B99)
+        submitRatingButton.layer.cornerRadius = 8
+        submitRatingButton.addTarget(self, action: #selector(displayRating), for: .touchUpInside)
+        view.addSubview(submitRatingButton)
+        
+        ratingLabel.text = "\(Int(ratingSlider.value)) / 5"
+        ratingLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 40)
+        ratingLabel.textColor = UIColor(rgb: 0x435B99)
+        view.addSubview(ratingLabel)
         
         setConstraints()
+    }
+    
+    @objc func displayRating() {
+        ratingLabel.text = "\(Int(ratingSlider.value)) / 5"
     }
     
     func setConstraints() {
@@ -94,6 +122,43 @@ class RateUserViewController: UIViewController {
         dateCompletedLabel.snp.makeConstraints { make in
             make.top.equalTo(gigNameLabel.snp.bottom).offset(5)
             make.left.equalTo(gigNameLabel.snp.left)
+        }
+        
+        rewardLabel.snp.makeConstraints { make in
+            make.top.equalTo(gigNameLabel.snp.top)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-35)
+        }
+        
+        minimumValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(ratingSlider.snp.bottom).offset(5)
+            make.left.equalTo(ratingSlider.snp.left)
+        }
+        
+        maximumValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(ratingSlider.snp.bottom).offset(5)
+            make.right.equalTo(ratingSlider.snp.right)
+        }
+        
+        unsatisfactoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(minimumValueLabel.snp.bottom)
+            make.left.equalTo(ratingSlider.snp.left)
+        }
+        
+        satisfactoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(maximumValueLabel.snp.bottom)
+            make.right.equalTo(ratingSlider.snp.right)
+        }
+        
+        submitRatingButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-25)
+            make.height.equalTo(60)
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(28)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-28)
+        }
+        
+        ratingLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.bottom.equalTo(ratingSlider.snp.top).offset(-10)
         }
     }
 
