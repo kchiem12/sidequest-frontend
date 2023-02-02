@@ -95,7 +95,14 @@ class InProgressCollectionViewCell: UICollectionViewCell {
     func configure(posting: Posting){
         gigName.text = posting.gigName
         gigAmount.text = "$" + posting.gigAmount
-        profilePic.image = UIImage(named: posting.profilePic)
+        if (posting.profilePic.contains("http")) {
+//            profilePic.setImageFromStringrlL(url: posting.profilePic)
+            ImageProvider.sharedCache.getImage(url: posting.profilePic) { [weak self] image in
+                self?.profilePic.image = image
+            }
+        } else {
+            profilePic.image = UIImage(named: posting.profilePic)
+        }
         profileName.text = posting.profileName
         gigDescription.text = "Gig: \(posting.gigDescription)"
     }

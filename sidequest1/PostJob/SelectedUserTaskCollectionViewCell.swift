@@ -50,8 +50,8 @@ class SelectedUserTaskCollectionViewCell: UICollectionViewCell {
         rateButton.setTitle("Rate QuestTaker", for: .normal)
         rateButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
         rateButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
-        rateButton.layer.cornerRadius = 16
         rateButton.addTarget(self, action: #selector(presentRateVC), for: .touchUpInside)
+        rateButton.layer.cornerRadius = 16
         contentView.addSubview(rateButton)
         
         archiveButton.setTitle("Archive", for: .normal)
@@ -117,11 +117,17 @@ class SelectedUserTaskCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func presentRateVC() {
+        
         guard let job = self.job else {
             print("No job found!")
             return
         }
-        rateDelegate?.presentRateViewController(job: job)
+        
+        if (job.done) {
+            rateDelegate?.presentRateViewController(job: job)
+        } else {
+            return
+        }
     }
     
     func configure(job: Job, delegate1: EditPostDelegate, delegate2: RateUserDelegate, index: Int) {
@@ -137,6 +143,11 @@ class SelectedUserTaskCollectionViewCell: UICollectionViewCell {
             gigAmount.text = "$\(reward)"
         } else {
             gigAmount.text = "No stated reward"
+        }
+        
+        if !job.done {
+            rateButton.layer.backgroundColor = UIColor(rgb: 0xB1B6C2).cgColor
+            payButton.layer.backgroundColor = UIColor(rgb: 0xB1B6C2).cgColor
         }
     }
     

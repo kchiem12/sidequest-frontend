@@ -35,6 +35,8 @@ class ProfileViewController: UIViewController {
     let posting4 = Posting(gigName: "Loading Furniture", gigAmount: "70", profilePic: "carson", profileName: "Carson Kotechi", gigDescription: "Local ithaca move moving two storage units", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: true, job: nil)
     let posting5 = Posting(gigName: "CS Tutoring", gigAmount: "15", profilePic: "jackchen", profileName: "Jack Chen", gigDescription: "I need help with my cs assignment for cs1110.", categoryName: "Tutoring", relevantSkills: "Computer Science", otherNotes: "N/A", favorite: true, job: nil)
     
+    let refreshControl = UIRefreshControl()
+    
     let inProgressReuse = "progressReuseIdentifier"
     static let headerReuse = "headerReuseIdentifier"
     let favoriteReuse = "favoriteReuseIdentifier"
@@ -50,18 +52,19 @@ class ProfileViewController: UIViewController {
             guard let message = messageResponse else {
                 return
             }
-            
+
             if success {
-                UIApplication
-                    .shared
-                    .connectedScenes
-                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                    .first?.rootViewController = UINavigationController(rootViewController: LoginViewController())
                 print("\(message)")
             } else {
                 print("\(message)")
             }
         }
+        
+        UIApplication
+            .shared
+            .connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+            .first?.rootViewController = UINavigationController(rootViewController: LoginViewController())
     }
     
     let navigationImageView: UIImageView = UIImageView()
@@ -94,6 +97,16 @@ class ProfileViewController: UIViewController {
         inProgress = [posting1, posting2]
         favorites = [posting4, posting5]
         
+        // Setup action for refresh control
+        refreshControl.addTarget(self, action: #selector(refreshProfileView(_:)), for: .valueChanged)
+        
+        // Add refresh control to collection view
+        if #available(iOS 10.0, *) {
+            questCollectionView.refreshControl = refreshControl
+        } else {
+            questCollectionView.addSubview(refreshControl)
+        }
+        
         // gets the profile image from the url provided by backend
         NetworkManager.getSpecificUser(userID: user.id) { response in
             self.user = response
@@ -108,6 +121,9 @@ class ProfileViewController: UIViewController {
             }
             return
         }
+        
+        getInProgressJobs()
+        
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 50
@@ -127,6 +143,42 @@ class ProfileViewController: UIViewController {
         view.addSubview(questCollectionView)
         
         setupConstraints()
+    }
+    
+    func getInProgressJobs() {
+        var posts: [Posting] = []
+        
+        if (self.user.job_as_receiver.count == 0) {
+            self.inProgress = [self.posting1, self.posting2]
+            self.questCollectionView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
+        
+        DispatchQueue.main.async {
+            for job in self.user.job_as_receiver {
+                NetworkManager.getSpecificJob(jobID: job.id!) { theJob in
+                    guard let job = theJob else {
+                        return
+                    }
+                    
+                    // to safely unwrap values
+                    if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
+                        let post = Posting(gigName: job.title, gigAmount: reward, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: job.relevant_skills, otherNotes: job.other_notes, favorite: false, job: job)
+                        posts.insert(post, at: 0)
+                        self.inProgress = [self.posting1, self.posting2]
+                        self.inProgress.insert(contentsOf: posts, at: 0)
+                        self.questCollectionView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    } else {
+                        print("One of the jobs has invalid information")
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func refreshProfileView(_ sender: Any) {
+        getInProgressJobs()
     }
     
     func setupConstraints() {

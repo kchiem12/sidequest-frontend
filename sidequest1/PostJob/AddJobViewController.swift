@@ -37,6 +37,8 @@ class AddJobViewController: UIViewController {
     
     let navigationImageView: UIImageView = UIImageView()
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +77,16 @@ class AddJobViewController: UIViewController {
         view.addSubview(yourPostCollectionView)
 
         getUsersPosts()
+        
+        // Setup action for refresh control
+        refreshControl.addTarget(self, action: #selector(refreshUserPosts(_:)), for: .valueChanged)
+        
+        // Add refresh control to collection view
+        if #available(iOS 10.0, *) {
+            yourPostCollectionView.refreshControl = refreshControl
+        } else {
+            yourPostCollectionView.addSubview(refreshControl)
+        }
         
         // Set Up Properties
         yourGigLabel.text = "Your gig posts"
@@ -116,6 +128,11 @@ class AddJobViewController: UIViewController {
         var postsData: [Job] = []
         print("\(user.job_as_poster.count)")
         
+        if (self.user.job_as_poster.count == 0) {
+            self.refreshControl.endRefreshing()
+            return
+        }
+        
         DispatchQueue.main.async {
             for job in self.user.job_as_poster {
                 print("\(job.id!)")
@@ -129,6 +146,7 @@ class AddJobViewController: UIViewController {
                     self.postingData = postsData
                     self.shownPostingData = self.postingData
                     self.yourPostCollectionView.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
             }
         }
@@ -137,6 +155,10 @@ class AddJobViewController: UIViewController {
     // Presents a view controller to allow a user to create a post
     @objc func createPost() {
         present(PublishJobPresentViewController(delegate: self, user: user), animated: true)
+    }
+    
+    @objc func refreshUserPosts(_ sender: Any) {
+        getUsersPosts()
     }
 
 }
@@ -237,7 +259,6 @@ extension AddJobViewController: UICollectionViewDataSource {
             }
         }
     }
-
 }
 
 extension AddJobViewController: UICollectionViewDelegateFlowLayout {
