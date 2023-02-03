@@ -15,6 +15,8 @@ class InProgressCollectionViewCell: UICollectionViewCell {
     var profileName = UILabel()
     var gigDescription = UILabel()
     var completedButton = UIButton()
+    var indexOfCell: Int = 0
+    var job: Job?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,7 @@ class InProgressCollectionViewCell: UICollectionViewCell {
         gigAmount.textColor = UIColor(red: 0.49, green: 0.569, blue: 0.773, alpha: 1)
         gigAmount.font = .systemFont(ofSize: 24, weight: .medium)
         contentView.addSubview(gigAmount)
+        
         
         profilePic.layer.cornerRadius = 15
         profilePic.layer.masksToBounds = true
@@ -44,9 +47,11 @@ class InProgressCollectionViewCell: UICollectionViewCell {
         
         completedButton.setTitle("Mark as Completed", for: .normal)
         completedButton.titleLabel?.font = UIFont(name: "Merriweather-Regular", size: 24)
+        completedButton.isUserInteractionEnabled = true
         completedButton.setTitleColor(UIColor(rgb: 0x8A9CCB), for: .normal)
         completedButton.layer.borderWidth = 2
         completedButton.layer.borderColor = UIColor(rgb: 0x8A9CCB).cgColor
+        completedButton.addTarget(self, action: #selector(completeJob), for: .touchUpInside)
         completedButton.layer.cornerRadius = 16
         completedButton.backgroundColor = .clear
         contentView.addSubview(completedButton)
@@ -91,8 +96,15 @@ class InProgressCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-8)
         }
     }
-//
-    func configure(posting: Posting){
+
+    @objc func completeJob() {
+        guard let job = self.job else {
+            return
+        }
+    }
+    
+    func configure(posting: Posting, index: Int){
+        indexOfCell = index
         gigName.text = posting.gigName
         gigAmount.text = "$" + posting.gigAmount
         if (posting.profilePic.contains("http")) {

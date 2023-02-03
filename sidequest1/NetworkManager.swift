@@ -365,5 +365,34 @@ class NetworkManager {
         }
     }
     
+    // Function to let user complete a job
+    static func completeJob(jobId: Int, completion: @escaping(Bool, String?) -> Void) {
+        let endpoint = "\(host)/api/job/\(jobId)/done/"
+        
+        AF.request(endpoint, method: .post).validate(statusCode: 200..<405).responseData { response in
+            switch response.result {
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 201:
+                    if let _ = try? JSONDecoder().decode(Job.self, from: data) {
+                        completion(true, nil)
+                    } else {
+                        print("Failed to decode job")
+                    }
+                case 404:
+                    if let errorMessage = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMessage.error)
+                    } else {
+                        print("Failed to decode error")
+                    }
+                default:
+                    print("Unknown status code")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 
 }

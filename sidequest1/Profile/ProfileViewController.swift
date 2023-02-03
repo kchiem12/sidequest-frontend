@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate {
     
     
     // Allows the current user to be passed in
@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController {
         collectionViewLayout: createLayout()
     )
     var user: User
+    
     
     let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: "40", profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
     let posting2 = Posting(gigName: "Research Study", gigAmount: "20", profilePic: "jocelyn", profileName: "Jocelyn Pearson", gigDescription: "Participate in our study to receive a personalized genetic ancestry report!", categoryName: "Research", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
@@ -74,7 +75,7 @@ class ProfileViewController: UIViewController {
         
         navigationImageView.image = UIImage(named: "navigation title")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: navigationImageView)
-        
+            
         // add gradient background
         gradient.frame = self.view.bounds
         gradient.colors = [
@@ -140,6 +141,7 @@ class ProfileViewController: UIViewController {
         questCollectionView.register(Header.self, forSupplementaryViewOfKind: ProfileViewController.headerReuse, withReuseIdentifier: "headerID")
         questCollectionView.backgroundColor = .clear
         questCollectionView.dataSource = self
+        questCollectionView.delegate = self
         view.addSubview(questCollectionView)
         
         setupConstraints()
@@ -176,6 +178,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
     
     @objc func refreshProfileView(_ sender: Any) {
         getInProgressJobs()
@@ -228,6 +231,7 @@ class ProfileViewController: UIViewController {
                 section.contentInsets.leading = 20
                 section.contentInsets.bottom = 20
                 section.orthogonalScrollingBehavior = .paging
+                
                  //Creates a section header
                 section.boundarySupplementaryItems = [
                     .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: headerReuse, alignment: .topLeading)
@@ -320,15 +324,41 @@ extension ProfileViewController: UICollectionViewDataSource {
         return 0
     }
     
+    @objc func test(sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let posting = inProgress[indexPath.row]
+        
+        let alert = UIAlertController(title: "Confirm Completed Job?", message: "This will notify the poster", preferredStyle: .alert)
+        
+        guard let job = posting.job else {
+            return
+        }
+        
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+            NetworkManager.completeJob(jobId: job.id) { success, errorMsg in
+                if (success) {
+                    self.inProgress.remove(at: indexPath.row)
+                    self.questCollectionView.reloadData()
+                } else {
+                    print(errorMsg ?? "Error in completing job")
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: inProgressReuse, for: indexPath) as? InProgressCollectionViewCell {
-                cell.configure(posting: inProgress[indexPath.item])
+                cell.configure(posting: inProgress[indexPath.item], index: indexPath.row)
                 cell.contentView.backgroundColor = .white
                 cell.contentView.layer.cornerRadius = 16
                 cell.contentView.layer.shadowOpacity = 0.5
                 cell.contentView.layer.shadowOffset = CGSize(width: 0, height: 5)
                 cell.contentView.layer.shadowColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1).cgColor
+                cell.completedButton.tag = indexPath.row
+                cell.completedButton.addTarget(self, action: #selector(test(sender:)), for: .touchUpInside)
                 return cell
             } else {
                 return UICollectionViewCell()
