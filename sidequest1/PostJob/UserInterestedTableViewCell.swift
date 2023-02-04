@@ -77,6 +77,19 @@ class UserInterestedTableViewCell: UITableViewCell {
         let indexEndOfText = user.last.index(user.last.startIndex, offsetBy: 1)
         let newStr = String(user.last[..<indexEndOfText])
         userDetail.text = "\(user.first) \(newStr). interested in gig"
+        var totalRating = 0
+        for rating in user.rating_as_postee {
+            
+            guard let rateNum = rating.rate else {
+                return
+            }
+            
+            totalRating += rateNum
+        }
+        
+        if (user.rating_as_postee.count != 0) {
+            userRating.text = "Rating: \(round((Double(totalRating) / Double(user.rating_as_postee.count)) * 10) / 10.0) / 5"
+        }
         
         if (user.assets.count == 0) {
             userImageView.image = UIImage(named: "profile_placeholder")

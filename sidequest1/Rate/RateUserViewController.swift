@@ -108,34 +108,34 @@ class RateUserViewController: UIViewController {
             return
         }
         
-        if (theJob.longtitude != 0) {
-            NetworkManager.editRating(job: theJob, rating: Int(ratingSlider.value), description: "", ratingId: theJob.longtitude) { success, error in
-                if (success) {
-                    self.dismiss(animated: true)
-                } else {
-                    print(error ?? "Error in updating rating for user")
-                }
-            }
-        } else {
+//        if (theJob.longtitude != 0) {
+//            NetworkManager.editRating(job: theJob, rating: Int(ratingSlider.value), description: "", ratingId: theJob.longtitude) { success, error in
+//                if (success) {
+//                    self.dismiss(animated: true)
+//                } else {
+//                    print(error ?? "Error in updating rating for user")
+//                }
+//            }
+//        } else {
             NetworkManager.rateUser(job: theJob, rating: Int(ratingSlider.value), description: "") { success, error, rating in
                 if (success) {
                     
-                    guard let rate = rating else {
-                        return
-                    }
+//                    guard let rate = rating else {
+//                        return
+//                    }
                     
-                    NetworkManager.updateJob(jobId: theJob.id, title: theJob.title, description: theJob.description, location: theJob.location, date_activity: theJob.date_activity, duration: theJob.duration, reward: theJob.reward ?? "XX.XX", category: theJob.category, longtitude: rate.id, latitude: theJob.latitude, other_notes: theJob.other_notes, relevant_skills: theJob.relevant_skills) { success in
-                        if (success) {
+//                    NetworkManager.updateJob(jobId: theJob.id, title: theJob.title, description: theJob.description, location: theJob.location, date_activity: theJob.date_activity, duration: theJob.duration, reward: theJob.reward ?? "XX.XX", category: theJob.category, longtitude: rate.id, latitude: theJob.latitude, other_notes: theJob.other_notes, relevant_skills: theJob.relevant_skills) { success in
+//                        if (success) {
                             self.dismiss(animated: true)
-                        } else {
-                            print("Failed to update the user")
-                        }
-                    }
+//                        } else {
+//                            print("Failed to update the user")
+//                        }
+//                    }
                 } else {
                     print(error ?? "Error in creating rating for user")
                 }
             }
-        }
+//        }
     }
     
     @objc func updateRatingView() {
