@@ -23,7 +23,7 @@ class RateUserViewController: UIViewController {
     let ratingLabel: UILabel = UILabel()
     var gig: Job?
     
-    init(gig: Job?) {
+    init(gig: Job) {
         self.gig = gig
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,25 +43,25 @@ class RateUserViewController: UIViewController {
         ratingSlider.maximumTrackTintColor = UIColor(rgb: 0x7D91C5)
         ratingSlider.minimumTrackTintColor = UIColor(rgb: 0x435B99)
         ratingSlider.thumbTintColor = UIColor(rgb: 0x435B99)
-        ratingSlider.addTarget(self, action: #selector(displayRating), for: .valueChanged)
+        ratingSlider.addTarget(self, action: #selector(updateRatingView), for: .valueChanged)
         view.addSubview(ratingSlider)
         
-        gigNameLabel.text = "placeholder"
+        gigNameLabel.text = "\(gig?.title ?? "Gig")"
         gigNameLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 31)
         gigNameLabel.textColor = UIColor(rgb: 0x7D91C5)
         view.addSubview(gigNameLabel)
         
-        dateCompletedLabel.text = "date completed label"
+        dateCompletedLabel.text = "Completed"
         dateCompletedLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         dateCompletedLabel.textColor = UIColor(rgb: 0x435B99)
         view.addSubview(dateCompletedLabel)
         
-        rewardLabel.text = "$XX.XX"
+        rewardLabel.text = "$\(gig?.reward ?? "XX.XX")"
         rewardLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 24)
         rewardLabel.textColor = UIColor(rgb: 0x7D91C5)
         view.addSubview(rewardLabel)
         
-        rateUserPerformanceLabel.text = "Rate User's Performance"
+        rateUserPerformanceLabel.text = "Rate \(gig?.receiver[0].first ?? "User")'s Performance"
         rateUserPerformanceLabel.font = UIFont(name: "IBMPlexSans-Regular", size: 20)
         rateUserPerformanceLabel.textColor = UIColor(rgb: 0x435B99)
         view.addSubview(rateUserPerformanceLabel)
@@ -91,7 +91,7 @@ class RateUserViewController: UIViewController {
         submitRatingButton.titleLabel?.textColor = UIColor(rgb: 0xD8DFF2)
         submitRatingButton.backgroundColor = UIColor(rgb: 0x435B99)
         submitRatingButton.layer.cornerRadius = 8
-        submitRatingButton.addTarget(self, action: #selector(displayRating), for: .touchUpInside)
+        submitRatingButton.addTarget(self, action: #selector(submitRating), for: .touchUpInside)
         view.addSubview(submitRatingButton)
         
         ratingLabel.text = "\(Int(ratingSlider.value)) / 5"
@@ -102,7 +102,43 @@ class RateUserViewController: UIViewController {
         setConstraints()
     }
     
-    @objc func displayRating() {
+    @objc func submitRating() {
+        
+        guard let theJob = gig else {
+            return
+        }
+        
+        if (theJob.longtitude != 0) {
+            NetworkManager.editRating(job: theJob, rating: Int(ratingSlider.value), description: "", ratingId: theJob.longtitude) { success, error in
+                if (success) {
+                    self.dismiss(animated: true)
+                } else {
+                    print(error ?? "Error in updating rating for user")
+                }
+            }
+        } else {
+            NetworkManager.rateUser(job: theJob, rating: Int(ratingSlider.value), description: "") { success, error, rating in
+                if (success) {
+                    
+                    guard let rate = rating else {
+                        return
+                    }
+                    
+                    NetworkManager.updateJob(jobId: theJob.id, title: theJob.title, description: theJob.description, location: theJob.location, date_activity: theJob.date_activity, duration: theJob.duration, reward: theJob.reward ?? "XX.XX", category: theJob.category, longtitude: rate.id, latitude: theJob.latitude, other_notes: theJob.other_notes, relevant_skills: theJob.relevant_skills) { success in
+                        if (success) {
+                            self.dismiss(animated: true)
+                        } else {
+                            print("Failed to update the user")
+                        }
+                    }
+                } else {
+                    print(error ?? "Error in creating rating for user")
+                }
+            }
+        }
+    }
+    
+    @objc func updateRatingView() {
         ratingLabel.text = "\(Int(ratingSlider.value)) / 5"
     }
     
@@ -161,7 +197,6 @@ class RateUserViewController: UIViewController {
             make.bottom.equalTo(ratingSlider.snp.top).offset(-10)
         }
     }
-
     
     
 }

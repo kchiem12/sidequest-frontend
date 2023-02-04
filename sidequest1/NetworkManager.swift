@@ -394,5 +394,80 @@ class NetworkManager {
         }
     }
     
+    // Function to assign a rating to a user
+    static func rateUser(job: Job, rating: Int, description: String, completion: @escaping(Bool, String?, Rating?) -> Void) {
+        let endpoint = "\(host)/api/user/\(job.poster[0].id!)/rating/\(job.receiver[0].id!)/"
+        
+        let params: Parameters = [
+            "rate": rating,
+            "description": description
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate(statusCode: 200..<405).responseData { response in
+            switch response.result {
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 201:
+                    if let rating = try? JSONDecoder().decode(Rating.self, from: data) {
+                        completion(true, nil, rating)
+                    } else {
+                        print("Failed to decode rating")
+                    }
+                case 404:
+                    if let errorMsg = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMsg.error, nil)
+                    } else {
+                        print("Failed to decode error")
+                    }
+                case 400:
+                    if let errorMsg = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMsg.error, nil)
+                    } else {
+                        print("Failed to decoe error")
+                    }
+                default:
+                    print("Unknown status code")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // Function to edit the rating
+    static func editRating(job: Job, rating: Int, description: String, ratingId: Int, completion: @escaping(Bool, String?) -> Void) {
+        let endpoint = "\(host)/api/user/\(job.poster[0].id!)/rating/\(ratingId)/"
+        
+        let params: Parameters = [
+            "rate": rating,
+            "description": description
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate(statusCode: 200..<405).responseData { response in
+            switch response.result {
+            case .success(let data):
+                switch response.response?.statusCode {
+                case 201:
+                    completion(true, nil)
+                case 404:
+                    if let errorMsg = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMsg.error)
+                    } else {
+                        print("Failed to decode error")
+                    }
+                case 400:
+                    if let errorMsg = try? JSONDecoder().decode(Error.self, from: data) {
+                        completion(false, errorMsg.error)
+                    } else {
+                        print("Failed to decoe error")
+                    }
+                default:
+                    print("Unknown status code")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
 }

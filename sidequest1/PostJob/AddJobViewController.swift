@@ -34,6 +34,7 @@ class AddJobViewController: UIViewController {
     let spacing1: CGFloat = 15
     let notTakenReuseIdentifier: String = "notTakenPostReuseIdentifier"
     let takenReuseIdentifier: String = "takenPostReuseIdentifier"
+    let editRatingIdentifier: String = "editRatingReuseIdentifier"
     
     let navigationImageView: UIImageView = UIImageView()
     
@@ -74,6 +75,7 @@ class AddJobViewController: UIViewController {
         // Register collection view
         yourPostCollectionView.register(YourPostCollectionViewCell.self, forCellWithReuseIdentifier: notTakenReuseIdentifier)
         yourPostCollectionView.register(SelectedUserTaskCollectionViewCell.self, forCellWithReuseIdentifier: takenReuseIdentifier)
+        yourPostCollectionView.register(EditRatingJobCollectionViewCell.self, forCellWithReuseIdentifier: editRatingIdentifier)
         view.addSubview(yourPostCollectionView)
 
         getUsersPosts()
@@ -235,6 +237,17 @@ extension AddJobViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Conditional statement used to check if a user was already selected for the job
+        if (shownPostingData[indexPath.row].longtitude != 0) {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: editRatingIdentifier, for: indexPath) as?
+                EditRatingJobCollectionViewCell {
+                cell.configure(job: shownPostingData[indexPath.row], delegate1: self, delegate2: self, index: indexPath.row)
+                cell.contentView.backgroundColor = UIColor.white
+                cell.contentView.layer.cornerRadius = 16
+                return cell
+            } else {
+                return UICollectionViewCell()
+            }
+        }
         if (shownPostingData[indexPath.row].taken) {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: takenReuseIdentifier, for: indexPath) as?
                 SelectedUserTaskCollectionViewCell{
@@ -269,6 +282,6 @@ extension AddJobViewController: UICollectionViewDelegateFlowLayout {
 
 extension AddJobViewController: RateUserDelegate {
     func presentRateViewController(job: Job) {
-        return
+        present(RateUserViewController(gig: job), animated: true)
     }
 }
