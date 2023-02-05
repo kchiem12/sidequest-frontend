@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         collectionViewLayout: createLayout()
     )
     var user: User
+    let ratingLabel: UILabel = UILabel()
     
     
     let posting1 = Posting(gigName: "Postering in Ctown", gigAmount: "40", profilePic: "joy", profileName: "Joy Dimen", gigDescription: "Need poster runner in ctown for 1-2 hours.", categoryName: "Labor", relevantSkills: "None", otherNotes: "N/A", favorite: false, job: nil)
@@ -130,6 +131,25 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         profileImageView.layer.cornerRadius = 50
         view.addSubview(profileImageView)
         
+        if (user.rating_as_postee.count != 0) {
+            var totalRating = 0
+            for rating in user.rating_as_postee {
+                guard let rateNum = rating.rate else {
+                    return
+                }
+                
+                totalRating += rateNum
+            }
+            
+            ratingLabel.text = "User Rating: \(round((Double(totalRating) / Double(user.rating_as_postee.count)) * 10) / 10.0) / 5"
+        } else {
+            ratingLabel.text = "User Rating: X / 5"
+        }
+        ratingLabel.font = UIFont(name: "Merriweather-Regular", size: 18)
+        ratingLabel.textColor = UIColor(rgb: 0x435B99)
+        ratingLabel.backgroundColor = .clear
+        view.addSubview(ratingLabel)
+        
         profileName.text = user.first + " " + user.last
         profileName.font = UIFont(name: "Merriweather-Regular", size: 20)
         profileName.textColor = UIColor(rgb: 0x435B99)
@@ -150,37 +170,61 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
     func getInProgressJobs() {
         var posts: [Posting] = []
         
-        if (self.user.job_as_receiver.count == 0) {
-            self.inProgress = [self.posting1, self.posting2]
-            self.questCollectionView.reloadData()
-            self.refreshControl.endRefreshing()
-        }
-        
         DispatchQueue.main.async {
-            for job in self.user.job_as_receiver {
-                NetworkManager.getSpecificJob(jobID: job.id!) { theJob in
-                    guard let job = theJob else {
-                        return
-                    }
+            NetworkManager.getSpecificUser(userID: self.user.id) { user in
+                for job in user.job_as_receiver {
                     
-                    // to safely unwrap values
-                    if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
-                        let post = Posting(gigName: job.title, gigAmount: reward, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: job.relevant_skills, otherNotes: job.other_notes, favorite: false, job: job)
-                        posts.insert(post, at: 0)
+                    if (self.user.job_as_receiver.count == 0) {
                         self.inProgress = [self.posting1, self.posting2]
-                        self.inProgress.insert(contentsOf: posts, at: 0)
                         self.questCollectionView.reloadData()
                         self.refreshControl.endRefreshing()
-                    } else {
-                        print("One of the jobs has invalid information")
+                    }
+                    
+                    NetworkManager.getSpecificJob(jobID: job.id!) { theJob in
+                        guard let job = theJob else {
+                            return
+                        }
+                        
+                        // to safely unwrap values
+                        if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
+                            let post = Posting(gigName: job.title, gigAmount: reward, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: job.relevant_skills, otherNotes: job.other_notes, favorite: false, job: job)
+                            
+                            if (!job.done) {
+                                posts.insert(post, at: 0)
+                                self.inProgress = [self.posting1, self.posting2]
+                                self.inProgress.insert(contentsOf: posts, at: 0)
+                                self.questCollectionView.reloadData()
+                                self.refreshControl.endRefreshing()
+                            }
+                        } else {
+                            print("One of the jobs has invalid information")
+                        }
                     }
                 }
             }
+            self.refreshControl.endRefreshing()
         }
     }
     
     
     @objc func refreshProfileView(_ sender: Any) {
+        
+        NetworkManager.getSpecificUser(userID: user.id) { user in
+            if (user.rating_as_postee.count != 0) {
+                var totalRating = 0
+                for rating in user.rating_as_postee {
+                    guard let rateNum = rating.rate else {
+                        return
+                    }
+                    
+                    totalRating += rateNum
+                }
+                
+                self.ratingLabel.text = "User Rating: \(round((Double(totalRating) / Double(user.rating_as_postee.count)) * 10) / 10.0) / 5"
+            } else {
+                self.ratingLabel.text = "User Rating: X / 5"
+            }
+        }
         getInProgressJobs()
     }
     
@@ -197,8 +241,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
             make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
         }
         
+        ratingLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileName.snp.bottom).offset(10)
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+        }
+        
         questCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(profileName.snp.bottom).offset(15)
+            make.top.equalTo(ratingLabel.snp.bottom).offset(15)
             make.left.equalTo(view.safeAreaLayoutGuide.snp.left)
             make.right.equalTo(view.safeAreaLayoutGuide.snp.right)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)

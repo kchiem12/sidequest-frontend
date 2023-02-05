@@ -65,7 +65,7 @@ class UserInterestedTableViewCell: UITableViewCell {
         
         messageButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(userDetail.snp.bottom).offset(15)
-            make.left.equalTo(userRating.snp.right).offset(77)
+            make.left.equalTo(userRating.snp.right).offset(60)
             make.width.equalTo(94)
             make.height.equalTo(30)
             make.bottom.equalTo(contentView.snp.bottom).offset(-13)

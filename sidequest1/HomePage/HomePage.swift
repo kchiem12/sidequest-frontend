@@ -263,7 +263,9 @@ class HomePage: UIViewController {
                 // to safely unwrap values
                 if let reward = job.reward, let picture = (job.asset.count == 0 ? "profile_placeholder" : job.asset[0].url) {
                     let post = Posting(gigName: job.title, gigAmount: reward, profilePic: picture, profileName: job.poster[0].first! + " " + job.poster[0].last!, gigDescription: job.description, categoryName: job.category, relevantSkills: job.relevant_skills, otherNotes: job.other_notes, favorite: false, job: job)
-                    posts.insert(post, at: 0)
+                    if (!job.taken) {
+                        posts.insert(post, at: 0)
+                    }
                 } else {
                     print("One of the jobs has invalid information")
                 }

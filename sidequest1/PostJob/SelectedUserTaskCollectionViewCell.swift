@@ -145,9 +145,12 @@ class SelectedUserTaskCollectionViewCell: UICollectionViewCell {
             gigAmount.text = "No stated reward"
         }
         
-        if !job.done {
+        if (!job.done) {
             rateButton.layer.backgroundColor = UIColor(rgb: 0xB1B6C2).cgColor
             payButton.layer.backgroundColor = UIColor(rgb: 0xB1B6C2).cgColor
+        } else {
+            payButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
+            rateButton.layer.backgroundColor = UIColor(red: 0.431, green: 0.729, blue: 0.729, alpha: 1).cgColor
         }
     }
     

@@ -21,7 +21,7 @@ class MessageTableViewCell: UITableViewCell {
         // everything here is laid our correctly!!
 //        contentView.backgroundColor = .systemRed
         
-        nameLabel.text = "Bryan Cheung"
+        nameLabel.text = "Matt"
         nameLabel.font = UIFont(name: "Merriweather-Regular", size: 20)
         nameLabel.textColor = UIColor(rgb: 0x435B99)
         contentView.addSubview(nameLabel)

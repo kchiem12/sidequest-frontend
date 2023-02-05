@@ -130,27 +130,30 @@ class AddJobViewController: UIViewController {
         var postsData: [Job] = []
         print("\(user.job_as_poster.count)")
         
-        if (self.user.job_as_poster.count == 0) {
-            self.refreshControl.endRefreshing()
-            return
-        }
+//        if (self.user.job_as_poster.count == 0) {
+//            self.refreshControl.endRefreshing()
+//            return
+//        }
         
         DispatchQueue.main.async {
-            for job in self.user.job_as_poster {
-                print("\(job.id!)")
-                NetworkManager.getSpecificJob(jobID: job.id!) { job in
-                    
-                    guard let theJob = job else {
-                        return
+            NetworkManager.getSpecificUser(userID: self.user.id) { user in
+                for job in user.job_as_poster {
+                    print("\(job.id!)")
+                    NetworkManager.getSpecificJob(jobID: job.id!) { job in
+                        
+                        guard let theJob = job else {
+                            return
+                        }
+                        
+                        postsData.append(theJob)
+                        self.postingData = postsData
+                        self.shownPostingData = self.postingData
+                        self.yourPostCollectionView.reloadData()
                     }
-                    
-                    postsData.append(theJob)
-                    self.postingData = postsData
-                    self.shownPostingData = self.postingData
-                    self.yourPostCollectionView.reloadData()
-                    self.refreshControl.endRefreshing()
                 }
+
             }
+            self.refreshControl.endRefreshing()
         }
     }
     

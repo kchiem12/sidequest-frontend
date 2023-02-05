@@ -24,6 +24,7 @@ class ViewInteractionsViewController: UIViewController {
     var shownUsersData: [User] = []
     
     
+    
     init(job: Job) {
         self.job = job
         super.init(nibName: nil, bundle: nil)
@@ -139,6 +140,7 @@ extension ViewInteractionsViewController: UITableViewDelegate {
                 }
             }
             pickAlert.dismiss(animated: true)
+            self.dismiss(animated: true)
         }))
         pickAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             print("canceled alert")
